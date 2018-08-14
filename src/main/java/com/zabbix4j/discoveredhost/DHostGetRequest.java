@@ -27,8 +27,10 @@ package com.zabbix4j.discoveredhost;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/25.
@@ -50,65 +52,30 @@ public class DHostGetRequest extends ZabbixApiRequest {
     }
 
     public class Params extends GetRequestCommonParams {
+        @Accessors(chain = true) @Getter @Setter
         private List<Integer> dhostids;
+        @Accessors(chain = true) @Getter @Setter
         private List<Integer> druleids;
+        @Accessors(chain = true) @Getter @Setter
         private List<Integer> dserviceids;
+        @Accessors(chain = true) @Getter @Setter
         private String selectDRules;
+        @Accessors(chain = true) @Getter @Setter
         private String selectDServices;
 
         public Params() {
         }
 
-        public void addDHostId(Integer id) {
+        public void addDHostId(final Integer id) {
             dhostids = ZbxListUtils.add(dhostids, id);
         }
 
-        public void addDRuleId(Integer id) {
+        public void addDRuleId(final Integer id) {
             druleids = ZbxListUtils.add(druleids, id);
         }
 
-        public void addDServiceId(Integer id) {
+        public void addDServiceId(final Integer id) {
             dserviceids = ZbxListUtils.add(dserviceids, id);
-        }
-
-        public List<Integer> getDhostids() {
-            return dhostids;
-        }
-
-        public void setDhostids(List<Integer> dhostids) {
-            this.dhostids = dhostids;
-        }
-
-        public List<Integer> getDruleids() {
-            return druleids;
-        }
-
-        public void setDruleids(List<Integer> druleids) {
-            this.druleids = druleids;
-        }
-
-        public List<Integer> getDserviceids() {
-            return dserviceids;
-        }
-
-        public void setDserviceids(List<Integer> dserviceids) {
-            this.dserviceids = dserviceids;
-        }
-
-        public String getSelectDRules() {
-            return selectDRules;
-        }
-
-        public void setSelectDRules(String selectDRules) {
-            this.selectDRules = selectDRules;
-        }
-
-        public String getSelectDServices() {
-            return selectDServices;
-        }
-
-        public void setSelectDServices(String selectDServices) {
-            this.selectDServices = selectDServices;
         }
     }
 }

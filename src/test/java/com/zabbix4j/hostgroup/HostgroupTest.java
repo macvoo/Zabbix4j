@@ -62,42 +62,6 @@ public class HostgroupTest extends ZabbixApiTestBase {
     }
 
     @Test
-    public void testExist1() {
-
-        HostgroupExistRequest request = new HostgroupExistRequest();
-        ArrayList<String> names = new ArrayList<String>(Arrays.asList(new String[]{"Templates"}));
-        request.getParams().setName(names);
-
-        try {
-            HostgroupExistResponse response = zabbixApi.hostgroup().exist(request);
-
-            assertNotNull(response);
-
-            assertTrue(response.isResult());
-        } catch (ZabbixApiException e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @Test
-    public void testExist2() {
-
-        HostgroupExistRequest request = new HostgroupExistRequest();
-        ArrayList<String> names = new ArrayList<String>(Arrays.asList(new String[]{"xxxxx"}));
-        request.getParams().setName(names);
-
-        try {
-            HostgroupExistResponse response = zabbixApi.hostgroup().exist(request);
-
-            assertNotNull(response);
-
-            assertFalse(response.isResult());
-        } catch (ZabbixApiException e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @Test
     public void testHostgroup() {
 
         testCreate1();
@@ -169,42 +133,4 @@ public class HostgroupTest extends ZabbixApiTestBase {
         }
     }
 
-    @Test
-    public void testIsReable1() {
-
-        int targetGroupid = 12;
-        HostgroupIsReadableRequest request = new HostgroupIsReadableRequest();
-        request.setParams(new ArrayList<Integer>(Arrays.asList(new Integer[]{targetGroupid})));
-
-        try {
-            HostgroupIsReadableResponse response = zabbixApi.hostgroup().isReable(request);
-
-            assertNotNull(response);
-
-            assertTrue(response.isResult());
-        } catch (ZabbixApiException e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @Test
-    public void testIsReable2() {
-
-        // login as guest user
-        login("guest", "");
-
-        int targetGroupid = 12;
-        HostgroupIsReadableRequest request = new HostgroupIsReadableRequest();
-        request.setParams(new ArrayList<Integer>(Arrays.asList(new Integer[]{targetGroupid})));
-
-        try {
-            HostgroupIsReadableResponse response = zabbixApi.hostgroup().isReable(request);
-
-            assertNotNull(response);
-
-            assertFalse(response.isResult());
-        } catch (ZabbixApiException e) {
-            fail(e.getMessage());
-        }
-    }
 }

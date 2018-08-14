@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Suguru Yajima
+ * Copyright (c) 2018 macvoo
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,28 +22,33 @@
  * SOFTWARE.
  */
 
-package com.zabbix4j.hostgroup;
+package com.zabbix4j.application;
 
-import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.ZabbixApiException;
+import com.zabbix4j.ZabbixApiTestBase;
+import org.junit.Test;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by Suguru Yajima on 2014/04/30.
- */
-public class HostgroupIsWritableRequest extends ZabbixApiRequest {
+public class ApplicationTestBase extends ZabbixApiTestBase {
 
-    private ArrayList<Integer> params = new ArrayList<Integer>();
+    public Integer createDummy(final String name) throws ZabbixApiException {
+        ApplicationCreateRequest request = new ApplicationCreateRequest();
+        ApplicationCreateRequest.Params params = request.getParams();
+        params.setName(name);
+        params.setHostid(10084);
 
-    public HostgroupIsWritableRequest() {
-        setMethod("hostgroup.iswritable");
+        ApplicationCreateResponse response = zabbixApi.application().create(request);
+        assertNotNull(response);
+
+        Integer id = response.getResult().getApplicationids().get(0);
+        return id;
     }
+    public void delete(Integer id) throws ZabbixApiException {
 
-    public ArrayList<Integer> getParams() {
-        return params;
-    }
+        ApplicationDeleteRequest request = new ApplicationDeleteRequest();
+        request.addParams(id);
 
-    public void setParams(ArrayList<Integer> params) {
-        this.params = params;
+        ApplicationDeleteResponse response = zabbixApi.application().delete(request);
     }
 }

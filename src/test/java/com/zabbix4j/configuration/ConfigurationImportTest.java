@@ -8,6 +8,7 @@ import com.zabbix4j.host.HostDeleteRequest;
 import com.zabbix4j.host.HostDeleteResponse;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.usermacro.Macro;
+import org.junit.After;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,26 +23,30 @@ import static org.junit.Assert.assertTrue;
  */
 public class ConfigurationImportTest extends ZabbixApiTestBase {
 
+    private Integer id;
+
     public ConfigurationImportTest() {
         super();
     }
 
+    @After
+    public void tearDown() throws Exception {
+        deleteDummy(id);
+    }
+
     @Test
     public void testImport1() throws Exception {
-
-        Integer id = createDummyHost();
+        id = createDummyHost();
         String xml = export(id);
-        deleteDummy(id);
 
         ConfigurationImportRequest request = new ConfigurationImportRequest();
         ConfigurationImportRequest.Params params = request.getParams();
         params.setFormat(Configuration.FORMAT.XML.value);
         params.setSource(xml);
         Rules rules = new Rules();
-        Rules.Applications hosts = rules.getHosts();
+        Rules.Hosts hosts = rules.getHosts();
         hosts.setCreateMissing(true);
         hosts.setUpdateExisting(true);
-        rules.setHosts(hosts);
         params.setRules(rules);
 
         ConfigurationImportResponse response = zabbixApi.configuration().imports(request);
@@ -66,14 +71,14 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
     }
 
     private int createDummyHost() throws Exception {
-        final  Integer groupId = 25;
+        final  Integer groupId = 4;
 
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();
 
         List<Integer> templates = new ArrayList<Integer>();
         templates.add(10093);
-        params.setTemplates(templates);
+       // params.setTemplates(templates);
 
         params.addGroupId(groupId);
 
@@ -90,7 +95,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         interfaces.add(hostInterface);
         params.setInterfaces(interfaces);
 
-        params.setHost("127.0.0.1");
+        params.setHost("127.0.0.12");
         params.setName("test dummy host fort import " + new Date().getTime());
 
         HostCreateResponse response = zabbixApi.host().create(request);
@@ -106,7 +111,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
 
     private void deleteDummy(Integer id) throws ZabbixApiException {
         HostDeleteRequest request = new HostDeleteRequest();
-        request.addParams(id);
+        request.addHostId(id);
 
         HostDeleteResponse response = zabbixApi.host().delete(request);
     }

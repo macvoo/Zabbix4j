@@ -24,401 +24,221 @@
 
 package com.zabbix4j.configuration;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/05/24.
  */
 public class Rules {
-    private Applications applications = new Applications();
-    private Applications discoveryRules = new Applications();
-    private Applications graphs = new Applications();
-    private Applications groups = new Applications();
-    private Applications hosts = new Applications();
-    private Applications images = new Applications();
-    private Applications items = new Applications();
-    private Applications maps = new Applications();
-    private Applications screens = new Applications();
-    private Applications templateLinkage = new Applications();
-    private Applications templates = new Applications();
-    private Applications templateScreens = new Applications();
-    private Applications triggers = new Applications();
+    @Getter
+    private Applications applications;
+    @Getter
+    private DiscoveryRules discoveryRules;
+    @Getter
+    private Graphs graphs;
+    @Getter
+    private Groups groups;
+    @Getter
+    private Hosts hosts;
+    @Getter
+    private Images images = new Images();
+    @Getter
+    private Items items = new Items();
+    @Getter
+    private Maps maps;
+    @Getter
+    private Screens screens;
+    @Getter
+    private TemplateLinkage templateLinkage;
+    @Getter
+    private Templates templates;
+    @Getter
+    private TemplateScreens templateScreens;
+    @Getter
+    private Triggers triggers;
+    @Getter
+    private ValueMaps valueMaps;
 
     public Rules() {
-    }
-
-    public Applications getApplications() {
-        return applications;
-    }
-
-    public void setApplications(Applications applications) {
-        this.applications = applications;
-    }
-
-    public Applications getDiscoveryRules() {
-        return discoveryRules;
-    }
-
-    public void setDiscoveryRules(Applications discoveryRules) {
-        this.discoveryRules = discoveryRules;
-    }
-
-    public Applications getGraphs() {
-        return graphs;
-    }
-
-    public void setGraphs(Applications graphs) {
-        this.graphs = graphs;
-    }
-
-    public Applications getGroups() {
-        return groups;
-    }
-
-    public void setGroups(Applications groups) {
-        this.groups = groups;
-    }
-
-    public Applications getHosts() {
-        return hosts;
-    }
-
-    public void setHosts(Applications hosts) {
-        this.hosts = hosts;
-    }
-
-    public Applications getImages() {
-        return images;
-    }
-
-    public void setImages(Applications images) {
-        this.images = images;
-    }
-
-    public Applications getItems() {
-        return items;
-    }
-
-    public void setItems(Applications items) {
-        this.items = items;
-    }
-
-    public Applications getMaps() {
-        return maps;
-    }
-
-    public void setMaps(Applications maps) {
-        this.maps = maps;
-    }
-
-    public Applications getScreens() {
-        return screens;
-    }
-
-    public void setScreens(Applications screens) {
-        this.screens = screens;
-    }
-
-    public Applications getTemplateLinkage() {
-        return templateLinkage;
-    }
-
-    public void setTemplateLinkage(Applications templateLinkage) {
-        this.templateLinkage = templateLinkage;
-    }
-
-    public Applications getTemplates() {
-        return templates;
-    }
-
-    public void setTemplates(Applications templates) {
-        this.templates = templates;
-    }
-
-    public Applications getTemplateScreens() {
-        return templateScreens;
-    }
-
-    public void setTemplateScreens(Applications templateScreens) {
-        this.templateScreens = templateScreens;
-    }
-
-    public Applications getTriggers() {
-        return triggers;
-    }
-
-    public void setTriggers(Applications triggers) {
-        this.triggers = triggers;
+        applications = new Applications();
+        discoveryRules = new DiscoveryRules();
+        graphs = new Graphs();
+        groups = new Groups();
+        hosts = new Hosts();
+        screens = new Screens();
+        maps = new Maps();
+        templateLinkage = new TemplateLinkage();
+        templates = new Templates();
+        templateScreens = new TemplateScreens();
+        triggers = new Triggers();
+        valueMaps = new ValueMaps();
     }
 
     public class Applications {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
-        private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean deleteMissing = false;
     }
 
-    public class discoveryRules {
+    public class DiscoveryRules {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean deleteMissing = false;
     }
 
-    public class graphs {
+    public class Graphs {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean deleteMissing = false;
     }
 
-    public class groups {
+    public class Groups {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
-        private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class hosts {
+    public class Hosts {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class images {
+    public class Images {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class items {
+    public class Items {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean deleteMissing = false;
     }
 
-    public class maps {
+    public class Maps {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class screens {
+    public class Screens {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class templateLinkage {
+    public class TemplateLinkage {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
-        private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class templates {
+    public class Templates {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
     }
 
-    public class templateScreens {
+    public class TemplateScreens {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
-
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean deleteMissing = false;
     }
 
-    public class triggers {
+    public class Triggers {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private Boolean updateExisting = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean deleteMissing = false;
+    }
 
-        public Boolean getCreateMissing() {
-            return createMissing;
-        }
-
-        public void setCreateMissing(Boolean createMissing) {
-            this.createMissing = createMissing;
-        }
-
-        public Boolean getUpdateExisting() {
-            return updateExisting;
-        }
-
-        public void setUpdateExisting(Boolean updateExisting) {
-            this.updateExisting = updateExisting;
-        }
+    public class ValueMaps {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean createMissing = false;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
+        private Boolean updateExisting = false;
     }
 }

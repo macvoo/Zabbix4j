@@ -55,23 +55,4 @@ public class DiscoveredHosts extends ZabbixApiMethod {
 
         return response;
     }
-
-    public DHostExistResponse exist(DHostExistRequest request) throws ZabbixApiException {
-        DHostExistResponse response = null;
-        request.setAuth(auth);
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String requestJson = gson.toJson(request);
-
-        try {
-            String responseJson = sendRequest(requestJson);
-
-            response = gson.fromJson(responseJson, DHostExistResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
-
-        return response;
-    }
 }

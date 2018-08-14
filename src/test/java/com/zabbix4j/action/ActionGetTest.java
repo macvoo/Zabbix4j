@@ -12,6 +12,8 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ActionGetTest extends ZabbixApiTestBase {
 
+    private final String action_get_test1 = "action get test1";
+
     public ActionGetTest() {
         super();
     }
@@ -19,7 +21,8 @@ public class ActionGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer actionId = createDummyAction();
+        DummyAction dummyAction = new DummyAction(zabbixApi);
+        Integer actionId = dummyAction.create(action_get_test1);
 
         ActionGetRequest request = new ActionGetRequest();
         ActionGetRequest.Params params = request.getParams();
@@ -32,51 +35,8 @@ public class ActionGetTest extends ZabbixApiTestBase {
 
         ActionObject actionObject = response.getResult().get(0);
 
-        assertEquals("action get test1", actionObject.getName());
+        assertEquals(action_get_test1, actionObject.getName());
         assertEquals("{TRIGGER.NAME}: {TRIGGER.STATUS}", actionObject.getDef_shortdata());
-
-
-    }
-
-    private Integer createDummyAction() throws ZabbixApiException {
-
-        ActionCreateRequest request = new ActionCreateRequest();
-        ActionCreateRequest.Params params = request.createParam();
-        params.setName("action get test1");
-        params.setEventsource(0);
-        params.setEvaltype(0);
-        params.setStatus(0);
-        params.setEsc_period(120);
-        params.setDef_shortdata("{TRIGGER.NAME}: {TRIGGER.STATUS}");
-        params.setDef_longdata("{TRIGGER.NAME}: {TRIGGER.STATUS}\r\nLast value: {ITEM.LASTVALUE}\r\n\r\n{TRIGGER.URL}");
-
-        ActionCondition ac = new ActionCondition();
-        ac.setConditiontype(ActionCondition.CONDITION_TYPE_TRIGGER.HOST.value);
-        ac.setOperator(ActionCondition.CONDITION_OPERATOR.EQUAL.value);
-        ac.setValue("10109");
-        params.createFilter().addActionConditon(ac);
-        params.createFilter().setEvaltype(0);
-        ActionOperation ao = new ActionOperation();
-        ao.setOperationtype(0);
-        ao.setEsc_period(0);
-        ao.setEsc_step_from(1);
-        ao.setEsc_step_to(2);
-        ao.setEvaltype(0);
-
-        OperationMessageGroup omg = new OperationMessageGroup();
-        omg.setUsrgrpid(13);
-        ao.addOpmessageGrp(omg);
-
-        OperationMessage om = new OperationMessage();
-        om.setDefault_msg(1);
-        om.setMediatypeid(1);
-        ao.setOpmessage(om);
-
-        params.addActionOperation(ao);
-
-        ActionCreateResponse response = zabbixApi.action().create(request);
-
-        return response.getResult().getActionids().get(0);
     }
 
     private void deleteDummy(Integer id) throws ZabbixApiException {

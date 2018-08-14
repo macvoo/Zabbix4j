@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by Suguru Yajima on 2014/05/23.
  */
-public class ApplicationDeleteTest extends ZabbixApiTestBase {
+public class ApplicationDeleteTest extends ApplicationTestBase {
 
     public ApplicationDeleteTest() {
         super();
@@ -35,7 +35,7 @@ public class ApplicationDeleteTest extends ZabbixApiTestBase {
         ApplicationCreateRequest request = new ApplicationCreateRequest();
         ApplicationCreateRequest.Params params = request.getParams();
         params.setName("Application before delete");
-        params.setHostid(10113);
+        params.setHostid(10084);
 
         ApplicationCreateResponse response = zabbixApi.application().create(request);
         assertNotNull(response);

@@ -4,8 +4,6 @@ import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 
-import java.util.Date;
-
 /**
  * @author yajima 2014
  */
@@ -14,13 +12,13 @@ public class DummyAction extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public Integer create(final String name) throws ZabbixApiException {
         final String hostId = "10084";
 
         ActionCreateRequest request = new ActionCreateRequest();
 
         ActionCreateRequest.Params param = request.createParam();
-        param.setName("action create test1." + new Date().getTime());
+        param.setName(name);
         param.setEventsource(0);
         param.setEvaltype(0);
         param.setStatus(0);

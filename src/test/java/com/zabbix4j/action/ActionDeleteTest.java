@@ -1,6 +1,7 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiTestBase;
+import java.util.Date;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class ActionDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyAction dummyAction = new DummyAction(zabbixApi);
-        Integer expectedId = dummyAction.create();
+        Integer expectedId = dummyAction.create("action create test1." + new Date().getTime());
 
         ActionDeleteRequest request = new ActionDeleteRequest();
         request.addActionId(expectedId);

@@ -1,8 +1,10 @@
 package com.zabbix4j.discoveryrule;
 
 import com.zabbix4j.ZabbixApiTestBase;
+import org.junit.After;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -10,8 +12,25 @@ import static org.junit.Assert.assertNotNull;
  */
 public class DRuleCreateTest extends ZabbixApiTestBase {
 
+    private Integer druleId;
+
     public DRuleCreateTest() {
         super();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        DRuleDeleteRequest request = new DRuleDeleteRequest();
+        request.addDRuleId(druleId);
+
+        DRuleDeleteResponse response = zabbixApi.discoveryRule().delete(request);
+        assertNotNull(response);
+
+        logger.debug(getGson().toJson(response));
+
+        Integer acutalId = response.getResult().getDruleids().get(0);
+
+        assertEquals(druleId, acutalId);
     }
 
     @Test
@@ -20,7 +39,7 @@ public class DRuleCreateTest extends ZabbixApiTestBase {
         DRuleCreateRequest request = new DRuleCreateRequest();
         DRuleCreateRequest.Params params = request.getParams();
         params.setIprange("127.0.0.1");
-        params.setName("dicovery test at localhost");
+        params.setName("dicovery test at localhost3");
 
         DCheck dcheck = new DCheck();
         dcheck.setKey_("key_");
@@ -30,6 +49,7 @@ public class DRuleCreateTest extends ZabbixApiTestBase {
         params.addCheck(dcheck);
 
         DRuleCreateResponse response = zabbixApi.discoveryRule().create(request);
+        druleId = response.getResult().getDruleids().get(0);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));

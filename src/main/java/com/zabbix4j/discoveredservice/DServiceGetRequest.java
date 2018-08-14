@@ -27,8 +27,10 @@ package com.zabbix4j.discoveredservice;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/25.
@@ -50,12 +52,33 @@ public class DServiceGetRequest extends ZabbixApiRequest {
     }
 
     public class Params extends GetRequestCommonParams {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> dserviceids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> dhostids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> dcheckids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> druleids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private String selectDRules;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private String selectDHosts;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private String selectHosts;
 
         public Params() {
@@ -75,62 +98,6 @@ public class DServiceGetRequest extends ZabbixApiRequest {
 
         public void addDRuleId(Integer id) {
             druleids = ZbxListUtils.add(druleids, id);
-        }
-
-        public List<Integer> getDserviceids() {
-            return dserviceids;
-        }
-
-        public void setDserviceids(List<Integer> dserviceids) {
-            this.dserviceids = dserviceids;
-        }
-
-        public List<Integer> getDhostids() {
-            return dhostids;
-        }
-
-        public void setDhostids(List<Integer> dhostids) {
-            this.dhostids = dhostids;
-        }
-
-        public List<Integer> getDcheckids() {
-            return dcheckids;
-        }
-
-        public void setDcheckids(List<Integer> dcheckids) {
-            this.dcheckids = dcheckids;
-        }
-
-        public List<Integer> getDruleids() {
-            return druleids;
-        }
-
-        public void setDruleids(List<Integer> druleids) {
-            this.druleids = druleids;
-        }
-
-        public String getSelectDRules() {
-            return selectDRules;
-        }
-
-        public void setSelectDRules(String selectDRules) {
-            this.selectDRules = selectDRules;
-        }
-
-        public String getSelectDHosts() {
-            return selectDHosts;
-        }
-
-        public void setSelectDHosts(String selectDHosts) {
-            this.selectDHosts = selectDHosts;
-        }
-
-        public String getSelectHosts() {
-            return selectHosts;
-        }
-
-        public void setSelectHosts(String selectHosts) {
-            this.selectHosts = selectHosts;
         }
     }
 }

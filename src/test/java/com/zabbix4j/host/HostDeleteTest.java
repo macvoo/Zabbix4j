@@ -25,7 +25,7 @@ public class HostDeleteTest extends ZabbixApiTestBase {
         int hostId = createDummyHost();
 
         HostDeleteRequest request = new HostDeleteRequest();
-        request.addParams(hostId);
+        request.addHostId(hostId);
 
         HostDeleteResponse response = zabbixApi.host().delete(request);
 

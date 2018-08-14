@@ -38,8 +38,8 @@ public class GraphPrototypeDeleteTest extends ZabbixApiTestBase {
         GraphPrototypeCreateRequest.Params params = request.getParams();
         params.setName("Graphprototype delete test");
         GraphItem gitem  = new GraphItem();
-        gitem.setColor("00AA00");
-        gitem.setItemid(23730);
+        gitem.setColor("C80000");
+        gitem.setItemid(26832);
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);

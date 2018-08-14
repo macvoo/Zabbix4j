@@ -24,46 +24,28 @@
 
 package com.zabbix4j.host;
 
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
 public class HostDeleteRequest extends ZabbixApiRequest {
 
-    private List<Params> params = new ArrayList<Params>();
+
+    @Accessors(chain = true) @Getter @Setter
+    private List<Integer> hostIds = new ArrayList<Integer>();
 
     public HostDeleteRequest() {
         setMethod("host.delete");
     }
 
-    public List<Params> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Params> params) {
-        this.params = params;
-    }
-
-    public void addParams(int hostid) {
-        this.params = ZbxListUtils.add(this.params, new Params(hostid));
-    }
-
-    public class Params {
-
-        private Integer hostid;
-
-        public Params(Integer hostid) {
-
-            this.hostid = hostid;
-        }
-
-        public Params() {
-        }
+    public void addHostId(Integer hostId) {
+        this.hostIds.add(hostId);
     }
 
 }

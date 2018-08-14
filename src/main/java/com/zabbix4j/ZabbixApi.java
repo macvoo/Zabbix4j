@@ -50,6 +50,7 @@ import com.zabbix4j.maintenance.Maintenance;
 import com.zabbix4j.map.Map;
 import com.zabbix4j.media.Media;
 import com.zabbix4j.mediatype.MediaType;
+import com.zabbix4j.problem.Problem;
 import com.zabbix4j.proxy.Proxy;
 import com.zabbix4j.screen.Screen;
 import com.zabbix4j.screenitem.ScreenItem;
@@ -64,6 +65,7 @@ import com.zabbix4j.user.UserLoginRequest;
 import com.zabbix4j.user.UserLoginResponse;
 import com.zabbix4j.usergroup.UserGroup;
 import com.zabbix4j.webscenario.WebScenario;
+import lombok.Getter;
 
 
 /**
@@ -71,12 +73,16 @@ import com.zabbix4j.webscenario.WebScenario;
  */
 public class ZabbixApi {
 
+    @Getter
     private String apiUrl;
-
     private String auth;
 
     public ZabbixApi(String apiUrl) {
         this.apiUrl = apiUrl;
+    }
+
+    public String getApiUrl() {
+        return apiUrl;
     }
 
     public void login(String username, String password) throws ZabbixApiException {
@@ -230,6 +236,12 @@ public class ZabbixApi {
 
         return new MediaType(this.apiUrl, this.auth);
     }
+
+    public Problem problem() {
+
+        return new Problem(apiUrl, auth);
+    }
+
 
     public Proxy proxy() {
 

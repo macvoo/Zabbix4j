@@ -27,8 +27,10 @@ package com.zabbix4j.discoveryrule;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/27.
@@ -50,10 +52,25 @@ public class DRuleGetRequest extends ZabbixApiRequest {
     }
 
     public class Params extends GetRequestCommonParams {
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> dhostids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> druleids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private List<Integer> dserviceids;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private String selectDChecks;
+        @Accessors(chain = true)
+        @Getter
+        @Setter
         private String selectDHosts;
 
         public Params() {
@@ -69,46 +86,6 @@ public class DRuleGetRequest extends ZabbixApiRequest {
 
         public void addDServiceId(Integer id) {
             dserviceids = ZbxListUtils.add(dserviceids, id);
-        }
-
-        public List<Integer> getDhostids() {
-            return dhostids;
-        }
-
-        public void setDhostids(List<Integer> dhostids) {
-            this.dhostids = dhostids;
-        }
-
-        public List<Integer> getDruleids() {
-            return druleids;
-        }
-
-        public void setDruleids(List<Integer> druleids) {
-            this.druleids = druleids;
-        }
-
-        public List<Integer> getDserviceids() {
-            return dserviceids;
-        }
-
-        public void setDserviceids(List<Integer> dserviceids) {
-            this.dserviceids = dserviceids;
-        }
-
-        public String getSelectDChecks() {
-            return selectDChecks;
-        }
-
-        public void setSelectDChecks(String selectDChecks) {
-            this.selectDChecks = selectDChecks;
-        }
-
-        public String getSelectDHosts() {
-            return selectDHosts;
-        }
-
-        public void setSelectDHosts(String selectDHosts) {
-            this.selectDHosts = selectDHosts;
         }
     }
 }

@@ -57,7 +57,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
     public void deleteHost(Integer id) throws ZabbixApiException {
 
         HostDeleteRequest request = new HostDeleteRequest();
-        request.addParams(id);
+        request.addHostId(id);
 
         HostDeleteResponse response = zabbixApi.host().delete(request);
     }

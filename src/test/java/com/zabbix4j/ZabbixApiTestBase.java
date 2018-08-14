@@ -37,27 +37,25 @@ import static org.junit.Assert.fail;
 public class ZabbixApiTestBase {
 
     protected static Logger logger = LoggerFactory.getLogger(ZabbixApiTestBase.class);
-    protected String user = "ops";
-    protected String password = "Tsupport_308sdfllsa";
-
     protected ZabbixApi zabbixApi;
 
     public ZabbixApiTestBase() {
+        final String user = "Admin";
+        final String password = "zabbix";
         login(user, password);
     }
 
-    protected void login(String user, String password) {
+    private void login(String user, String password) {
         try {
-            zabbixApi = new ZabbixApi("http://zabbix.dev.corp.flamingo-inc.com/api_jsonrpc.php");
+            zabbixApi = new ZabbixApi("http://x.x.x.x:80/api_jsonrpc.php");
             zabbixApi.login(user, password);
         } catch (ZabbixApiException e) {
-            fail(e.getMessage());
+            fail("First of all please add valid apiUrl for your zabbix integration test instance!" + e.getMessage());
         }
     }
 
     protected Gson getGson() {
-
         return new GsonBuilder().setPrettyPrinting().create();
     }
-
 }
+

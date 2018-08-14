@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2014 Suguru Yajima
+ * Copyright (c) 2018 Philipp Hana
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,48 +22,35 @@
  * SOFTWARE.
  */
 
-package com.zabbix4j.discoveredhost;
+package com.zabbix4j.problem;
 
+import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.ZabbixApiResponse;
 import com.zabbix4j.utils.ZbxListUtils;
-
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Suguru Yajima on 2014/05/25.
- */
-public class DHostExistRequest extends ZabbixApiRequest {
-    private Params params = new Params();
+public class ProblemGetResponse extends ZabbixApiResponse {
+    private List<Result> result = new ArrayList<Result>();
 
-    public DHostExistRequest() {
-        setMethod("dhost.exists");
+    public ProblemGetResponse() {
+        super();
     }
 
-    public Params getParams() {
-        return params;
+    public List<Result> getResult() {
+        return result;
     }
 
-    public void setParams(Params params) {
-        this.params = params;
+    public void setResult(List<Result> result) {
+        this.result = result;
     }
 
-    public class Params {
-        private List<Integer> dhostid;
-
-        public Params() {
-        }
-
-        public List<Integer> getDhostid() {
-            return dhostid;
-        }
-
-        public void setDhostid(List<Integer> dhostid) {
-            this.dhostid = dhostid;
-        }
-
-        public void addDHostId(Integer id) {
-            dhostid = ZbxListUtils.add(dhostid, id);
-
+    public class Result extends ProblemObject {
+        public Result() {
+            super();
         }
     }
+
+
 }

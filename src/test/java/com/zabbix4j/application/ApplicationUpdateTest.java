@@ -10,16 +10,16 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by Suguru Yajima on 2014/05/23.
  */
-public class ApplicationUpdateTest extends ZabbixApiTestBase {
+public class ApplicationUpdateTest extends ApplicationTestBase {
 
     public ApplicationUpdateTest() {
         super();
     }
 
     @Test
-    public void testUpdte() throws Exception {
+    public void testUpdate() throws Exception {
 
-        Integer expected = createDummy();
+        Integer expected = createDummy("Application before update");
 
         ApplicationUpdateRequest request = new ApplicationUpdateRequest();
         ApplicationUpdateRequest.Params params = request.getParams();
@@ -34,26 +34,5 @@ public class ApplicationUpdateTest extends ZabbixApiTestBase {
         delete(actual);
 
         assertEquals(expected, actual);
-    }
-
-    private Integer createDummy() throws ZabbixApiException {
-        ApplicationCreateRequest request = new ApplicationCreateRequest();
-        ApplicationCreateRequest.Params params = request.getParams();
-        params.setName("Application before update");
-        params.setHostid(10113);
-
-        ApplicationCreateResponse response = zabbixApi.application().create(request);
-        assertNotNull(response);
-
-        Integer id = response.getResult().getApplicationids().get(0);
-        return id;
-    }
-
-    private void delete(Integer id) throws ZabbixApiException {
-
-        ApplicationDeleteRequest request = new ApplicationDeleteRequest();
-        request.addParams(id);
-
-        ApplicationDeleteResponse response = zabbixApi.application().delete(request);
     }
 }

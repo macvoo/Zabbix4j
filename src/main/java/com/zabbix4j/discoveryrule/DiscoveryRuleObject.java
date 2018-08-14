@@ -25,12 +25,18 @@
 package com.zabbix4j.discoveryrule;
 
 import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/26.
  */
 public class DiscoveryRuleObject {
 
+    @Accessors(chain = true)
+    @Getter
+    @Setter
     private Integer druleid;
 
     /**
@@ -43,70 +49,33 @@ public class DiscoveryRuleObject {
      * /112 - /128 for IPv6 addresses
      * List: 192.168.1.1-255,192.168.2.1-100,192.168.2.200,192.168.4.0/24
      */
+    @Accessors(chain = true)
+    @Getter
+    @Setter
     private String iprange;
+    @Accessors(chain = true)
+    @Getter
+    @Setter
     private String name;
-    private Integer delay = 3600;
+
+    @Accessors(chain = true)
+    @Getter
+    @Setter
+    private String delay = "1h";
+    @Accessors(chain = true)
+    @Getter
+    @Setter
     private Long nextcheck;
+    @Accessors(chain = true)
+    @Getter
+    @Setter
     private Integer proxy_hostid;
+    @Accessors(chain = true)
+    @Getter
+    @Setter
     private Integer status = STATUS.ENABLED.value;
 
     public DiscoveryRuleObject() {
-    }
-
-    public Integer getDruleid() {
-        return druleid;
-    }
-
-    public void setDruleid(Integer druleid) {
-        this.druleid = druleid;
-    }
-
-    public String getIprange() {
-        return iprange;
-    }
-
-    public void setIprange(String iprange) {
-        this.iprange = iprange;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getDelay() {
-        return delay;
-    }
-
-    public void setDelay(Integer delay) {
-        this.delay = delay;
-    }
-
-    public Long getNextcheck() {
-        return nextcheck;
-    }
-
-    public void setNextcheck(Long nextcheck) {
-        this.nextcheck = nextcheck;
-    }
-
-    public Integer getProxy_hostid() {
-        return proxy_hostid;
-    }
-
-    public void setProxy_hostid(Integer proxy_hostid) {
-        this.proxy_hostid = proxy_hostid;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Date getNextCheckDate() {

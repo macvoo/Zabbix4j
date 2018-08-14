@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by Suguru Yajima on 2014/05/22.
  */
-public class ApplicationCreateTest extends ZabbixApiTestBase {
+public class ApplicationCreateTest extends ApplicationTestBase {
 
     public ApplicationCreateTest() {
         super();
@@ -20,8 +20,8 @@ public class ApplicationCreateTest extends ZabbixApiTestBase {
 
         ApplicationCreateRequest request = new ApplicationCreateRequest();
         ApplicationCreateRequest.Params params = request.getParams();
-        params.setName("Application crated");
-        params.setHostid(10113);
+        params.setName("Application created");
+        params.setHostid(10084);
 
         ApplicationCreateResponse response = zabbixApi.application().create(request);
         assertNotNull(response);
@@ -30,13 +30,5 @@ public class ApplicationCreateTest extends ZabbixApiTestBase {
         assertNotNull(id);
 
         delete(id);
-    }
-
-    private void delete(Integer id) throws ZabbixApiException {
-
-        ApplicationDeleteRequest request = new ApplicationDeleteRequest();
-        request.addParams(id);
-
-        ApplicationDeleteResponse response = zabbixApi.application().delete(request);
     }
 }

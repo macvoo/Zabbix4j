@@ -57,25 +57,6 @@ public class Hostgroup extends ZabbixApiMethod {
         return response;
     }
 
-    public HostgroupExistResponse exist(HostgroupExistRequest request) throws ZabbixApiException {
-        HostgroupExistResponse response = null;
-        request.setAuth(auth);
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String requestJson = gson.toJson(request);
-
-        try {
-            String responseJson = sendRequest(requestJson);
-
-            response = gson.fromJson(responseJson, HostgroupExistResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
-
-        return response;
-    }
-
     public HostgroupCreateResponse create(HostgroupCreateRequest request) throws ZabbixApiException {
 
         HostgroupCreateResponse response = null;
@@ -129,46 +110,6 @@ public class Hostgroup extends ZabbixApiMethod {
             String responseJson = sendRequest(requestJson);
 
             response = gson.fromJson(responseJson, HostgroupDeleteResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
-
-        return response;
-    }
-
-    public HostgroupIsReadableResponse isReable(HostgroupIsReadableRequest request) throws ZabbixApiException {
-
-        HostgroupIsReadableResponse response = null;
-        request.setAuth(auth);
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String requestJson = gson.toJson(request);
-
-        try {
-            String responseJson = sendRequest(requestJson);
-
-            response = gson.fromJson(responseJson, HostgroupIsReadableResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
-
-        return response;
-    }
-
-    public HostgroupIsWritableResponse isWritable(HostgroupIsWritableRequest request) throws ZabbixApiException {
-
-        HostgroupIsWritableResponse response = null;
-        request.setAuth(auth);
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String requestJson = gson.toJson(request);
-
-        try {
-            String responseJson = sendRequest(requestJson);
-
-            response = gson.fromJson(responseJson, HostgroupIsWritableResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
         }
