@@ -25,32 +25,21 @@
 package com.zabbix4j.hostinteface;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/08.
  */
+@Data
+@Accessors(chain = true)
 public class HostInterfaceGetResponse extends ZabbixApiResponse {
-
     private List<Result> result = new ArrayList<Result>();
 
-    public HostInterfaceGetResponse() {
-        super();
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends HostInterfaceObject {
-        public Result() {
-            super();
-        }
     }
 }

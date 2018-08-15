@@ -26,13 +26,16 @@ package com.zabbix4j.discoveryrule;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/26.
  */
+@Data
+@Accessors(chain = true)
 public class DRuleDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params = new ArrayList<Integer>();
@@ -41,15 +44,8 @@ public class DRuleDeleteRequest extends ZabbixApiRequest {
         setMethod("drule.delete");
     }
 
-    public void addDRuleId(Integer id) {
+    public DRuleDeleteRequest addDRuleid(final String id) {
         params = ZbxListUtils.add(params, id);
-    }
-
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
+        return this;
     }
 }

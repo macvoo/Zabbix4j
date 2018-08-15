@@ -25,38 +25,25 @@
 package com.zabbix4j.discoveryrule;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/26.
  */
+@Data
+@Accessors(chain = true)
 public class DRuleUpdateResponse extends ZabbixApiResponse {
-
     private Result result;
 
     public DRuleUpdateResponse() {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-
-        private List<Integer> druleids;
-
-        public List<Integer> getDruleids() {
-            return druleids;
-        }
-
-        public void setDruleids(List<Integer> druleids) {
-            this.druleids = druleids;
-        }
+        private List<String> druleids;
     }
 }

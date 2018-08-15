@@ -4,7 +4,6 @@ import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.host.DummyHost;
-
 import java.util.Date;
 
 /**
@@ -16,13 +15,13 @@ public class DummyItemPrototype extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer createItemPrototype() throws ZabbixApiException {
+    public String createItemPrototype() throws ZabbixApiException {
 
         Integer hostId = 10145;
 
         // lld id = 23797
         //applicationid = 564
-        Integer hostInterfaceId = new DummyHost(zabbixApi).getHostInterface(hostId);
+        String hostInterfaceId = new DummyHost(zabbixApi).getHostInterface(hostId);
 
         ItemPrototypeCreateRequest request = new ItemPrototypeCreateRequest();
         ItemPrototypeCreateRequest.Params params = request.getParams();
@@ -47,7 +46,7 @@ public class DummyItemPrototype extends ZabbixApiTestDummyMethodBase {
     public void delete(Integer id) throws ZabbixApiException {
 
         ItemPrototypeDeleteRequest request = new ItemPrototypeDeleteRequest();
-        request.addItemPrototypeId(id);
+        request.addItemPrototypeid(id);
 
         ItemPrototypeDeleteResponse response = zabbixApi.itemPrototype().delete(request);
     }

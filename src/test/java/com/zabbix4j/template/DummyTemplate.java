@@ -3,7 +3,6 @@ package com.zabbix4j.template;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -14,7 +13,7 @@ public class DummyTemplate extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
 
         final Integer groupId = 25;
         final Integer hostId = 10084;
@@ -22,22 +21,19 @@ public class DummyTemplate extends ZabbixApiTestDummyMethodBase {
         TemplateCreateRequest request = new TemplateCreateRequest();
         TemplateCreateRequest.Params params = request.getParams();
         params.setHost("test.template.create." + new Date().getTime());
-        params.addGroupId(groupId);
-        params.addHostId(hostId);
+        params.addGroupid(groupId);
+        params.addHostid(hostId);
 
         TemplateCreateResponse response = zabbixApi.template().create(request);
 
-        Integer acutalId = response.getResult().getTemplateids().get(0);
-
-        return acutalId;
+        return response.getResult().getTemplateids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         TemplateDeleteRequest request = new TemplateDeleteRequest();
-        request.addTemplateId(targetId);
+        request.addTemplateid(targetId);
 
         TemplateDeleteResponse response = zabbixApi.template().delete(request);
-
     }
 }

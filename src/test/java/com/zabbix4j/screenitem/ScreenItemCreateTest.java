@@ -9,13 +9,8 @@ import static org.junit.Assert.assertNotNull;
  * @author Suguru Yajima
  */
 public class ScreenItemCreateTest extends ZabbixApiTestBase {
-
-    private final Integer screenId = 24;
-    private final Integer respurceId= 523;
-
-    public ScreenItemCreateTest() {
-        super();
-    }
+    private final String screenId = "24";
+    private final String respurceId = "523";
 
     @Test
     public void testCreate() throws Exception {
@@ -34,7 +29,7 @@ public class ScreenItemCreateTest extends ZabbixApiTestBase {
         ScreenItemCreateResponse response = zabbixApi.screenItem().create(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getScreenitemids().get(0);
+        String actualId = response.getResult().getScreenitemids().get(0);
         assertNotNull(actualId);
     }
 }

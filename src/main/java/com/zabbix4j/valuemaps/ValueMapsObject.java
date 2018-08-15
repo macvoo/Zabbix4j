@@ -25,27 +25,16 @@
 package com.zabbix4j.valuemaps;
 
 import java.util.List;
-import java.util.Map;
-
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsObject {
-
-    private Integer valuemapid;
+    private String valuemapid;
     private String name;
-    
-	public Integer getValuemapid() {
-		return valuemapid;
-	}
-	public void setValuemapid(Integer valuemapid) {
-		this.valuemapid = valuemapid;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+    private List<MappingsObject> mappings;
 }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -22,8 +23,7 @@ import static org.junit.Assert.assertTrue;
  * Created by Suguru Yajima on 2014/05/24.
  */
 public class ConfigurationImportTest extends ZabbixApiTestBase {
-
-    private Integer id;
+    private String id;
 
     public ConfigurationImportTest() {
         super();
@@ -57,12 +57,12 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
 
     }
 
-    private String export(Integer id) throws ZabbixApiException {
+    private String export(final String id) throws ZabbixApiException {
         ConfigurationExportRequest request = new ConfigurationExportRequest();
         ConfigurationExportRequest.Params params = request.getParams();
         params.setFormat(Configuration.FORMAT.XML.value);
         Option option = new Option();
-        option.addHostId(id);
+        option.addHostid(id);
         params.setOptions(option);
 
         ConfigurationExportResponse response = zabbixApi.configuration().export(request);
@@ -70,8 +70,8 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         return response.getResult();
     }
 
-    private int createDummyHost() throws Exception {
-        final  Integer groupId = 4;
+    private String createDummyHost() throws Exception {
+        final String groupId = "4";
 
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();
@@ -80,7 +80,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         templates.add(10093);
        // params.setTemplates(templates);
 
-        params.addGroupId(groupId);
+        params.addGroupid(groupId);
 
         List<Macro> macros = new ArrayList<Macro>();
         Macro macro1 = new Macro();
@@ -109,9 +109,9 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
 
     }
 
-    private void deleteDummy(Integer id) throws ZabbixApiException {
+    private void deleteDummy(final String id) throws ZabbixApiException {
         HostDeleteRequest request = new HostDeleteRequest();
-        request.addHostId(id);
+        request.addHostid(id);
 
         HostDeleteResponse response = zabbixApi.host().delete(request);
     }

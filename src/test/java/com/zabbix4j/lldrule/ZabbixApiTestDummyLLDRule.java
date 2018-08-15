@@ -1,11 +1,10 @@
 package com.zabbix4j.lldrule;
 
-import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
+import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.hostinteface.HostInterfaceGetRequest;
 import com.zabbix4j.hostinteface.HostInterfaceGetResponse;
-
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertNotNull;
@@ -15,8 +14,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ZabbixApiTestDummyLLDRule extends ZabbixApiTestDummyMethodBase {
 
-
-    private Integer hostId = 10141;
+    private String hostId = "10141";
 
     public ZabbixApiTestDummyLLDRule(ZabbixApi zabbixApi) {
         super(zabbixApi);
@@ -25,11 +23,11 @@ public class ZabbixApiTestDummyLLDRule extends ZabbixApiTestDummyMethodBase {
     public Integer createLLDRule() throws ZabbixApiException {
         Integer targetHostId = null;
 
-        Integer interfaceId = getHostInterface(hostId);
+        String interfaceId = getHostInterface(hostId);
 
         LLDRuleCreateRequest request = new LLDRuleCreateRequest();
         LLDRuleCreateRequest.Params params = request.getParams();
-        params.setDelay(30);
+        params.setDelay("30s");
         params.setHostid(hostId);
         params.setInterfaceid(interfaceId);
         params.setKey_("test");

@@ -13,20 +13,16 @@ import static org.junit.Assert.assertThat;
  */
 public class ItemPrototypeGetTest extends ZabbixApiTestBase {
 
-    public ItemPrototypeGetTest() {
-        super();
-    }
-
     @Test
     public void testGet1() throws Exception {
 
         DummyItemPrototype dummyItemPrototype = new DummyItemPrototype(zabbixApi);
-        Integer targetId = dummyItemPrototype.createItemPrototype();
+        String targetId = dummyItemPrototype.createItemPrototype();
 
         try {
             ItemPrototypeGetRequest request = new ItemPrototypeGetRequest();
             ItemPrototypeGetRequest.Params params = request.getParams();
-            params.addItemId(targetId);
+            params.addItemid(targetId);
             params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectGraphs(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
@@ -38,7 +34,7 @@ public class ItemPrototypeGetTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().get(0).getItemid();
+            String actualId = response.getResult().get(0).getItemid();
             assertThat(targetId, is(actualId));
         } finally {
             dummyItemPrototype.delete(targetId);

@@ -1,8 +1,8 @@
 package com.zabbix4j.iconmap;
 
-import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
+import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 
 /**
  * @author Suguru Yajima
@@ -13,7 +13,7 @@ public class ZabbixApiTestDummyIconMap extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
         IconMapCreateRequest request = new IconMapCreateRequest();
         IconMapCreateRequest.Params params = request.getParams();
         params.setName("Icon map Test");
@@ -22,7 +22,7 @@ public class ZabbixApiTestDummyIconMap extends ZabbixApiTestDummyMethodBase {
         IconMappingObject obj = new IconMappingObject();
         obj.setInventory_link(1);
         obj.setExpression("server");
-        obj.setIconid(3);
+        obj.setIconid("3");
 
         params.addMapping(obj);
 

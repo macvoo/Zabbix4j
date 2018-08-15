@@ -26,12 +26,15 @@ package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/23.
  */
+@Data
+@Accessors(chain = true)
 public class ApplicationDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params;
@@ -40,16 +43,8 @@ public class ApplicationDeleteRequest extends ZabbixApiRequest {
         setMethod("application.delete");
     }
 
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
-    }
-
-    public void addParams(Integer id) {
+    public ApplicationDeleteRequest addParams(final String id) {
         params = ZbxListUtils.add(params, id);
-
+        return this;
     }
 }

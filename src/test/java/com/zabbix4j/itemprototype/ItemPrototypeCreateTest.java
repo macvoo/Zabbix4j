@@ -21,11 +21,10 @@ import static org.junit.Assert.assertNotNull;
  * @author Suguru Yajima
  */
 public class ItemPrototypeCreateTest extends ZabbixApiTestBase {
-
-    private int applicationId;
-    private Integer hostId;
+    private String applicationid;
+    private String hostid;
     private DummyHost dummyHost;
-    private Integer lldRuleId;
+    private String lldRuleid;
 
     public ItemPrototypeCreateTest() {
         super();
@@ -33,30 +32,33 @@ public class ItemPrototypeCreateTest extends ZabbixApiTestBase {
 
     @After
     public void tearDown() throws Exception {
-        new ZabbixApiTestDummyLLDRule(zabbixApi).deleteLLDRule(lldRuleId);
-        delete(applicationId);
-        new DummyHost(zabbixApi).deleteHost(hostId);
+        new DummyHost(zabbixApi).deleteHost(hostid);
     }
 
     @Before
     public void setUp() throws Exception {
         dummyHost = new DummyHost(zabbixApi);
-        hostId = dummyHost.createHost();
-        lldRuleId = createLLDRule(hostId, dummyHost);
-        applicationId = testApplication();
+        hostid = dummyHost.createHost();
+        lldRuleid = createLLDRule(hostid, dummyHost);
+        applicationid = testApplication();
     }
 
     @Test
-    public int testCreate1() throws Exception {
-        Integer hostInterfaceId = new DummyHost(zabbixApi).getHostInterface(hostId);
+    public void testCreate1() throws Exception {
+        testCreate1("23797");
+    }
+
+    public String testCreate1(final String lldRuleId) throws Exception {
+
+        String hostInterfaceId = new DummyHost(zabbixApi).getHostInterface(hostid);
 
         ItemPrototypeCreateRequest request = new ItemPrototypeCreateRequest();
         ItemPrototypeCreateRequest.Params params = request.getParams();
         params.setName("Free disk space on $1");
         params.setRuleid(lldRuleId);
-        params.addApplication(applicationId);
-        params.setDelay(60);
-        params.setHostid(hostId);
+        params.addApplication(applicationid);
+        params.setDelay("60s");
+        params.setHostid(hostid);
 
         params.setKey_("vfs.fs.size[{#FSNAME},free]");
         params.setType(ItemPrototypeObject.ITEM_TYPE.SIMPLE_CHECK.value);
@@ -69,19 +71,18 @@ public class ItemPrototypeCreateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getItemids().get(0);
+        String actualId = response.getResult().getItemids().get(0);
         assertNotNull(actualId);
-        return actualId;
+        return actualId.toString();
     }
 
+    public String createLLDRule(final String targetHostId, final DummyHost dummyHost) throws Exception {
 
-    public Integer createLLDRule(final Integer targetHostId, final DummyHost dummyHost) throws Exception {
-
-        Integer interfaceId = dummyHost.getHostInterface(targetHostId);
+        String interfaceId = dummyHost.getHostInterface(targetHostId);
 
         LLDRuleCreateRequest request = new LLDRuleCreateRequest();
         LLDRuleCreateRequest.Params params = request.getParams();
-        params.setDelay(30);
+        params.setDelay("30s");
         params.setHostid(targetHostId);
         params.setInterfaceid(interfaceId);
         params.setKey_("test");
@@ -96,23 +97,22 @@ public class ItemPrototypeCreateTest extends ZabbixApiTestBase {
         return response.getResult().getItemids().get(0);
     }
 
-
-    private int testApplication() throws Exception {
+    private String testApplication() throws Exception {
 
         ApplicationCreateRequest request = new ApplicationCreateRequest();
         ApplicationCreateRequest.Params params = request.getParams();
         params.setName("Application created");
-        params.setHostid(hostId);
+        params.setHostid(hostid);
 
         ApplicationCreateResponse response = zabbixApi.application().create(request);
         assertNotNull(response);
 
-        Integer id = response.getResult().getApplicationids().get(0);
+        String id = response.getResult().getApplicationids().get(0);
         assertNotNull(id);
         return id;
     }
 
-    private void delete(Integer id) throws ZabbixApiException {
+    private void delete(final String id) throws ZabbixApiException {
 
         ApplicationDeleteRequest request = new ApplicationDeleteRequest();
         request.addParams(id);

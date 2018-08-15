@@ -24,55 +24,34 @@
 
 package com.zabbix4j.valuemaps;
 
-import java.util.List;
-
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
+import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ValueMapsCreateRequest() {
         setMethod("valuemap.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends ValueMapsObject {
-    	
-    	private List<MappingsObject> mappings;
-    	
-    	 public void addMapping(MappingsObject obj) {
-             mappings = ZbxListUtils.add(mappings, obj);
-         }
 
-         /**
-          * Gets mappings.
-          *
-          * @return Value of mappings.
-          */
-         public List<MappingsObject> getMappings() {
-             return mappings;
-         }
+        private String name;
+        private List<MappingsObject> mappings;
 
-         /**
-          * Sets new mappings.
-          *
-          * @param mappings New value of mappings.
-          */
-         public void setMappings(List<MappingsObject> mappings) {
-             this.mappings = mappings;
-         }
+        public Params addMapping(MappingsObject id) {
+            mappings = ZbxListUtils.add(mappings, id);
+            return this;
+        }
     }
-
 }

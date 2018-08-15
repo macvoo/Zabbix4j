@@ -24,57 +24,18 @@
 
 package com.zabbix4j.action;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * @author Suguru Yajima on 2014/05/19.
  */
+@Data
+@Accessors(chain = true)
 public class OperationCondition {
-
+    public String operationid;
     private Integer opconditionid;
     private Integer conditiontype = 14;
     private String value;
-    private Integer operationid;
     private Integer operator = 0;
-
-    public OperationCondition() {
-    }
-
-    public Integer getOpconditionid() {
-        return opconditionid;
-    }
-
-    public void setOpconditionid(Integer opconditionid) {
-        this.opconditionid = opconditionid;
-    }
-
-    public Integer getConditiontype() {
-        return conditiontype;
-    }
-
-    public void setConditiontype(Integer conditiontype) {
-        this.conditiontype = conditiontype;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public Integer getOperationid() {
-        return operationid;
-    }
-
-    public void setOperationid(Integer operationid) {
-        this.operationid = operationid;
-    }
-
-    public Integer getOperator() {
-        return operator;
-    }
-
-    public void setOperator(Integer operator) {
-        this.operator = operator;
-    }
 }

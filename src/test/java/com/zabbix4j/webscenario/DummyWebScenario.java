@@ -3,7 +3,6 @@ package com.zabbix4j.webscenario;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -40,7 +39,7 @@ public class DummyWebScenario extends ZabbixApiTestDummyMethodBase {
     public void delete(Integer targetId) throws ZabbixApiException {
 
         HttpTestDeleteRequest request = new HttpTestDeleteRequest();
-        request.addHttpTestId(targetId);
+        request.addHttpTestid(targetId);
 
         HttpTestDeleteResponse response = zabbixApi.webscenario().delete(request);
     }

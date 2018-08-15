@@ -3,7 +3,6 @@ package com.zabbix4j.screen;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -14,7 +13,7 @@ public class DummyScreen extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
         ScreenCreateRequest request = new ScreenCreateRequest();
         ScreenCreateRequest.Params params = request.getParams();
         params.setName("test.screen.create." + new Date().getTime());
@@ -23,17 +22,14 @@ public class DummyScreen extends ZabbixApiTestDummyMethodBase {
 
         ScreenCreateResponse response = zabbixApi.screen().create(request);
 
-        Integer actualId = response.getResult().getScreenids().get(0);
-
-        return actualId;
+        return response.getResult().getScreenids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         ScreenDeleteRequest request = new ScreenDeleteRequest();
-        request.addScreenId(targetId);
+        request.addScreenid(targetId);
 
         ScreenDeleteResponse response = zabbixApi.screen().delete(request);
-
     }
 }

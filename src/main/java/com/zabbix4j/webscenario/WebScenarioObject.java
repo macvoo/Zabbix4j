@@ -5,22 +5,24 @@ import java.util.Date;
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class WebScenarioObject {
 
-    private Integer httptestid;
-    private Integer hostid;
+    private String httptestid;
+    private String hostid;
     private String name;
     private String agent;
-    private Integer applicationid;
+    private String applicationid;
     private Integer authentication;
-    private Integer delay;
+    private String delay;
     private String http_password;
     private String http_proxy;
     private String http_user;
     private Long nextcheck;
     private Integer retries;
     private Integer status;
-    private Integer templateid;
+    private String templateid;
     private String variables;
     private String url;
 

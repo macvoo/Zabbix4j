@@ -19,7 +19,7 @@ public class TriggerDeteleTest extends ZabbixApiTestBase {
     @Test
     public void testDelete1() throws Exception {
 
-        Integer expectedId = createDummyTrigger();
+        String expectedId = createDummyTrigger();
 
         TriggerDeleteRequest request = new TriggerDeleteRequest();
         request.getParams().add(expectedId);
@@ -27,12 +27,12 @@ public class TriggerDeteleTest extends ZabbixApiTestBase {
         TriggerDeleteResponse response = zabbixApi.trigger().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getTriggerids().get(0);
+        String actualId = response.getResult().getTriggerIds().get(0);
 
         assertEquals(expectedId, actualId);
     }
 
-    private Integer createDummyTrigger() throws ZabbixApiException {
+    private String createDummyTrigger() throws ZabbixApiException {
 
         TriggerCreateRequest request = new TriggerCreateRequest();
         TriggerCreateRequest.Params params = request.getParams();
@@ -42,8 +42,6 @@ public class TriggerDeteleTest extends ZabbixApiTestBase {
 
         TriggerCreateResponse response = zabbixApi.trigger().create(request);
 
-        Integer triggerId = response.getResult().getTriggerids().get(0);
-
-        return triggerId;
+        return response.getResult().getTriggerIds().get(0);
     }
 }

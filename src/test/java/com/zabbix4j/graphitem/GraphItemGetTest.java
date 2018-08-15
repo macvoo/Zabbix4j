@@ -4,14 +4,11 @@ import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-
 
 /**
  * Created by Suguru Yajima on 2014/06/01.
  */
 public class GraphItemGetTest extends ZabbixApiTestBase {
-
 
     public GraphItemGetTest() {
         super();

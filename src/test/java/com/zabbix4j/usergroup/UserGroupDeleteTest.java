@@ -19,7 +19,7 @@ public class UserGroupDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete1() throws Exception {
 
-        Integer expectedId = createDummyGroup();
+        String expectedId = createDummyGroup();
 
         UserGroupDeleteRequest request = new UserGroupDeleteRequest();
         request.addParams(expectedId);
@@ -28,22 +28,20 @@ public class UserGroupDeleteTest extends ZabbixApiTestBase {
 
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getUsrgrpids().get(0);
+        String actualId = response.getResult().getUsrgrpids().get(0);
 
         assertEquals(expectedId, actualId);
     }
 
-    private Integer createDummyGroup() throws ZabbixApiException {
+    private String createDummyGroup() throws ZabbixApiException {
 
         UserGroupCreateRequest request = new UserGroupCreateRequest();
         UserGroupCreateRequest.Params params = request.getParams();
         params.setName("usergroup delete test");
-        params.addUserId(1);
+        params.addUserid("1");
 
         UserGroupCreateResponse response = zabbixApi.usergroup().create(request);
 
-        Integer groupId = response.getResult().getUsrgrpids().get(0);
-
-        return groupId;
+        return response.getResult().getUsrgrpids().get(0);
     }
 }

@@ -1,9 +1,8 @@
 package com.zabbix4j.screen;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -15,7 +14,6 @@ public class ScreenCreateTest extends ZabbixApiTestBase {
     public ScreenCreateTest() {
         super();
     }
-
 
     @Test
     public void testCreate() throws Exception {
@@ -30,7 +28,7 @@ public class ScreenCreateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getScreenids().get(0);
+        String actualId = response.getResult().getScreenids().get(0);
         assertNotNull(actualId);
     }
 }

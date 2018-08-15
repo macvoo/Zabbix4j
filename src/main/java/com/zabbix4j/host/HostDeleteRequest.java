@@ -34,6 +34,8 @@ import lombok.experimental.Accessors;
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class HostDeleteRequest extends ZabbixApiRequest {
 
 

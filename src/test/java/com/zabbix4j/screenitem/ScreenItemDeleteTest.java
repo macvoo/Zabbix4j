@@ -18,17 +18,17 @@ public class ScreenItemDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyScreenItem dummyScreenItem = new DummyScreenItem(zabbixApi);
-        Integer targetId = dummyScreenItem.create();
+        String targetId = dummyScreenItem.create();
 
         ScreenItemDeleteRequest request = new ScreenItemDeleteRequest();
-        request.addScreenItemId(targetId);
+        request.addScreenItemid(targetId);
 
         ScreenItemDeleteResponse response = zabbixApi.screenItem().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getScreenitemids().get(0);
+        String actualId = response.getResult().getScreenitemids().get(0);
         assertThat(actualId, is(targetId));
     }
 }

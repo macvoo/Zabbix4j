@@ -22,11 +22,11 @@ public class LLDRuleCreateTest extends ZabbixApiTestBase {
         try {
             DummyHost dummyHost = new DummyHost(zabbixApi);
             targetHostId = dummyHost.createHost();
-            Integer interfaceId = dummyHost.getHostInterface(targetHostId);
+            String interfaceId = dummyHost.getHostInterface(targetHostId);
 
             LLDRuleCreateRequest request = new LLDRuleCreateRequest();
             LLDRuleCreateRequest.Params params = request.getParams();
-            params.setDelay(30);
+            params.setDelay("30s");
             params.setHostid(targetHostId);
             params.setInterfaceid(interfaceId);
             params.setKey_("test");
@@ -38,7 +38,7 @@ public class LLDRuleCreateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer lldRuleId = response.getResult().getItemids().get(0);
+            String lldRuleId = response.getResult().getItemids().get(0);
             assertNotNull(lldRuleId);
 
             new ZabbixApiTestDummyLLDRule(zabbixApi).deleteLLDRule(lldRuleId);

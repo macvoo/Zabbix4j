@@ -25,21 +25,14 @@
 package com.zabbix4j.configuration;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/24.
  */
+@Data
+@Accessors(chain = true)
 public class ConfigurationImportResponse extends ZabbixApiResponse {
     private Boolean result;
-
-    public ConfigurationImportResponse() {
-    }
-
-    public Boolean getResult() {
-        return result;
-    }
-
-    public void setResult(Boolean result) {
-        this.result = result;
-    }
 }

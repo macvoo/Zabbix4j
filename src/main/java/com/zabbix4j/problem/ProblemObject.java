@@ -1,120 +1,44 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2018 Philipp Hana
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package com.zabbix4j.problem;
 
 import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class ProblemObject {
 
-    @Accessors(chain = true)
-    @Getter
-    @Setter
-    private Integer eventid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
+    private String eventid;
     private Integer source;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer object;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
-    private Integer objectid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
+    private String objectid;
     private Long clock;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Long ns;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Long r_eventid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Long r_clock;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Long r_ns;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer correlationid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
-    private Integer userid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
+    private String userid;
     private String name;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer acknowledged;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer suppressed;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer severtity;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private List<Acknowledge> acknowledges;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private List<Tag> tags;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private List<SuppressionData> suppression_data;
-
 
     public ProblemObject() {
     }
 
-    public void addAcknowledges(Acknowledge id) {
+    public ProblemObject addAcknowledges(Acknowledge id) {
         this.acknowledges = ZbxListUtils.add(this.acknowledges, id);
+        return this;
     }
 
-    public void addTags(Tag id) {
+    public ProblemObject addTags(Tag id) {
         this.tags = ZbxListUtils.add(this.tags, id);
+        return this;
     }
 
     public void addSuppression_data(SuppressionData id) {
@@ -145,38 +69,24 @@ public class ProblemObject {
                + '}';
     }
 
+    @Data
+    @Accessors(chain = true)
     private class Acknowledge {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Integer acknowledgeid;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private Integer userid;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private Integer eventid;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
+        private String userid;
+
+        private String eventid;
+
         private Long clock;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String message;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Integer action;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Integer old_severity;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Integer new_severity;
 
         @Override
@@ -195,13 +105,9 @@ public class ProblemObject {
     }
 
     private class Tag {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String tag;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String value;
 
         @Override
@@ -214,13 +120,9 @@ public class ProblemObject {
     }
 
     private class suppression_data {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String tag;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String value;
 
         @Override
@@ -233,13 +135,9 @@ public class ProblemObject {
     }
 
     private class SuppressionData {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Integer maintenanceid;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Long suppress_until;
 
         @Override

@@ -18,15 +18,15 @@ public class ScriptDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyScript dummyScript = new DummyScript(zabbixApi);
-        Integer targetId = dummyScript.create();
+        String targetId = dummyScript.create();
 
         ScriptDeleteRequest request = new ScriptDeleteRequest();
-        request.addScriptId(targetId);
+        request.addScriptid(targetId);
 
         ScriptDeleteResponse response = zabbixApi.script().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getScriptids().get(0);
+        String actualId = response.getResult().getScriptids().get(0);
         assertThat(actualId, is(targetId));
     }
 }

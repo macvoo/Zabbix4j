@@ -25,28 +25,21 @@
 package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/23.
  */
+@Data
+@Accessors(chain = true)
 public class ApplicationUpdateResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
 
-    public ApplicationUpdateResponse() {
-        super();
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
 
         private List<Integer> applicationids;

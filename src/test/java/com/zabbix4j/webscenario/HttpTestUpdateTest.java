@@ -34,6 +34,5 @@ public class HttpTestUpdateTest extends ZabbixApiTestBase {
         } finally {
             dummyWebScenario.delete(targetId);
         }
-
     }
 }

@@ -18,7 +18,7 @@ public class TriggerPrototypeUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyTriggerPrototype dummyTriggerPrototype = new DummyTriggerPrototype(zabbixApi);
-        Integer targetId = dummyTriggerPrototype.create();
+        String targetId = dummyTriggerPrototype.create();
 
         try {
             TriggerPrototypeUpdateRequest request = new TriggerPrototypeUpdateRequest();
@@ -34,7 +34,7 @@ public class TriggerPrototypeUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getTriggerids().get(0);
+            String actualId = response.getResult().getTriggerIds().get(0);
             assertThat(actualId, Is.is(targetId));
         } finally {
             dummyTriggerPrototype.delete(targetId);

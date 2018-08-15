@@ -24,33 +24,30 @@
 
 package com.zabbix4j.event;
 
-import java.util.Date;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/27.
  */
+@Data
+@Accessors(chain = true)
 public class EventObject {
-
-    private Integer eventid;
+    private String eventid;
+    private Integer source;
+    private Integer object;
+    private String objectid;
     private Integer acknowledged;
     private Long clock;
     private Integer ns;
-    private Integer object;
-    private Integer objectid;
-    private Integer source;
+    private String name;
     private Integer value;
-    private Integer value_changed;
-
-    public EventObject() {
-    }
-
-    public Date getClockDate() {
-        if (clock != null && clock != 0) {
-            return new Date(clock);
-        }
-
-        return null;
-    }
+    private Integer severity;
+    private String r_eventid;
+    private String c_eventid;
+    private String correlationid;
+    private String userid;
+    private Integer suppressed;
 
     public static enum OBJECT_TYPE {
         TRIGGER(0), DISCOVERED_HOST(1), DISCOVERED_SERVICE(2), AUTO_REGISTERED_HOST(3), ITEM(4), LLD_RULE(5);

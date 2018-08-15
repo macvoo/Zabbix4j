@@ -22,13 +22,13 @@ public class DummyAction extends ZabbixApiTestDummyMethodBase {
         param.setEventsource(0);
         param.setEvaltype(0);
         param.setStatus(0);
-        param.setEsc_period(120);
+        param.setEsc_period("120");
         param.setDef_shortdata("{TRIGGER.NAME}: {TRIGGER.STATUS}");
         param.setDef_longdata("{TRIGGER.NAME}: {TRIGGER.STATUS}\r\nLast value: {ITEM.LASTVALUE}\r\n\r\n{TRIGGER.URL}");
 
-        ActionCondition ac = new ActionCondition();
-        ac.setConditiontype(ActionCondition.CONDITION_TYPE_TRIGGER.HOST.value);
-        ac.setOperator(ActionCondition.CONDITION_OPERATOR.EQUAL.value);
+        ActionFilterCondition ac = new ActionFilterCondition();
+        ac.setConditiontype(ActionFilterCondition.CONDITION_TYPE_TRIGGER.HOST.value);
+        ac.setOperator(ActionFilterCondition.CONDITION_OPERATOR.EQUAL.value);
         ac.setValue(hostId);
         param.createFilter().addActionConditon(ac);
 
@@ -45,14 +45,12 @@ public class DummyAction extends ZabbixApiTestDummyMethodBase {
 
         OperationMessage om = new OperationMessage();
         om.setDefault_msg(1);
-        om.setMediatypeid(1);
+        om.setMediatypeid("1");
         ao.setOpmessage(om);
         param.addActionOperation(ao);
 
         ActionCreateResponse response = zabbixApi.action().create(request);
 
-        Integer actionId = response.getResult().getActionids().get(0);
-
-        return actionId;
+        return response.getResult().getActionids().get(0);
     }
 }

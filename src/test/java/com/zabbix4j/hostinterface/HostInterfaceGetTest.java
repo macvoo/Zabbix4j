@@ -4,9 +4,8 @@ import com.google.gson.Gson;
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.hostinteface.HostInterfaceGetRequest;
 import com.zabbix4j.hostinteface.HostInterfaceGetResponse;
-import org.junit.Test;
-
 import java.util.ArrayList;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 

@@ -24,41 +24,41 @@
 
 package com.zabbix4j.configuration;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/24.
  */
+@Data
+@Accessors(chain = true)
 public class Rules {
-    @Getter
     private Applications applications;
-    @Getter
+
     private DiscoveryRules discoveryRules;
-    @Getter
+
     private Graphs graphs;
-    @Getter
+
     private Groups groups;
-    @Getter
+
     private Hosts hosts;
-    @Getter
+
     private Images images = new Images();
-    @Getter
+
     private Items items = new Items();
-    @Getter
+
     private Maps maps;
-    @Getter
+
     private Screens screens;
-    @Getter
+
     private TemplateLinkage templateLinkage;
-    @Getter
+
     private Templates templates;
-    @Getter
+
     private TemplateScreens templateScreens;
-    @Getter
+
     private Triggers triggers;
-    @Getter
+
     private ValueMaps valueMaps;
 
     public Rules() {
@@ -76,169 +76,136 @@ public class Rules {
         valueMaps = new ValueMaps();
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Applications {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean deleteMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class DiscoveryRules {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean deleteMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Graphs {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean deleteMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Groups {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
     }
 
+
+    @Data
+    @Accessors(chain = true)
     public class Hosts {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Images {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Items {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean deleteMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Maps {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Screens {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class TemplateLinkage {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Templates {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class TemplateScreens {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean deleteMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Triggers {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean deleteMissing = false;
     }
 
+    @Data
+    @Accessors(chain = true)
     public class ValueMaps {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean createMissing = false;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private Boolean updateExisting = false;
     }
 }

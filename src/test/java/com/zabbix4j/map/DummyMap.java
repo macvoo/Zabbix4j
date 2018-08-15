@@ -3,7 +3,6 @@ package com.zabbix4j.map;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -15,7 +14,7 @@ public class DummyMap extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
 
         MapCreateRequest request = new MapCreateRequest();
         MapCreateRequest.Params params = request.getParams();
@@ -33,17 +32,14 @@ public class DummyMap extends ZabbixApiTestDummyMethodBase {
 
         MapCreateResponse response = zabbixApi.map().create(request);
 
-        Integer actualId = response.getResult().getSysmapids().get(0);
-
-        return actualId;
+        return response.getResult().getSysmapids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         MapDeleteRequest request = new MapDeleteRequest();
-        request.addMapId(targetId);
+        request.addMapid(targetId);
 
         MapDeleteResponse response = zabbixApi.map().delete(request);
-
     }
 }

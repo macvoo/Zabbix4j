@@ -3,7 +3,6 @@ package com.zabbix4j.triggerprototype;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -14,7 +13,7 @@ public class DummyTriggerPrototype extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
         TriggerPrototypeCreateRequest request = new TriggerPrototypeCreateRequest();
 
         TriggerPrototypeObject obj = new TriggerPrototypeObject();
@@ -24,15 +23,13 @@ public class DummyTriggerPrototype extends ZabbixApiTestDummyMethodBase {
 
         TriggerPrototypeCreateResponse response = zabbixApi.triggerPrototype().create(request);
 
-        Integer actualId = response.getResult().getTriggerids().get(0);
-
-        return actualId;
+        return response.getResult().getTriggerIds().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         TriggerPrototypeDeleteRequest request = new TriggerPrototypeDeleteRequest();
-        request.addTirggerPrototypeId(targetId);
+        request.addTirggerPrototypeid(targetId);
 
         TriggerPrototypeDeleteResponse response = zabbixApi.triggerPrototype().delete(request);
     }

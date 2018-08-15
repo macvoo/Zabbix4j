@@ -1,7 +1,7 @@
 <configuration>
 
-    <property name="LoggingDir" value="/data/logs/" />
-    <property name="ROOT_LEVEL" value="TRACE" />
+    <property name="LoggingDir" value="/data/logs/"/>
+    <property name="ROOT_LEVEL" value="TRACE"/>
     <timestamp key="byDate" datePattern="yyyyMMdd"/>
 
 
@@ -43,7 +43,7 @@
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>time:%d{yyyy-MMM-dd HH:mm:ss.SSS}    level:%level    %marker thread:%thread  logger:%logger  message:%msg%n
+            <pattern>time:%d{yyyy-MMM-dd HH:mm:ss.SSS} level:%level %marker thread:%thread logger:%logger message:%msg%n
             </pattern>
         </encoder>
     </appender>
@@ -59,7 +59,7 @@
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>time:%d{yyyy-MMM-dd HH:mm:ss.SSS}    level:%level    %marker thread:%thread  logger:%logger  message:%msg%n
+            <pattern>time:%d{yyyy-MMM-dd HH:mm:ss.SSS} level:%level %marker thread:%thread logger:%logger message:%msg%n
             </pattern>
         </encoder>
     </appender>
@@ -136,8 +136,6 @@
         <appender-ref ref="ASYNC_STDOUT1"/>
         <appender-ref ref="ASYNC_INFO"/>
     </logger>
-
-
 
 
     <root level="${ROOT_LEVEL}">

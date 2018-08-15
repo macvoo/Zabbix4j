@@ -1,7 +1,6 @@
 package com.zabbix4j.maintenance;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -20,15 +19,15 @@ public class MaintenanceDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testName() throws Exception {
         DummyMaintenance dummyMaintenance = new DummyMaintenance(zabbixApi);
-        Integer targetId = dummyMaintenance.create();
+        String targetId = dummyMaintenance.create();
 
         MaintenanceDeleteRequest request = new MaintenanceDeleteRequest();
-        request.addMaintenaceId(targetId);
+        request.addMaintenaceid(targetId);
 
         MaintenanceDeleteResponse response = zabbixApi.maintenance().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getMaintenanceids().get(0);
+        String actualId = response.getResult().getMaintenanceids().get(0);
         assertThat(targetId, is(actualId));
     }
 }

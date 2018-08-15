@@ -21,7 +21,7 @@ public class DHostGetTest extends ZabbixApiTestBase {
 
         DHostGetRequest request = new DHostGetRequest();
         DHostGetRequest.Params params = request.getParams();
-        params.addDHostId(10105);
+        params.addDHostid("10105");
 
         DHostGetResponse response = zabbixApi.discoverdHost().get(request);
         assertNotNull(response);

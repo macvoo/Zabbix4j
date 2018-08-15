@@ -43,7 +43,7 @@ public class TriggerUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate1() throws Exception {
 
-        Integer expectedid = createDummyTrigger();
+        String expectedid = createDummyTrigger();
 
         TriggerUpdateRequest request = new TriggerUpdateRequest();
         TriggerUpdateRequest.Params params = request.getParams();
@@ -55,11 +55,11 @@ public class TriggerUpdateTest extends ZabbixApiTestBase {
 
         assertNotNull(response);
 
-        Integer actualid = response.getResult().getTriggerids().get(0);
-        assertEquals(expectedid, actualid);
+        String actualId = response.getResult().getTriggerIds().get(0);
+        assertEquals(expectedid, actualId);
     }
 
-    private Integer createDummyTrigger() throws ZabbixApiException {
+    private String createDummyTrigger() throws ZabbixApiException {
 
         TriggerCreateRequest request = new TriggerCreateRequest();
         TriggerCreateRequest.Params params = request.getParams();
@@ -68,9 +68,6 @@ public class TriggerUpdateTest extends ZabbixApiTestBase {
         params.setExpression("{test host created1:vm.memory.size[available].last()}>0");
 
         TriggerCreateResponse response = zabbixApi.trigger().create(request);
-
-        Integer triggerId = response.getResult().getTriggerids().get(0);
-
-        return triggerId;
+        return response.getResult().getTriggerIds().get(0);
     }
 }

@@ -2,38 +2,24 @@ package com.zabbix4j.maintenance;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class MaintenanceCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public MaintenanceCreateRequest() {
         setMethod("maintenance.create");
     }
 
-    /**
-     * Gets params.
-     *
-     * @return Value of params.
-     */
-    public Params getParams() {
-        return params;
-    }
-
-    /**
-     * Sets new params.
-     *
-     * @param params New value of params.
-     */
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends MaintenanceObject {
 
         private List<Integer> groupids;
@@ -48,62 +34,9 @@ public class MaintenanceCreateRequest extends ZabbixApiRequest {
             hostids = ZbxListUtils.add(hostids, id);
         }
 
-        public void addTimeperiodId(TimePeriodObject obj) {
-            timeperiods = ZbxListUtils.add(timeperiods, obj);
-        }
-
-        /**
-         * Gets hostids.
-         *
-         * @return Value of hostids.
-         */
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        /**
-         * Sets new hostids.
-         *
-         * @param hostids New value of hostids.
-         */
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        /**
-         * Gets groupids.
-         *
-         * @return Value of groupids.
-         */
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        /**
-         * Sets new groupids.
-         *
-         * @param groupids New value of groupids.
-         */
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        /**
-         * Gets timeperiods.
-         *
-         * @return Value of timeperiods.
-         */
-        public List<TimePeriodObject> getTimeperiods() {
-            return timeperiods;
-        }
-
-        /**
-         * Sets new timeperiods.
-         *
-         * @param timeperiods New value of timeperiods.
-         */
-        public void setTimeperiods(List<TimePeriodObject> timeperiods) {
-            this.timeperiods = timeperiods;
+        public Params addTimeperiodid(TimePeriodObject id) {
+            timeperiods = ZbxListUtils.add(timeperiods, id);
+            return this;
         }
     }
 }

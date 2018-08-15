@@ -25,29 +25,24 @@
 package com.zabbix4j.valuemaps;
 
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsUpdateResponse {
     private Result result = new Result();
 
     public ValueMapsUpdateResponse() {
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<String> valuemapids;
-
-        public Result() {
-        }
 
         public List<String> getValuemapids() {
             return valuemapids;

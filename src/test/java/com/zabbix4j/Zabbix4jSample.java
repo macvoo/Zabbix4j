@@ -3,8 +3,8 @@ package com.zabbix4j;
 import com.zabbix4j.host.HostCreateRequest;
 import com.zabbix4j.host.HostCreateResponse;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
+import com.zabbix4j.template.TemplateObject;
 import com.zabbix4j.usermacro.Macro;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +26,8 @@ public class Zabbix4jSample {
             HostCreateRequest.Params params = request.getParams();
 
             // set tempalte
-            List<Integer> templates = new ArrayList<Integer>();
-            templates.add(10093);
+            List<TemplateObject> templates = new ArrayList<TemplateObject>();
+            templates.add(new TemplateObject().setTemplateid("10093"));
             params.setTemplates(templates);
 
             // attached to group
@@ -57,9 +57,8 @@ public class Zabbix4jSample {
             // send create request
             HostCreateResponse response = zabbixApi.host().create(request);
 
-            Integer hostId = response.getResult().getHostids().get(0);
+            String hostId = response.getResult().getHostids().get(0);
             System.out.println(hostId);
-
         } catch (ZabbixApiException e) {
             e.printStackTrace();
         }

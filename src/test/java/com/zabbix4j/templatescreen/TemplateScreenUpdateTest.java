@@ -18,7 +18,7 @@ public class TemplateScreenUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyTemplateScreen dummyTemplateScreen = new DummyTemplateScreen(zabbixApi);
-        Integer targetId = dummyTemplateScreen.create();
+        String targetId = dummyTemplateScreen.create();
 
         try {
             TemplateScreenUpdateRequest request = new TemplateScreenUpdateRequest();
@@ -31,12 +31,10 @@ public class TemplateScreenUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actialId = response.getResult().getScreenids().get(0);
+            String actialId = response.getResult().getScreenids().get(0);
             assertThat(actialId, Is.is(targetId));
-
         } finally {
             dummyTemplateScreen.delete(targetId);
         }
-
     }
 }

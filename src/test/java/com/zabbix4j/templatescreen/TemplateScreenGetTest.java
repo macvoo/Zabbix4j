@@ -21,14 +21,12 @@ public class TemplateScreenGetTest extends ZabbixApiTestBase {
         params.setSelectScreenItems(ZabbixApiParamter.QUERY.extend.name());
         params.setNoInheritance(false);
 
-        TemplateScreenGetResponse response =zabbixApi.templateScreen().get(request);
+        TemplateScreenGetResponse response = zabbixApi.templateScreen().get(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
         TemplateScreenGetResponse.Result result = response.getResult().get(0);
         assertNotNull(response);
-
-
     }
 }

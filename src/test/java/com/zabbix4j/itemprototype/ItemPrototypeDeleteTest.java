@@ -20,17 +20,17 @@ public class ItemPrototypeDeleteTest extends ZabbixApiTestBase {
     public void testDelete() throws Exception {
 
         DummyItemPrototype dummyItemPrototype = new DummyItemPrototype(zabbixApi);
-        Integer targetId = dummyItemPrototype.createItemPrototype();
+        String targetId = dummyItemPrototype.createItemPrototype();
 
         ItemPrototypeDeleteRequest request = new ItemPrototypeDeleteRequest();
-        request.addItemPrototypeId(targetId);
+        request.addItemPrototypeid(targetId);
 
         ItemPrototypeDeleteResponse response = zabbixApi.itemPrototype().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getPrototypeids().get(0);
+        String actualId = response.getResult().getPrototypeids().get(0);
         assertThat(targetId, is(actualId));
     }
 }

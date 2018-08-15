@@ -31,14 +31,13 @@ public class ZabbixApiParamter {
 
     public static final int ZABBIX_CLIENT_DEFAULT_PORT = 10050;
 
-    public static final int ITEM_DELAY_DEFAULT = 60;
+    public static final String ITEM_DELAY_DEFAULT = "60s";
 
     private ZabbixApiParamter() {
     }
 
     public static enum HOST_INTERFACE_TYPE {
         AGENT(1), SNMP(2), IPMI(3), JMX(4);
-
 
         public int value = 1;
 
@@ -54,6 +53,16 @@ public class ZabbixApiParamter {
         public int value = 0;
 
         private HOST_AGENT_ACCESS_INTERFACE(int value) {
+            this.value = value;
+        }
+    }
+
+    public static enum HOST_INTERFACE_BULK {
+        DONT_USE_BULK(0), USE_BULK(1);
+
+        public int value = 0;
+
+        private HOST_INTERFACE_BULK(int value) {
             this.value = value;
         }
     }

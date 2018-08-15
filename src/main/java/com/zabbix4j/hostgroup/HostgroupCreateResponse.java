@@ -25,34 +25,27 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.ArrayList;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/29.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupCreateResponse extends ZabbixApiResponse {
-
     private Result result = new Result();
 
     public HostgroupCreateResponse() {
 
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
 
         private ArrayList<Integer> groupids = new ArrayList<Integer>();
-
-        public Result() {
-        }
 
         public ArrayList<Integer> getGroupids() {
             return groupids;
@@ -62,5 +55,4 @@ public class HostgroupCreateResponse extends ZabbixApiResponse {
             this.groupids = groupids;
         }
     }
-
 }

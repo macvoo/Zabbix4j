@@ -11,7 +11,6 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ItemUpdateTest extends ZabbixApiTestBase {
 
-
     public ItemUpdateTest() {
         super();
     }
@@ -30,7 +29,7 @@ public class ItemUpdateTest extends ZabbixApiTestBase {
         ItemUpdateResponse response = zabbixApi.item().update(request);
 
         assertNotNull(response);
-        Integer actualItemId = response.getResult().getItemids().get(0);
+        String actualItemId = response.getResult().getItemids().get(0);
         assertEquals(itemid, actualItemId);
     }
 }

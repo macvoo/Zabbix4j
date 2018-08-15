@@ -30,7 +30,7 @@ public class GraphDeleteTest extends ZabbixApiTestBase {
         assertEquals(targetId, response.getResult().getGraphids().get(0));
     }
 
-    private Integer createDummyGraph() throws ZabbixApiException {
+    private String createDummyGraph() throws ZabbixApiException {
 
         GraphCreateRequest request = new GraphCreateRequest();
         GraphCreateRequest.Params params = request.getParams();

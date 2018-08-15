@@ -25,24 +25,14 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiResponse;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/27.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupExistResponse extends ZabbixApiResponse {
-
     private boolean result;
-
-    public HostgroupExistResponse() {
-        super();
-    }
-
-    public boolean isResult() {
-        return result;
-    }
-
-    public void setResult(boolean result) {
-        this.result = result;
-    }
-
 }

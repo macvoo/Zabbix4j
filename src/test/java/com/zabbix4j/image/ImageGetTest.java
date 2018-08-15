@@ -19,20 +19,20 @@ public class ImageGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer targetId = null;
+        String targetId = null;
         DummyImage dummyImage = new DummyImage(zabbixApi);
         try {
             targetId = dummyImage.create();
 
             ImageGetRequest request = new ImageGetRequest();
             ImageGetRequest.Params params = request.getParams();
-            params.addImageId(targetId);
+            params.addImageid(targetId);
             params.setSelect_image(true);
 
             ImageGetResponse response = zabbixApi.image().get(request);
             assertNotNull(response);
 
-            Integer actualId = response.getResult().get(0).getImageid();
+            String actualId = response.getResult().get(0).getImageid();
 
             assertThat(targetId, is(actualId));
 

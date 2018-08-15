@@ -23,7 +23,7 @@ public class GraphGetTest extends ZabbixApiTestBase {
 
         GraphGetRequest request = new GraphGetRequest();
         GraphGetRequest.Params params = request.getParams();
-        params.addGraphId(targetId);
+        params.addGraphid(targetId);
         params.setSelectItems(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectGraphItems(ZabbixApiParamter.QUERY.extend.name());
@@ -38,7 +38,7 @@ public class GraphGetTest extends ZabbixApiTestBase {
         deleteDummy(targetId);
     }
 
-    private Integer createDummyGraph() throws ZabbixApiException {
+    private String createDummyGraph() throws ZabbixApiException {
 
         GraphCreateRequest request = new GraphCreateRequest();
         GraphCreateRequest.Params params = request.getParams();
@@ -57,7 +57,7 @@ public class GraphGetTest extends ZabbixApiTestBase {
         return response.getResult().getGraphids().get(0);
     }
 
-    private void deleteDummy(Integer id) throws ZabbixApiException {
+    private void deleteDummy(final String id) throws ZabbixApiException {
 
         GraphDeleteRequest request = new GraphDeleteRequest();
         request.getParams().add(id);

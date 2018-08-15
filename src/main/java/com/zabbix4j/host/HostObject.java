@@ -25,16 +25,20 @@
 package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiParamter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/08.
  */
+@Data
+@Accessors(chain = true)
 public class HostObject {
 
-    private Integer hostid;
-    private Integer proxy_hostid;
+    private String hostid;
+    private String proxy_hostid;
     private String host;
-    private Integer status = ZabbixApiParamter.HOST_MONITOR_STATUS.MONITORED_HOST.value;;
+    private Integer status = ZabbixApiParamter.HOST_MONITOR_STATUS.MONITORED_HOST.value;
     private Integer disable_until;
     private String error;
     private Integer available;

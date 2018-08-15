@@ -27,8 +27,9 @@ package com.zabbix4j;
 /**
  * Created by Suguru Yajima on 2014/04/26.
  */
+@Data
+@Accessors(chain = true)
 public class ZabbixApiResponse {
-
     private int id;
     private String jsonrpc;
 

@@ -11,8 +11,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by Suguru Yajima on 2014/05/26.
  */
 public class DRuleCreateTest extends ZabbixApiTestBase {
-
-    private Integer druleId;
+    private String druleid;
 
     public DRuleCreateTest() {
         super();
@@ -21,16 +20,16 @@ public class DRuleCreateTest extends ZabbixApiTestBase {
     @After
     public void tearDown() throws Exception {
         DRuleDeleteRequest request = new DRuleDeleteRequest();
-        request.addDRuleId(druleId);
+        request.addDRuleid(druleid);
 
         DRuleDeleteResponse response = zabbixApi.discoveryRule().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer acutalId = response.getResult().getDruleids().get(0);
+        String acutalId = response.getResult().getDruleids().get(0);
 
-        assertEquals(druleId, acutalId);
+        assertEquals(druleid, acutalId);
     }
 
     @Test
@@ -49,7 +48,7 @@ public class DRuleCreateTest extends ZabbixApiTestBase {
         params.addCheck(dcheck);
 
         DRuleCreateResponse response = zabbixApi.discoveryRule().create(request);
-        druleId = response.getResult().getDruleids().get(0);
+        druleid = response.getResult().getDruleids().get(0);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));

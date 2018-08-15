@@ -24,9 +24,14 @@
 
 package com.zabbix4j.usergroup;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/05/13.
  */
+@Data
+@Accessors(chain = true)
 public class PermissionObject {
     private Integer id;
     private Integer permission;
@@ -37,21 +42,5 @@ public class PermissionObject {
     }
 
     public PermissionObject() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getPermission() {
-        return permission;
-    }
-
-    public void setPermission(Integer permission) {
-        this.permission = permission;
     }
 }

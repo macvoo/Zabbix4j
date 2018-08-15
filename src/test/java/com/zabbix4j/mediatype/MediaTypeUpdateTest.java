@@ -1,9 +1,8 @@
 package com.zabbix4j.mediatype;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
@@ -20,7 +19,7 @@ public class MediaTypeUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyMediaType dummyMediaType = new DummyMediaType(zabbixApi);
-        Integer targetId = dummyMediaType.create();
+        String targetId = dummyMediaType.create();
 
         try {
             MediaTypeUpdateRequest request = new MediaTypeUpdateRequest();
@@ -35,9 +34,8 @@ public class MediaTypeUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getMediatypeids().get(0);
+            String actualId = response.getResult().getMediatypeids().get(0);
             assertThat(actualId, is(targetId));
-
         } finally {
             dummyMediaType.delete(targetId);
         }

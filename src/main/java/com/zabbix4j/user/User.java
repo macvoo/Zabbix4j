@@ -34,11 +34,11 @@ import com.zabbix4j.ZabbixApiMethod;
  */
 public class User extends ZabbixApiMethod {
 
-    public User (String apiUrl) {
+    public User(String apiUrl) {
         super(apiUrl, null);
     }
 
-    public UserLoginResponse login (UserLoginRequest request) throws ZabbixApiException {
+    public UserLoginResponse login(UserLoginRequest request) throws ZabbixApiException {
         UserLoginResponse response = null;
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

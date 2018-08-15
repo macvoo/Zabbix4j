@@ -24,30 +24,15 @@
 
 package com.zabbix4j.graph;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/05/31.
  */
+@Data
+@Accessors(chain = true)
 public class GraphItem {
-
-    private Integer itemid;
+    private String itemid;
     private String color;
-
-    public GraphItem() {
-    }
-
-    public Integer getItemid() {
-        return itemid;
-    }
-
-    public void setItemid(Integer itemid) {
-        this.itemid = itemid;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
 }

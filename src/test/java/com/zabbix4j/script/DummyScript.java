@@ -3,7 +3,6 @@ package com.zabbix4j.script;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -14,7 +13,7 @@ public class DummyScript extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
         ScriptCreateRequest request = new ScriptCreateRequest();
 
         ScriptObject obj = new ScriptObject();
@@ -26,14 +25,12 @@ public class DummyScript extends ZabbixApiTestDummyMethodBase {
 
         ScriptCreateResponse response = zabbixApi.script().create(request);
 
-        Integer actualId = response.getResult().getScriptids().get(0);
-
-        return actualId;
+        return response.getResult().getScriptids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
         ScriptDeleteRequest request = new ScriptDeleteRequest();
-        request.addScriptId(targetId);
+        request.addScriptid(targetId);
 
         ScriptDeleteResponse response = zabbixApi.script().delete(request);
     }

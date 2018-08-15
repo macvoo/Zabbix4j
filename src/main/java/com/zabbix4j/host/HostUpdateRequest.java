@@ -25,33 +25,28 @@
 package com.zabbix4j.host;
 
 import com.google.gson.annotations.SerializedName;
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.usermacro.Macro;
-
-import java.util.ArrayList;
+import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/01.
  */
+@Data
+@Accessors(chain = true)
 public class HostUpdateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostUpdateRequest() {
         setMethod("host.update");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends HostObject {
 
         private List<Group> groups;
@@ -61,103 +56,44 @@ public class HostUpdateRequest extends ZabbixApiRequest {
         private List<UnLinkTemplate> templatesClear;
         private List<Macro> macros;
 
-        public Params() {
+        public Params addGroup(final Integer id) {
+            this.groups = ZbxListUtils.add(groups, new Group().setGroupid(id));
+            return this;
         }
 
-        public void setUnLinkTemplate(int templateId) {
-            if (templatesClear == null) {
-                templatesClear = new ArrayList<UnLinkTemplate>();
-            }
-            templatesClear.add(new UnLinkTemplate(templateId));
+        public Params addHostInterfaceObject(final HostInterfaceObject id) {
+            this.interfaces = ZbxListUtils.add(interfaces, id);
+            return this;
         }
 
-        public List<UnLinkTemplate> getTemplatesClear() {
-            return templatesClear;
+        public Params addTemplate(final Integer id) {
+            this.templates = ZbxListUtils.add(templates, id);
+            return this;
         }
 
-        public void setTemplatesClear(List<UnLinkTemplate> templatesClear) {
-            this.templatesClear = templatesClear;
+        public Params addTemplatesClear(final String id) {
+            this.templatesClear = ZbxListUtils.add(templatesClear, new UnLinkTemplate(id));
+            return this;
         }
 
-        public void setGroup(int groupId) {
-            if (this.groups == null) {
-                this.groups = new ArrayList<Group>();
-            }
-            Group group = new Group();
-            group.setGroupid(groupId);
-            this.groups.add(group);
+        public Params addMacro(final Macro id) {
+            this.macros = ZbxListUtils.add(macros, id);
+            return this;
         }
-
-        public List<Group> getGroups() {
-            return groups;
-        }
-
-        public void setGroups(List<Group> groups) {
-            this.groups = groups;
-        }
-
-        public void setInteface(HostInterfaceObject hostInterface) {
-            interfaces = ZbxListUtils.add(interfaces, hostInterface);
-        }
-
-        public List<HostInterfaceObject> getInterfaces() {
-            return interfaces;
-        }
-
-        public void setInterfaces(List<HostInterfaceObject> interfaces) {
-            this.interfaces = interfaces;
-        }
-
-        public List<Integer> getTemplates() {
-            return templates;
-        }
-
-        public void setTemplates(List<Integer> templates) {
-            this.templates = templates;
-        }
-
-        public List<Macro> getMacros() {
-            return macros;
-        }
-
-        public void setMacros(List<Macro> macros) {
-            this.macros = macros;
-        }
-
-        public void setMacro(Macro macro) {
-            macros = ZbxListUtils.add(macros, macro);
-        }
-
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Group {
-
         private int groupid;
-
-        public Group() {
-        }
-
-        public int getGroupid() {
-            return groupid;
-        }
-
-        public void setGroupid(int groupid) {
-            this.groupid = groupid;
-        }
     }
 
+    @Data
+    @Accessors(chain = true)
     public class UnLinkTemplate {
-        private int templateid;
+        private String templateid;
 
-        public UnLinkTemplate(int templateId) {
-        }
-
-        public int getTemplateid() {
-            return templateid;
-        }
-
-        public void setTemplateid(int templateid) {
-            this.templateid = templateid;
+        public UnLinkTemplate(String templateId) {
         }
     }
 }

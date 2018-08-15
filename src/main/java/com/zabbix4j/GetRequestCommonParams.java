@@ -35,62 +35,19 @@ import lombok.experimental.Accessors;
  * Created by Suguru Yajima on 2014/05/02.
  */
 public class GetRequestCommonParams {
-
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer limitSelects;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private List<String> sortfield;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean countOutput;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean editable;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean excludeSearch;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Object filter;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer limit;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String output;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean preservekeys;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Map<String, String> search;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean searchByAny;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean searchWildcardsEnabled;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private List<String> sortorder;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Boolean startSearch;
 
     public GetRequestCommonParams() {

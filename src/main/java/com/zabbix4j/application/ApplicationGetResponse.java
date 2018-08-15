@@ -25,69 +25,24 @@
 package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/23.
  */
+@Data
+@Accessors(chain = true)
 public class ApplicationGetResponse extends ZabbixApiResponse {
-
     private List<Result> result;
 
-    public ApplicationGetResponse() {
-        super();
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-
-        private Integer applicationid;
-        private Integer hostid;
+        private String applicationid;
+        private String hostid;
         private String name;
-        private Integer templateid;
-
-        public Result() {
-            super();
-        }
-
-        public Integer getApplicationid() {
-            return applicationid;
-        }
-
-        public void setApplicationid(Integer applicationid) {
-            this.applicationid = applicationid;
-        }
-
-        public Integer getHostid() {
-            return hostid;
-        }
-
-        public void setHostid(Integer hostid) {
-            this.hostid = hostid;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getTemplateid() {
-            return templateid;
-        }
-
-        public void setTemplateid(Integer templateid) {
-            this.templateid = templateid;
-        }
+        private String templateid;
     }
 }

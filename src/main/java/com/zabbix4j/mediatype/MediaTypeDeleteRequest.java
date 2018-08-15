@@ -1,16 +1,16 @@
 package com.zabbix4j.mediatype;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class MediaTypeDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public MediaTypeDeleteRequest() {
         setMethod("mediatype.delete");

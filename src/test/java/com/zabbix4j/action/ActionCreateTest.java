@@ -2,9 +2,8 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -27,23 +26,22 @@ public class ActionCreateTest extends ZabbixApiTestBase {
         param.setEventsource(0);
         param.setEvaltype(0);
         param.setStatus(0);
-        param.setEsc_period(120);
+        param.setEsc_period("120");
         param.setDef_shortdata("{TRIGGER.NAME}: {TRIGGER.STATUS}");
         param.setDef_longdata("{TRIGGER.NAME}: {TRIGGER.STATUS}\r\nLast value: {ITEM.LASTVALUE}\r\n\r\n{TRIGGER.URL}");
 
-        
-        ActionCondition ac = new ActionCondition();
-        ac.setConditiontype(ActionCondition.CONDITION_TYPE_TRIGGER.HOST.value);
-        ac.setOperator(ActionCondition.CONDITION_OPERATOR.EQUAL.value);
+        ActionFilterCondition ac = new ActionFilterCondition();
+        ac.setConditiontype(ActionFilterCondition.CONDITION_TYPE_TRIGGER.HOST.value);
+        ac.setOperator(ActionFilterCondition.CONDITION_OPERATOR.EQUAL.value);
         ac.setValue(hostId);
         param.createFilter().addActionConditon(ac);
-        
-        ActionCondition ac1 = new ActionCondition();
-        ac1.setConditiontype(ActionCondition.CONDITION_TYPE_TRIGGER.TRIGGER_NAME.value);
-        ac1.setOperator(ActionCondition.CONDITION_OPERATOR.LIKE.value);
+
+        ActionFilterCondition ac1 = new ActionFilterCondition();
+        ac1.setConditiontype(ActionFilterCondition.CONDITION_TYPE_TRIGGER.TRIGGER_NAME.value);
+        ac1.setOperator(ActionFilterCondition.CONDITION_OPERATOR.LIKE.value);
         ac1.setValue("test");
         param.createFilter().addActionConditon(ac1);
-        
+
         ActionOperation ao = new ActionOperation();
         ao.setOperationtype(0);
         ao.setEsc_period(0);
@@ -52,12 +50,12 @@ public class ActionCreateTest extends ZabbixApiTestBase {
         ao.setEvaltype(0);
 
         OperationMessageGroup omg = new OperationMessageGroup();
-        omg.setUsrgrpid(7);
+        omg.setUsrgrpid("7");
         ao.addOpmessageGrp(omg);
 
         OperationMessage om = new OperationMessage();
         om.setDefault_msg(1);
-        om.setMediatypeid(1);
+        om.setMediatypeid("1");
         ao.setOpmessage(om);
         param.addActionOperation(ao);
 
@@ -66,16 +64,16 @@ public class ActionCreateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actionId = response.getResult().getActionids().get(0);
+        String actionId = response.getResult().getActionids().get(0);
         assertNotNull(actionId);
 
         //deleteDummy(actionId);
     }
 
-    private void deleteDummy(Integer id) throws ZabbixApiException {
+    private void deleteDummy(final String id) throws ZabbixApiException {
 
         ActionDeleteRequest request = new ActionDeleteRequest();
-        request.addActionId(id);
+        request.addActionid(id);
         ActionDeleteResponse response = zabbixApi.action().delete(request);
     }
 }

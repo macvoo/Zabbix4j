@@ -25,100 +25,26 @@
 package com.zabbix4j.discoveredhost;
 
 import com.zabbix4j.ZabbixApiResponse;
-
-import java.util.Date;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/25.
  */
+@Data
+@Accessors(chain = true)
 public class DHostGetResponse extends ZabbixApiResponse {
-
     private List<Result> result;
 
-    public DHostGetResponse() {
-        super();
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-
         private List<Dservice> dservices;
-
-        private Integer dhostid;
-        private Integer druleid;
+        private String dhostid;
+        private String druleid;
         private Integer status;
         private Long lastup;
         private Long lastdown;
-
-        public Date getLastupDate() {
-            if (lastup != null && lastup != 0) {
-                return new Date(lastup);
-            }
-            return null;
-        }
-
-        public Date getLastUpDate() {
-            if (lastdown != null && lastdown != 0) {
-                return new Date(lastdown);
-            }
-
-            return null;
-        }
-
-        public List<Dservice> getDservices() {
-            return dservices;
-        }
-
-        public void setDservices(List<Dservice> dservices) {
-            this.dservices = dservices;
-        }
-
-        public Integer getDhostid() {
-            return dhostid;
-        }
-
-        public void setDhostid(Integer dhostid) {
-            this.dhostid = dhostid;
-        }
-
-        public Integer getDruleid() {
-            return druleid;
-        }
-
-        public void setDruleid(Integer druleid) {
-            this.druleid = druleid;
-        }
-
-        public Integer getStatus() {
-            return status;
-        }
-
-        public void setStatus(Integer status) {
-            this.status = status;
-        }
-
-        public Long getLastup() {
-            return lastup;
-        }
-
-        public void setLastup(Long lastup) {
-            this.lastup = lastup;
-        }
-
-        public Long getLastdown() {
-            return lastdown;
-        }
-
-        public void setLastdown(Long lastdown) {
-            this.lastdown = lastdown;
-        }
     }
 }

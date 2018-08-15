@@ -25,15 +25,15 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
 
 /**
  * @author Suguru Yajima on 2014/05/19.
  */
+@Data
+@Accessors(chain = true)
 public class ActionOperation {
-
-    private Integer operationid;
+    private String operationid;
     private Integer operationtype;
     private Integer actionid;
     private Integer esc_period;
@@ -41,17 +41,14 @@ public class ActionOperation {
     private Integer esc_step_to;
     private Integer evaltype;
     private OperationCommand opcommand;
-    private List<Integer> opcommand_grp;
-    private List<Integer> opcommand_hst;
+    private List<String> opcommand_grp;
+    private List<String> opcommand_hst;
     private List<OperationCondition> opconditions;
-    private List<Integer> opgroup;
+    private List<String> opgroup;
     private OperationMessage opmessage;
     private List<OperationMessageGroup> opmessage_grp;
-    private List<Integer> opmessage_usr;
-    private List<Integer> optemplate;
-
-    public ActionOperation() {
-    }
+    private List<String> opmessage_usr;
+    private List<String> optemplate;
 
     public List<OperationMessageGroup> getOpmessage_grp() {
         return opmessage_grp;

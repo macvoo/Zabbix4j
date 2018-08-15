@@ -25,12 +25,15 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima on 2014/05/20.
  */
+@Data
+@Accessors(chain = true)
 public class ActionGetResponse extends ZabbixApiResponse {
 
     private List<ActionObject> result;

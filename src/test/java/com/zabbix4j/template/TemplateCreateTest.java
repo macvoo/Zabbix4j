@@ -1,9 +1,8 @@
 package com.zabbix4j.template;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -23,15 +22,15 @@ public class TemplateCreateTest extends ZabbixApiTestBase {
         TemplateCreateRequest request = new TemplateCreateRequest();
         TemplateCreateRequest.Params params = request.getParams();
         params.setHost("test.template.create." + new Date().getTime());
-        params.addGroupId(groupId);
-        params.addHostId(hostId);
+        params.addGroupid(groupId);
+        params.addHostid(hostId);
 
         TemplateCreateResponse response = zabbixApi.template().create(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer acutalId = response.getResult().getTemplateids().get(0);
+        String acutalId = response.getResult().getTemplateids().get(0);
         assertNotNull(acutalId);
     }
 }

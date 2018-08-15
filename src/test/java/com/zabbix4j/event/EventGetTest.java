@@ -36,7 +36,6 @@ public class EventGetTest extends ZabbixApiTestBase {
 
     public EventGetTest() {
         super();
-
     }
 
     @Test

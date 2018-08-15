@@ -25,59 +25,18 @@
 package com.zabbix4j.usergroup;
 
 import com.zabbix4j.ZabbixApiParamter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/13.
  */
+@Data
+@Accessors(chain = true)
 public class UserGroupObject {
-
-    private Integer usrgrpid;
+    private String usrgrpid;
     private String name;
     private Integer debug_mode = ZabbixApiParamter.DEBUG_MODE.DISABLE.value;
     private Integer gui_access = ZabbixApiParamter.GUI_ACCESS.SYS_DEFAULT_AUTH_METHOD.value;
     private Integer users_status = ZabbixApiParamter.USER_STATUS.ENABLE.value;
-
-    public UserGroupObject() {
-    }
-
-    public Integer getUsrgrpid() {
-        return usrgrpid;
-    }
-
-    public void setUsrgrpid(Integer usrgrpid) {
-        this.usrgrpid = usrgrpid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getDebug_mode() {
-        return debug_mode;
-    }
-
-    public void setDebug_mode(Integer debug_mode) {
-        this.debug_mode = debug_mode;
-    }
-
-    public Integer getGui_access() {
-        return gui_access;
-    }
-
-    public void setGui_access(Integer gui_access) {
-        this.gui_access = gui_access;
-    }
-
-    public Integer getUsers_status() {
-        return users_status;
-    }
-
-    public void setUsers_status(Integer users_status) {
-        this.users_status = users_status;
-    }
-
 }

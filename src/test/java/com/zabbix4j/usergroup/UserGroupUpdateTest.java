@@ -14,8 +14,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by Suguru Yajima on 2014/05/15.
  */
 public class UserGroupUpdateTest extends ZabbixApiTestBase {
-
-    private Integer id;
+    private String id;
 
     public UserGroupUpdateTest() {
         super();
@@ -34,7 +33,6 @@ public class UserGroupUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate1() throws Exception {
 
-
         UserGroupUpdateRequest request = new UserGroupUpdateRequest();
         UserGroupUpdateRequest.Params params = request.getParams();
         params.setUsrgrpid(id);
@@ -45,26 +43,24 @@ public class UserGroupUpdateTest extends ZabbixApiTestBase {
         UserGroupUpdateResponse response = zabbixApi.usergroup().update(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getUsrgrpids().get(0);
+        String actualId = response.getResult().getUsrgrpids().get(0);
 
         assertEquals(id, actualId);
     }
 
-    private Integer createDummyGroup() throws ZabbixApiException {
+    private String createDummyGroup() throws ZabbixApiException {
 
         UserGroupCreateRequest request = new UserGroupCreateRequest();
         UserGroupCreateRequest.Params params = request.getParams();
         params.setName("usergroup update test");
-        params.addUserId(1);
+        params.addUserid("1");
 
         UserGroupCreateResponse response = zabbixApi.usergroup().create(request);
 
-        Integer groupId = response.getResult().getUsrgrpids().get(0);
-
-        return groupId;
+        return response.getResult().getUsrgrpids().get(0);
     }
 
-    private void deleteDummmyGroup(Integer id) throws ZabbixApiException {
+    private void deleteDummmyGroup(final String id) throws ZabbixApiException {
 
         UserGroupDeleteRequest request = new UserGroupDeleteRequest();
         request.addParams(id);

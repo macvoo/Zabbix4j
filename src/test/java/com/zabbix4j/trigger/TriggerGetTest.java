@@ -19,7 +19,7 @@ public class TriggerGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer triggerId = createDummyTrigger();
+        String triggerId = createDummyTrigger();
 
         TriggerGetRequest request = new TriggerGetRequest();
         TriggerGetRequest.Params params = request.getParams();
@@ -40,7 +40,7 @@ public class TriggerGetTest extends ZabbixApiTestBase {
         assertEquals("trigger get comment", comment);
     }
 
-    private Integer createDummyTrigger() throws ZabbixApiException {
+    private String createDummyTrigger() throws ZabbixApiException {
 
         TriggerCreateRequest request = new TriggerCreateRequest();
         TriggerCreateRequest.Params params = request.getParams();
@@ -50,13 +50,13 @@ public class TriggerGetTest extends ZabbixApiTestBase {
 
         TriggerCreateResponse response = zabbixApi.trigger().create(request);
 
-        return response.getResult().getTriggerids().get(0);
+        return response.getResult().getTriggerIds().get(0);
     }
 
-    private void deleteDummyTrigger(Integer triggerid) throws ZabbixApiException {
+    private void deleteDummyTrigger(String triggerId) throws ZabbixApiException {
 
         TriggerDeleteRequest request = new TriggerDeleteRequest();
-        request.getParams().add(triggerid);
+        request.getParams().add(triggerId);
 
         TriggerDeleteResponse response = zabbixApi.trigger().delete(request);
     }

@@ -24,21 +24,17 @@
 
 package com.zabbix4j.action;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * @author Suguru Yajima on 2014/05/20.
  */
+@Data
+@Accessors(chain = true)
 public class OperationMessageGroup {
-
-    private Integer usrgrpid;
+    private String usrgrpid;
 
     public OperationMessageGroup() {
-    }
-
-    public Integer getUsrgrpid() {
-        return usrgrpid;
-    }
-
-    public void setUsrgrpid(Integer usrgrpid) {
-        this.usrgrpid = usrgrpid;
     }
 }

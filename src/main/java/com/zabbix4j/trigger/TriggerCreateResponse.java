@@ -25,39 +25,19 @@
 package com.zabbix4j.trigger;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/10.
  */
+@Data
+@Accessors(chain = true)
 public class TriggerCreateResponse extends ZabbixApiResponse {
     private Result result = new Result();
 
-    public TriggerCreateResponse() {
-        super();
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
     public class Result {
-        private List<Integer> triggerids;
-
-        public Result() {
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
+        private List<String> triggerIds;
     }
 }

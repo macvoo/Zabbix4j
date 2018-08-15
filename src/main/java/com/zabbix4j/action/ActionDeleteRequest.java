@@ -32,9 +32,11 @@ import java.util.List;
 
 /**
  * Request parameter for action.delete
+ *
  * @author Suguru Yajima on 2014/05/20.
  */
 @Data
+@Accessors(chain = true)
 public class ActionDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params = new ArrayList<Integer>();
@@ -45,5 +47,6 @@ public class ActionDeleteRequest extends ZabbixApiRequest {
 
     public void addActionId(Integer id) {
         params.add(id);
+        return this;
     }
 }

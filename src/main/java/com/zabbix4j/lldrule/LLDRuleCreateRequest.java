@@ -1,36 +1,23 @@
 package com.zabbix4j.lldrule;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/06/06.
  */
+@Data
+@Accessors(chain = true)
 public class LLDRuleCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public LLDRuleCreateRequest() {
         setMethod("discoveryrule.create");
     }
 
-    /**
-     * Gets params.
-     *
-     * @return Value of params.
-     */
-    public Params getParams() {
-        return params;
-    }
-
-    /**
-     * Sets new params.
-     *
-     * @param params New value of params.
-     */
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends LLDRuleObject {
 
     }

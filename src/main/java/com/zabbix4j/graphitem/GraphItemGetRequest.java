@@ -27,34 +27,29 @@ package com.zabbix4j.graphitem;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/06/01.
  */
+@Data
+@Accessors(chain = true)
 public class GraphItemGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public GraphItemGetRequest() {
         setMethod("graphitem.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
         private List<Integer> gitemids;
         private List<Integer> graphids;
         private List<Integer> itemids;
         private Integer type;
-        private String expandData;
         private String selectGraphs;
 
         public void addGItemId(Integer id) {

@@ -25,10 +25,9 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiResponse;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Response paramter of action.create
@@ -36,8 +35,8 @@ import java.util.List;
  * @author Suguru Yajima on 2014/05/19.
  */
 @Data
+@Accessors(chain = true)
 public class ActionCreateResponse extends ZabbixApiResponse {
-
     private Result result;
 
     public ActionCreateResponse() {
@@ -45,30 +44,13 @@ public class ActionCreateResponse extends ZabbixApiResponse {
     }
 
     @Data
+    @Accessors(chain = true)
     public class Result {
 
-        public Result () {
+        List<String> actionids;
+
+        public Result() {
             super();
         }
-
-        List<Integer> actionids;
-
-		public List<Integer> getActionids() {
-			return actionids;
-		}
-
-		public void setActionids(List<Integer> actionids) {
-			this.actionids = actionids;
-		}
-        
     }
-
-	public Result getResult() {
-		return result;
-	}
-
-	public void setResult(Result result) {
-		this.result = result;
-	}
-    
 }

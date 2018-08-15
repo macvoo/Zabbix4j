@@ -25,27 +25,20 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.ArrayList;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/27.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupGetResponse extends ZabbixApiResponse {
-
     private ArrayList<Result> result = new ArrayList<Result>();
 
-    public HostgroupGetResponse() {
-    }
-
-    public ArrayList<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(ArrayList<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends HostgroupObject {
 
     }

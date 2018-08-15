@@ -12,15 +12,45 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ActionUpdateTest extends ZabbixApiTestBase {
 
+    private String groupid;
+
     public ActionUpdateTest() {
         super();
+    }
+
+    @Before
+    public void createDummyGroup() throws ZabbixApiException {
+
+        UserGroupCreateRequest request = new UserGroupCreateRequest();
+        UserGroupCreateRequest.Params params = request.getParams();
+        params.setName("usergroup delete test");
+        params.addUserid("1");
+
+        UserGroupCreateResponse response = zabbixApi.usergroup().create(request);
+
+        groupid = response.getResult().getUsrgrpids().get(0);
+    }
+
+    @After
+    public void testDelete1() throws Exception {
+
+        UserGroupDeleteRequest request = new UserGroupDeleteRequest();
+        request.addParams(groupid);
+
+        UserGroupDeleteResponse response = zabbixApi.usergroup().delete(request);
+
+        assertNotNull(response);
+
+        String actualId = response.getResult().getUsrgrpids().get(0);
+
+        assertEquals(groupid, actualId);
     }
 
     @Test
     public void testUpdate1() throws Exception {
 
         DummyAction dummyAction = new DummyAction(zabbixApi);
-        Integer expectedId = dummyAction.create("action update test1");
+        String expectedId = dummyAction.create("action update test1", groupid);
 
         ActionUpdateRequest request = new ActionUpdateRequest();
         ActionUpdateRequest.Params params = request.getParams();
@@ -30,17 +60,17 @@ public class ActionUpdateTest extends ZabbixApiTestBase {
         ActionUpdateResponse response = zabbixApi.action().update(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getActionids().get(0);
+        String actualId = response.getResult().getActionids().get(0);
 
         deleteDummy(actualId);
 
         assertEquals(expectedId, actualId);
     }
 
-    private void deleteDummy(Integer id) throws ZabbixApiException {
+    private void deleteDummy(final String id) throws ZabbixApiException {
 
         ActionDeleteRequest request = new ActionDeleteRequest();
-        request.addActionId(id);
+        request.addActionid(id);
 
         ActionDeleteResponse response = zabbixApi.action().delete(request);
     }

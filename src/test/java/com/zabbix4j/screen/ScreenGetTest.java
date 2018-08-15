@@ -17,12 +17,12 @@ public class ScreenGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet() throws Exception {
         DummyScreen dummyScreen = new DummyScreen(zabbixApi);
-        Integer targetId = dummyScreen.create();
+        String targetId = dummyScreen.create();
 
         try {
             ScreenGetRequest request = new ScreenGetRequest();
             ScreenGetRequest.Params params = request.getParams();
-            params.addScreenId(targetId);
+            params.addScreenid(targetId);
             params.setSelectScreenItems(ZabbixApiParamter.QUERY.extend.name());
 
             ScreenGetResponse response = zabbixApi.screen().get(request);

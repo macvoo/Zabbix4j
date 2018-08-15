@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/06/02.
  */
+@Data
+@Accessors(chain = true)
 public class GraphPrototypeGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -17,24 +19,18 @@ public class GraphPrototypeGetRequest extends ZabbixApiRequest {
         setMethod("graphprototype.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> discoveryids;
-        private List<Integer> graphids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> itemids;
-        private List<Integer> templateids;
+        private List<String> discoveryids;
+        private List<String> graphids;
+        private List<String> groupids;
+        private List<String> hostids;
         private Boolean inherited;
+        private List<String> itemids;
         private Boolean templated;
+        private List<String> templateids;
         private String selectDiscoveryRule;
         private String selectGraphItems;
         private String selectGroups;

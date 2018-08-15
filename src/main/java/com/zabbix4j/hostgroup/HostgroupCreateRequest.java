@@ -25,40 +25,25 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/29.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostgroupCreateRequest() {
         setMethod("hostgroup.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params {
 
         private String name;
-
-        public Params() {
-
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
     }
 }

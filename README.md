@@ -28,8 +28,8 @@ final Integer templateId = 10093;
 
 HostCreateRequest request = new HostCreateRequest();
 HostCreateRequest.Params params = request.getParams();
-params.addTemplateId(templateId);
-params.addGroupId(groupId);
+params.addTemplateid(templateId);
+params.addGroupid(groupId);
 
 // set macro
 List<Macro> macros = new ArrayList<Macro>();

@@ -3,9 +3,8 @@ package com.zabbix4j.item;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiParamter;
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.ArrayList;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -32,12 +31,12 @@ public class ItemDeleteTest extends ZabbixApiTestBase {
 
         assertNotNull(response);
 
-        Integer actualItemid = response.getResult().getItemids().get(0);
+        String actualItemid = response.getResult().getItemids().get(0);
 
         assertEquals(expectedItemid, actualItemid);
     }
 
-    private Integer createItem() throws ZabbixApiException {
+    private String createItem() throws ZabbixApiException {
 
         ItemCreateRequest request = new ItemCreateRequest();
         ItemCreateRequest.Params params = request.getParams();
@@ -47,7 +46,7 @@ public class ItemDeleteTest extends ZabbixApiTestBase {
         params.setKey_("agent.ping");
         params.setValue_type(ZabbixApiParamter.ITEM_VALUE_TYPE.CHARACTOR.value);
         params.setType(0);
-        params.setInterfaceid(6);
+        params.setInterfaceid("6");
 
         ItemCreateResponse response = zabbixApi.item().create(request);
 

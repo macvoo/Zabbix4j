@@ -25,28 +25,31 @@
 package com.zabbix4j.item;
 
 import com.zabbix4j.ZabbixApiRequest;
+import com.zabbix4j.application.ApplicationObject;
+import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/09.
  */
+@Data
+@Accessors(chain = true)
 public class ItemUpdateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ItemUpdateRequest() {
         setMethod("item.update");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends ItemObject {
-        public Params() {
-        }
+        private String itemid;
+        private Integer status;
+        private List<ApplicationObject> applications;
+        private String master_itemid;
+        private String allow_traps;
+
     }
 }

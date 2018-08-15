@@ -4,7 +4,7 @@ import com.zabbix4j.ZabbixApiParamter;
 import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Suguru Yajima
@@ -19,12 +19,12 @@ public class LLDRuleGetTest extends ZabbixApiTestBase {
     public void testGet1() throws Exception {
 
         ZabbixApiTestDummyLLDRule dummyLLDRule = new ZabbixApiTestDummyLLDRule(zabbixApi);
-        Integer targetId = dummyLLDRule.createLLDRule();
+        String targetId = dummyLLDRule.createLLDRule();
         try {
             LLDRuleGetRequest request = new LLDRuleGetRequest();
             LLDRuleGetRequest.Params params = request.getParams();
 
-            params.addItemId(targetId);
+            params.addItemid(targetId);
             params.setSelectItems(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectHostPrototypes(ZabbixApiParamter.QUERY.extend.name());

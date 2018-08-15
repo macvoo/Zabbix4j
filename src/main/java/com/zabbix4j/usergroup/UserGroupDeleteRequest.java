@@ -26,15 +26,15 @@ package com.zabbix4j.usergroup;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
 
 /**
  * Created by Suguru Yajima on 2014/05/14.
  */
+@Data
+@Accessors(chain = true)
 public class UserGroupDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params;
+    private List<String> params;
 
     public UserGroupDeleteRequest() {
         setMethod("usergroup.delete");

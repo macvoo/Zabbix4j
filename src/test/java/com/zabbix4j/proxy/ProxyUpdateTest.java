@@ -19,7 +19,7 @@ public class ProxyUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyProxy dummyProxy = new DummyProxy(zabbixApi);
-        Integer targetId = dummyProxy.createWithoutHost();
+        String targetId = dummyProxy.createWithoutHost();
 
         try {
             ProxyUpdateRequest request = new ProxyUpdateRequest();
@@ -34,7 +34,7 @@ public class ProxyUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getProxyids().get(0);
+            String actualId = response.getResult().getProxyids().get(0);
             assertThat(actualId, is(targetId));
         } finally {
             dummyProxy.delete(targetId);

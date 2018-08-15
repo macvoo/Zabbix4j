@@ -9,28 +9,21 @@ import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.item.ItemObject;
 import com.zabbix4j.trigger.TriggerObject;
 import com.zabbix4j.usermacro.Macro;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class HostGetResponse extends ZabbixApiResponse {
-
     private List<Result> result = new ArrayList<Result>();
 
-    public HostGetResponse() {
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends HostObject {
 
         private List<HostgroupObject> groups;
@@ -54,77 +47,5 @@ public class HostGetResponse extends ZabbixApiResponse {
         //private List<screens> screens;
         private List<DiscoveryRuleObject> discoveryRule;
         private List<HostObject> hostDiscovery;
-
-        public List<HostObject> getHostDiscovery() {
-            return hostDiscovery;
-        }
-
-        public void setHostDiscovery(List<HostObject> hostDiscovery) {
-            this.hostDiscovery = hostDiscovery;
-        }
-
-        public List<DiscoveryRuleObject> getDiscoveryRule() {
-            return discoveryRule;
-        }
-
-        public void setDiscoveryRule(List<DiscoveryRuleObject> discoveryRule) {
-            this.discoveryRule = discoveryRule;
-        }
-
-        public List<HostInterfaceObject> getInterfaces() {
-            return interfaces;
-        }
-
-        public void setInterfaces(List<HostInterfaceObject> interfaces) {
-            this.interfaces = interfaces;
-        }
-
-        public List<Macro> getMacros() {
-            return macros;
-        }
-
-        public void setMacros(List<Macro> macros) {
-            this.macros = macros;
-        }
-
-        public List<ApplicationObject> getApplications() {
-            return applications;
-        }
-
-        public void setApplications(List<ApplicationObject> applications) {
-            this.applications = applications;
-        }
-
-        public List<GraphObject> getGraphs() {
-            return graphs;
-        }
-
-        public void setGraphs(List<GraphObject> graphs) {
-            this.graphs = graphs;
-        }
-
-        public List<TriggerObject> getTriggers() {
-            return triggers;
-        }
-
-        public void setTriggers(List<TriggerObject> triggers) {
-            this.triggers = triggers;
-        }
-
-        public List<ItemObject> getItems() {
-            return items;
-        }
-
-        public void setItems(List<ItemObject> items) {
-            this.items = items;
-        }
-
-        public List<HostgroupObject> getGroups() {
-            return groups;
-        }
-
-        public void setGroups(List<HostgroupObject> groups) {
-            this.groups = groups;
-        }
     }
 }

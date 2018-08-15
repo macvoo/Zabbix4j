@@ -20,12 +20,12 @@ public class ProxyGetTest extends ZabbixApiTestBase {
     public void testGet() throws Exception {
 
         DummyProxy dummyProxy = new DummyProxy(zabbixApi);
-        Integer targetId = dummyProxy.createWithoutHost();
+        String targetId = dummyProxy.createWithoutHost();
 
         try {
             ProxyGetRequest request = new ProxyGetRequest();
             ProxyGetRequest.Params params = request.getParams();
-            params.addProxyId(targetId);
+            params.addProxyid(targetId);
             params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
 
             ProxyGetResponse response = zabbixApi.proxy().get(request);
@@ -35,7 +35,6 @@ public class ProxyGetTest extends ZabbixApiTestBase {
 
             ProxyGetResponse.Result result = response.getResult().get(0);
             assertThat(result.getProxyid(), is(targetId));
-
         } finally {
             dummyProxy.delete(targetId);
         }

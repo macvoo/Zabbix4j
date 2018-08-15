@@ -25,66 +25,26 @@
 package com.zabbix4j.action;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 
 /**
- * The following objects are directly related to the action API.<br>
- * see Zabbix Documentation
- * <a href="https://www.zabbix.com/documentation/2.2/manual/api/reference/action/object">ActionObject</a>
- *
  * @author Suguru Yajima on 2014/05/19.
  */
 @Data
+@Accessors(chain = true)
 public class ActionObject {
-
-    @Accessors(chain = true)
-    @Getter
-    @Setter
-    private Integer actionid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
-    private Integer esc_period;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
+    private String actionid;
+    private String esc_period;
     private Integer evaltype;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer eventsource;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String name;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String def_longdata;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String def_shortdata;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String r_longdata;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String r_shortdata;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
+    private String ack_longdata;
+    private String ack_shortdata;
     private Integer recovery_msg;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer status;
-
-    public ActionObject() {
-        super();
-    }
+    private Integer pause_suppressed;
 }

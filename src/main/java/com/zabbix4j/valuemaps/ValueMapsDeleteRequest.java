@@ -25,28 +25,20 @@
 package com.zabbix4j.valuemaps;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public ValueMapsDeleteRequest() {
         setMethod("valuemap.delete");
     }
-
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
-    }
-
-
 }

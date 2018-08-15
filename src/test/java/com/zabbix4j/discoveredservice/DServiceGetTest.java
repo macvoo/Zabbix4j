@@ -17,8 +17,10 @@ public class DServiceGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
         DServiceGetRequest request = new DServiceGetRequest();
-        DServiceGetRequest.Params params = request.getParams();
-        params.addDHostId(10105);
+        DServiceGetRequest request2 = new DServiceGetRequest();
+        DServiceGetRequest.Params params = request.getParams().addDHostid("142324");
+        DServiceGetRequest.Params params2 = request2.getParams();
+        params.addDHostid("10105");
 
         DServiceGetResponse response = zabbixApi.discoveredService().get(request);
         assertNotNull(response);

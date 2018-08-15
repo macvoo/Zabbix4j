@@ -20,7 +20,7 @@ public class ConfigurationExportTest extends ZabbixApiTestBase {
         ConfigurationExportRequest.Params params = request.getParams();
         params.setFormat(Configuration.FORMAT.XML.value);
         Option option = new Option();
-        option.addHostId(10113);
+        option.addHostid("10113");
         params.setOptions(option);
 
         ConfigurationExportResponse response = zabbixApi.configuration().export(request);
@@ -35,7 +35,7 @@ public class ConfigurationExportTest extends ZabbixApiTestBase {
         ConfigurationExportRequest.Params params = request.getParams();
         params.setFormat(Configuration.FORMAT.JSON.value);
         Option option = new Option();
-        option.addHostId(10113);
+        option.addHostid("10113");
         params.setOptions(option);
 
         ConfigurationExportResponse response = zabbixApi.configuration().export(request);

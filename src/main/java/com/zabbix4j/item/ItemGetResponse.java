@@ -25,31 +25,23 @@
 package com.zabbix4j.item;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class ItemGetResponse extends ZabbixApiResponse {
 
     List<Result> result = new ArrayList<Result>();
 
-    public ItemGetResponse() {
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends ItemObject {
-        public Result() {
-        }
+        //todo
     }
-
 }

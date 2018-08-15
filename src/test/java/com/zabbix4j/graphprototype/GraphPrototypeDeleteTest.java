@@ -6,12 +6,15 @@ import com.zabbix4j.graph.GraphItem;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Suguru Yajima on 2014/06/02.
  */
 public class GraphPrototypeDeleteTest extends ZabbixApiTestBase {
+    private String itemPrototype;
+    private DummyItemPrototype dummyItemPrototype;
 
     public GraphPrototypeDeleteTest() {
         super();
@@ -32,19 +35,19 @@ public class GraphPrototypeDeleteTest extends ZabbixApiTestBase {
         assertThat(targetId, Is.is(actualId));
     }
 
-    private Integer createDummy() throws ZabbixApiException {
+    private String createDummy() throws ZabbixApiException {
 
         GraphPrototypeCreateRequest request = new GraphPrototypeCreateRequest();
         GraphPrototypeCreateRequest.Params params = request.getParams();
         params.setName("Graphprototype delete test");
-        GraphItem gitem  = new GraphItem();
+        GraphItem gitem = new GraphItem();
         gitem.setColor("C80000");
         gitem.setItemid(26832);
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);
 
-        GraphPrototypeCreateResponse response  =zabbixApi.graphPrototype().create(request);
+        GraphPrototypeCreateResponse response = zabbixApi.graphPrototype().create(request);
         assertNotNull(response);
 
         Integer id = response.getResult().getGraphids().get(0);

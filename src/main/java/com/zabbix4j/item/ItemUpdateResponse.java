@@ -25,36 +25,21 @@
 package com.zabbix4j.item;
 
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/09.
  */
+@Data
+@Accessors(chain = true)
 public class ItemUpdateResponse {
     private Result result = new Result();
 
     public ItemUpdateResponse() {
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
     public class Result {
-        private List<Integer> itemids;
-
-        public Result() {
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
+        private List<String> itemids;
     }
 }

@@ -44,7 +44,6 @@ import com.zabbix4j.iconmap.IconMap;
 import com.zabbix4j.image.Image;
 import com.zabbix4j.item.Item;
 import com.zabbix4j.itemprototype.ItemPrototype;
-import com.zabbix4j.itservice.ITService;
 import com.zabbix4j.lldrule.LLDRule;
 import com.zabbix4j.maintenance.Maintenance;
 import com.zabbix4j.map.Map;
@@ -66,7 +65,6 @@ import com.zabbix4j.user.UserLoginResponse;
 import com.zabbix4j.usergroup.UserGroup;
 import com.zabbix4j.webscenario.WebScenario;
 import lombok.Getter;
-
 
 /**
  * Created by Suguru Yajima on 2014/04/25.
@@ -212,11 +210,6 @@ public class ZabbixApi {
         return new ItemPrototype(this.apiUrl, this.auth);
     }
 
-    public ITService itservice() {
-
-        return new ITService(this.apiUrl, this.auth);
-    }
-
     public Maintenance maintenance() {
 
         return new Maintenance(this.apiUrl, this.auth);
@@ -241,7 +234,6 @@ public class ZabbixApi {
 
         return new Problem(apiUrl, auth);
     }
-
 
     public Proxy proxy() {
 

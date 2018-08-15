@@ -25,56 +25,26 @@
 package com.zabbix4j.configuration;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/24.
  */
+@Data
+@Accessors(chain = true)
 public class ConfigurationImportRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ConfigurationImportRequest() {
         setMethod("Configuration.import");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params {
         private String format;
         private String source;
         private Rules rules;
-
-        public Params() {
-        }
-
-        public String getFormat() {
-            return format;
-        }
-
-        public void setFormat(String format) {
-            this.format = format;
-        }
-
-        public String getSource() {
-            return source;
-        }
-
-        public void setSource(String source) {
-            this.source = source;
-        }
-
-        public Rules getRules() {
-            return rules;
-        }
-
-        public void setRules(Rules rules) {
-            this.rules = rules;
-        }
     }
 }

@@ -10,14 +10,14 @@ import static org.junit.Assert.assertNotNull;
  * @author Suguru Yajima
  */
 public class DummyScreenItem extends ZabbixApiTestDummyMethodBase {
-    private final Integer screenId = 24;
-    private final Integer respurceId = 523;
+    private final String screenId = "24";
+    private final String respurceId = "523";
 
     public DummyScreenItem(ZabbixApi zabbixApi) {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
         ScreenItemCreateRequest request = new ScreenItemCreateRequest();
 
         ScreenItemObject obj = new ScreenItemObject();
@@ -32,16 +32,13 @@ public class DummyScreenItem extends ZabbixApiTestDummyMethodBase {
 
         ScreenItemCreateResponse response = zabbixApi.screenItem().create(request);
         assertNotNull(response);
-
-        Integer actualId = response.getResult().getScreenitemids().get(0);
-
-        return actualId;
+        return response.getResult().getScreenitemids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         ScreenItemDeleteRequest request = new ScreenItemDeleteRequest();
-        request.addScreenItemId(targetId);
+        request.addScreenItemid(targetId);
 
         ScreenItemDeleteResponse response = zabbixApi.screenItem().delete(request);
     }

@@ -3,7 +3,6 @@ package com.zabbix4j.maintenance;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,8 +15,8 @@ public class DummyMaintenance extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException, ParseException {
-        final Integer groupId = 23;
+    public String create() throws ZabbixApiException, ParseException {
+        final String groupId = "23";
 
         MaintenanceCreateRequest request = new MaintenanceCreateRequest();
         MaintenanceCreateRequest.Params params = request.getParams();
@@ -28,7 +27,7 @@ public class DummyMaintenance extends ZabbixApiTestDummyMethodBase {
         params.setActive_since(since);
         Long till = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2030/01/01 00:00:00").getTime() / 1000;
         params.setActive_till(till);
-        params.addGroupId(groupId);
+        params.addGroupid(groupId);
         params.setDescription("test.maintenance.create");
 
         TimePeriodObject obj = new TimePeriodObject();
@@ -37,20 +36,17 @@ public class DummyMaintenance extends ZabbixApiTestDummyMethodBase {
         obj.setDayofweek(64);
         obj.setStart_time(64800);
         obj.setPeriod(3600);
-        params.addTimeperiodId(obj);
+        params.addTimeperiodid(obj);
 
         MaintenanceCreateResponse response = zabbixApi.maintenance().create(request);
 
-
-        Integer actualId = response.getResult().getMaintenanceids().get(0);
-
-        return actualId;
+        return response.getResult().getMaintenanceids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         MaintenanceDeleteRequest request = new MaintenanceDeleteRequest();
-        request.addMaintenaceId(targetId);
+        request.addMaintenaceid(targetId);
 
         MaintenanceDeleteResponse response = zabbixApi.maintenance().delete(request);
     }

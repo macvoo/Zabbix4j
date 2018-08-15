@@ -1,7 +1,5 @@
 package com.zabbix4j.application;
 
-import com.zabbix4j.ZabbixApiException;
-import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

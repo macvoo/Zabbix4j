@@ -25,26 +25,20 @@
 package com.zabbix4j.graph;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/31.
  */
+@Data
+@Accessors(chain = true)
 public class GraphDeleteResponse extends ZabbixApiResponse {
-
     private Result result;
 
     public GraphDeleteResponse() {
         super();
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
     }
 
     public class Result {

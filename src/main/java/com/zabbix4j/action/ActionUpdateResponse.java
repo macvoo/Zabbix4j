@@ -25,41 +25,24 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima on 2014/05/20.
  */
+@Data
+@Accessors(chain = true)
 public class ActionUpdateResponse extends ZabbixApiResponse {
-
     private Result result = new Result();
 
     public ActionUpdateResponse() {
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-
-        private List<Integer> actionids;
-
-        public Result() {
-        }
-
-        public List<Integer> getActionids() {
-            return actionids;
-        }
-
-        public void setActionids(List<Integer> actionids) {
-            this.actionids = actionids;
-        }
+        private List<String> actionids;
     }
-
 }

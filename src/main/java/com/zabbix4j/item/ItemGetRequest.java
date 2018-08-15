@@ -25,40 +25,37 @@
 package com.zabbix4j.item;
 
 import com.zabbix4j.GetRequestCommonParams;
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
-
+import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
 import java.util.Map;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class ItemGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ItemGetRequest() {
         setMethod("item.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> itemids;
-        private List<Integer> groupids;
-        private List<Integer> templateids;
-        private List<Integer> hostids;
-        private List<Integer> proxyids;
-        private List<Integer> interfaceids;
-        private List<Integer> graphids;
-        private List<Integer> triggerids;
-        private List<Integer> applicationids;
+        private List<String> itemids;
+        private List<String> groupids;
+        private List<String> templateids;
+        private List<String> hostids;
+        private List<String> proxyids;
+        private List<String> interfaceids;
+        private List<String> graphids;
+        private List<String> triggerIds;
+        private List<String> applicationids;
         private Boolean webitems;
         private Boolean inherited;
         private Boolean templated;
@@ -67,161 +64,14 @@ public class ItemGetRequest extends ZabbixApiRequest {
         private String host;
         private String application;
         private Boolean with_triggers;
-	private Map<String, String> searchKey;
-        
-        public Map<String, String> getSearchKey() {
-		return searchKey;
-	}
+        private Map<String, String> searchKey;
 
-
-	public void setSearchKey(Map<String, String> searchKey) {
-		this.searchKey = searchKey;
-	}
-        public Params() {
-        }
-
-        public void addItemId(Integer id) {
+        public Params addItemid(final String id) {
             itemids = ZbxListUtils.add(itemids, id);
         }
 
         public void addGroupId(Integer id) {
             groupids = ZbxListUtils.add(groupids, id);
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getTemplateids() {
-            return templateids;
-        }
-
-        public void setTemplateids(List<Integer> templateids) {
-            this.templateids = templateids;
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public List<Integer> getProxyids() {
-            return proxyids;
-        }
-
-        public void setProxyids(List<Integer> proxyids) {
-            this.proxyids = proxyids;
-        }
-
-        public List<Integer> getInterfaceids() {
-            return interfaceids;
-        }
-
-        public void setInterfaceids(List<Integer> interfaceids) {
-            this.interfaceids = interfaceids;
-        }
-
-        public List<Integer> getGraphids() {
-            return graphids;
-        }
-
-        public void setGraphids(List<Integer> graphids) {
-            this.graphids = graphids;
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
-
-        public List<Integer> getApplicationids() {
-            return applicationids;
-        }
-
-        public void setApplicationids(List<Integer> applicationids) {
-            this.applicationids = applicationids;
-        }
-
-        public Boolean getWebitems() {
-            return webitems;
-        }
-
-        public void setWebitems(Boolean webitems) {
-            this.webitems = webitems;
-        }
-
-        public Boolean getInherited() {
-            return inherited;
-        }
-
-        public void setInherited(Boolean inherited) {
-            this.inherited = inherited;
-        }
-
-        public Boolean getTemplated() {
-            return templated;
-        }
-
-        public void setTemplated(Boolean templated) {
-            this.templated = templated;
-        }
-
-        public Boolean getMonitored() {
-            return monitored;
-        }
-
-        public void setMonitored(Boolean monitored) {
-            this.monitored = monitored;
-        }
-
-        public String getGroup() {
-            return group;
-        }
-
-        public void setGroup(String group) {
-            this.group = group;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getApplication() {
-            return application;
-        }
-
-        public void setApplication(String application) {
-            this.application = application;
-        }
-
-        public Boolean getWith_triggers() {
-            return with_triggers;
-        }
-
-        public void setWith_triggers(Boolean with_triggers) {
-            this.with_triggers = with_triggers;
         }
 
         public void addTemplateId(Integer id) {

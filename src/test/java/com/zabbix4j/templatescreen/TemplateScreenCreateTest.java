@@ -2,9 +2,8 @@ package com.zabbix4j.templatescreen;
 
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.screenitem.ScreenItemObject;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -12,13 +11,8 @@ import static org.junit.Assert.assertNotNull;
  * @author Suguru Yajima
  */
 public class TemplateScreenCreateTest extends ZabbixApiTestBase {
-
-    private final Integer templateId = 10166;
-    private final Integer resourceId = 495;
-
-    public TemplateScreenCreateTest() {
-        super();
-    }
+    private final String templateId = "10166";
+    private final String resourceId = "495";
 
     @Test
     public void testCreate() throws Exception {
@@ -44,7 +38,7 @@ public class TemplateScreenCreateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getScreenids().get(0);
+        String actualId = response.getResult().getScreenids().get(0);
         assertNotNull(actualId);
     }
 }

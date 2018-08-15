@@ -109,8 +109,8 @@ public class JSONWriter {
      *
      * @return this
      * @throws com.zabbix4j.utils.json.JSONException If the nesting is too deep, or if the object is
-     *                                                      started in the wrong place (for example as a key or after the end of the
-     *                                                      outermost array or object).
+     *                                               started in the wrong place (for example as a key or after the end of the
+     *                                               outermost array or object).
      */
     public JSONWriter array() throws JSONException {
         if (this.mode == 'i' || this.mode == 'o' || this.mode == 'a') {
@@ -133,8 +133,8 @@ public class JSONWriter {
     private JSONWriter end(char mode, char c) throws JSONException {
         if (this.mode != mode) {
             throw new JSONException(mode == 'a'
-                    ? "Misplaced endArray."
-                    : "Misplaced endObject.");
+                                            ? "Misplaced endArray."
+                                            : "Misplaced endObject.");
         }
         this.pop(mode);
         try {
@@ -175,7 +175,7 @@ public class JSONWriter {
      * @param string A key string.
      * @return this
      * @throws com.zabbix4j.utils.json.JSONException If the key is out of place. For example, keys
-     *                                                      do not belong in arrays or if the key is null.
+     *                                               do not belong in arrays or if the key is null.
      */
     public JSONWriter key(String string) throws JSONException {
         if (string == null) {
@@ -199,7 +199,6 @@ public class JSONWriter {
         throw new JSONException("Misplaced key.");
     }
 
-
     /**
      * Begin appending a new object. All keys and values until the balancing
      * <code>endObject</code> will be appended to this object. The
@@ -207,8 +206,8 @@ public class JSONWriter {
      *
      * @return this
      * @throws com.zabbix4j.utils.json.JSONException If the nesting is too deep, or if the object is
-     *                                                      started in the wrong place (for example as a key or after the end of the
-     *                                                      outermost array or object).
+     *                                               started in the wrong place (for example as a key or after the end of the
+     *                                               outermost array or object).
      */
     public JSONWriter object() throws JSONException {
         if (this.mode == 'i') {
@@ -221,9 +220,7 @@ public class JSONWriter {
             return this;
         }
         throw new JSONException("Misplaced object.");
-
     }
-
 
     /**
      * Pop an array or object scope.
@@ -262,7 +259,6 @@ public class JSONWriter {
         this.top += 1;
     }
 
-
     /**
      * Append either the value <code>true</code> or the value
      * <code>false</code>.
@@ -296,7 +292,6 @@ public class JSONWriter {
     public JSONWriter value(long l) throws JSONException {
         return this.append(Long.toString(l));
     }
-
 
     /**
      * Append an object value.

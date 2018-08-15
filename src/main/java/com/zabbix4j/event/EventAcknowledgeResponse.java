@@ -25,40 +25,21 @@
 package com.zabbix4j.event;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/29.
  */
+@Data
+@Accessors(chain = true)
 public class EventAcknowledgeResponse extends ZabbixApiResponse {
     private Result result;
 
-    public EventAcknowledgeResponse() {
-        super();
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-
-        private List<Integer> eventids;
-
-        public Result() {
-        }
-
-        public List<Integer> getEventids() {
-            return eventids;
-        }
-
-        public void setEventids(List<Integer> eventids) {
-            this.eventids = eventids;
-        }
+        private List<String> eventids;
     }
 }

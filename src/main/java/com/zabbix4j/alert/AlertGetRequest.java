@@ -27,12 +27,15 @@ package com.zabbix4j.alert;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/21.
  */
+@Data
+@Accessors(chain = true)
 public class AlertGetRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
@@ -40,14 +43,8 @@ public class AlertGetRequest extends ZabbixApiRequest {
         setMethod("alert.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
         private List<Integer> alertids;
@@ -64,144 +61,44 @@ public class AlertGetRequest extends ZabbixApiRequest {
         private String selectMediatypes;
         private String selectUsers;
 
-        public Params() {
-            super();
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public String getSelectHosts() {
-            return selectHosts;
-        }
-
-        public void setSelectHosts(String selectHosts) {
-            this.selectHosts = selectHosts;
-        }
-
-        public String getSelectMediatypes() {
-            return selectMediatypes;
-        }
-
-        public void setSelectMediatypes(String selectMediatypes) {
-            this.selectMediatypes = selectMediatypes;
-        }
-
-        public String getSelectUsers() {
-            return selectUsers;
-        }
-
-        public void setSelectUsers(String selectUsers) {
-            this.selectUsers = selectUsers;
-        }
-
-        public void addAlertId(Integer id) {
+        public Params addAlertid(final String id) {
             alertids = ZbxListUtils.add(alertids, id);
+            return this;
         }
 
-        public void addActionId(Integer id) {
+        public Params addActionid(final String id) {
             actionids = ZbxListUtils.add(actionids, id);
+            return this;
         }
 
-        public void addEventId(Integer id) {
+        public Params addEventid(final String id) {
             eventids = ZbxListUtils.add(eventids, id);
+            return this;
         }
 
-        public void add(Integer id) {
+        public Params add(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public List<Integer> getAlertids() {
-            return alertids;
-        }
-
-        public void setAlertids(List<Integer> alertids) {
-            this.alertids = alertids;
-        }
-
-        public List<Integer> getActionids() {
-            return actionids;
-        }
-
-        public void setActionids(List<Integer> actionids) {
-            this.actionids = actionids;
-        }
-
-        public List<Integer> getEventids() {
-            return eventids;
-        }
-
-        public void setEventids(List<Integer> eventids) {
-            this.eventids = eventids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getMediatypeids() {
-            return mediatypeids;
-        }
-
-        public void setMediatypeids(List<Integer> mediatypeids) {
-            this.mediatypeids = mediatypeids;
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
-
-        public List<Integer> getUserids() {
-            return userids;
-        }
-
-        public void setUserids(List<Integer> userids) {
-            this.userids = userids;
-        }
-
-        public Long getTime_from() {
-            return time_from;
-        }
-
-        public void setTime_from(Long time_from) {
-            this.time_from = time_from;
-        }
-
-        public Long getTime_till() {
-            return time_till;
-        }
-
-        public void setTime_till(Long time_till) {
-            this.time_till = time_till;
-        }
-
-        public void addMediaTypeId(Integer id) {
+        public Params addMediaTypeid(final String id) {
             mediatypeids = ZbxListUtils.add(mediatypeids, id);
+            return this;
         }
 
-        public void addTriggerId(Integer id) {
-            triggerids = ZbxListUtils.add(triggerids, id);
+        public Params addTriggerid(final String id) {
+            triggerIds = ZbxListUtils.add(triggerIds, id);
+            return this;
         }
 
-        public void addUserId(Integer id) {
+        public Params addUserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
     }
 }

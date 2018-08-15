@@ -25,40 +25,23 @@
 package com.zabbix4j.valuemaps;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsDeleteResponse extends ZabbixApiResponse {
-
     private Result result;
 
     public ValueMapsDeleteResponse() {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
     public class Result {
-        private List<Integer> itemids;
-
-        public Result() {
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
+        private List<String> itemids;
     }
 }

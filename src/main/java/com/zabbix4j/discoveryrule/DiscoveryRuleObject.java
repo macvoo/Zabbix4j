@@ -24,20 +24,17 @@
 
 package com.zabbix4j.discoveryrule;
 
-import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/26.
  */
+@Data
+@Accessors(chain = true)
 public class DiscoveryRuleObject {
 
-    @Accessors(chain = true)
-    @Getter
-    @Setter
-    private Integer druleid;
+    private String druleid;
 
     /**
      * The range of IP addresses for discovery. It may have the following formats:
@@ -49,42 +46,12 @@ public class DiscoveryRuleObject {
      * /112 - /128 for IPv6 addresses
      * List: 192.168.1.1-255,192.168.2.1-100,192.168.2.200,192.168.4.0/24
      */
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String iprange;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String name;
-
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private String delay = "1h";
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Long nextcheck;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer proxy_hostid;
-    @Accessors(chain = true)
-    @Getter
-    @Setter
     private Integer status = STATUS.ENABLED.value;
-
-    public DiscoveryRuleObject() {
-    }
-
-    public Date getNextCheckDate() {
-        if (nextcheck != null && nextcheck != 0) {
-            return new Date(nextcheck);
-        }
-
-        return null;
-    }
 
     public static enum STATUS {
         ENABLED(0), DISABLED(1);

@@ -28,24 +28,20 @@ import com.zabbix4j.ZabbixApiRequest;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/09.
  */
+@Data
+@Accessors(chain = true)
 public class ItemDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params = new ArrayList<Integer>();
 
     public ItemDeleteRequest() {
         setMethod("item.delete");
-    }
-
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
     }
 
 

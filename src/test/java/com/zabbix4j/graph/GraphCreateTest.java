@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by Suguru Yajima on 2014/05/29.
  */
 public class GraphCreateTest extends ZabbixApiTestBase {
+    private String graphid;
 
     public GraphCreateTest() {
         super();

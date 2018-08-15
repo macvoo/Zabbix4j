@@ -18,17 +18,17 @@ public class TriggerProrotypeDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyTriggerPrototype dummyTriggerPrototype = new DummyTriggerPrototype(zabbixApi);
-        Integer targetId = dummyTriggerPrototype.create();
+        String targetId = dummyTriggerPrototype.create();
 
         TriggerPrototypeDeleteRequest request = new TriggerPrototypeDeleteRequest();
-        request.addTirggerPrototypeId(targetId);
+        request.addTirggerPrototypeid(targetId);
 
         TriggerPrototypeDeleteResponse response = zabbixApi.triggerPrototype().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getTriggerids().get(0);
+        String actualId = response.getResult().getTriggerIds().get(0);
 
         assertThat(actualId, Is.is(targetId));
     }

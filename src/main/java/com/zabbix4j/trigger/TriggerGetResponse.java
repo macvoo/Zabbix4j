@@ -25,43 +25,24 @@
 package com.zabbix4j.trigger;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/13.
  */
+@Data
+@Accessors(chain = true)
 public class TriggerGetResponse extends ZabbixApiResponse {
-
     private List<Result> result = new ArrayList<Result>();
 
-    public TriggerGetResponse() {
-        super();
-    }
 
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends TriggerObject {
 
         private List<FunctionObject> functions;
-
-        public Result() {
-            super();
-        }
-
-        public List<FunctionObject> getFunctions() {
-            return functions;
-        }
-
-        public void setFunctions(List<FunctionObject> functions) {
-            this.functions = functions;
-        }
     }
 }

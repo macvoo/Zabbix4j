@@ -19,8 +19,7 @@ public class MapUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyMap dummyMap = new DummyMap(zabbixApi);
-        Integer targetId = dummyMap.create();
-
+        String targetId = dummyMap.create();
 
         try {
             MapUpdateRequest request = new MapUpdateRequest();
@@ -34,9 +33,8 @@ public class MapUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getSysmapids().get(0);
+            String actualId = response.getResult().getSysmapids().get(0);
             assertThat(actualId, is(targetId));
-
         } finally {
             dummyMap.delete(targetId);
         }

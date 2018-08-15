@@ -24,66 +24,42 @@
 
 package com.zabbix4j.trigger;
 
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
-
+import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/10.
  */
+@Data
+@Accessors(chain = true)
 public class TriggerCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public TriggerCreateRequest() {
         setMethod("trigger.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends TriggerObject {
 
         private List<Dependencies> dependencieses;
 
-        public Params() {
-        }
-
-        public List<Dependencies> getDependencieses() {
-            return dependencieses;
-        }
-
-        public void setDependencieses(List<Dependencies> dependencieses) {
-            this.dependencieses = dependencieses;
-        }
-
-        public void addDependencies(Integer triggerId) {
-
-            dependencieses = ZbxListUtils.add(dependencieses, new Dependencies(triggerId));
+        public Params addDependencies(String id) {
+            dependencieses = ZbxListUtils.add(dependencieses, new Dependencies(id));
+            return this;
         }
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Dependencies {
-        private Integer triggerid;
+        private String triggerid;
 
-        public Dependencies() {
-        }
-
-        public Dependencies(Integer triggerid) {
-            this.triggerid = triggerid;
-        }
-
-        public Integer getTriggerid() {
-            return triggerid;
-        }
-
-        public void setTriggerid(Integer triggerid) {
+        public Dependencies(String triggerid) {
             this.triggerid = triggerid;
         }
     }

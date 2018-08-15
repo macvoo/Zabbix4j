@@ -1,11 +1,16 @@
 package com.zabbix4j.graphprototype;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/06/01.
  */
+@Data
+@Accessors(chain = true)
 public class GraphPrototypeObject {
 
-    private Integer graphid;
+    private String graphid;
     private Integer height;
     private String name;
     private Integer width;
@@ -15,7 +20,7 @@ public class GraphPrototypeObject {
     private Integer show_3d = SHOW_3D.SHOW_IN_2D.value;
     private Integer show_legend = SHOW_LEGEND.SHOW.value;
     private Integer show_work_period = WORK_PERIOD.SHOW.value;
-    private Integer templateid;
+    private String templateid;
     private Float yaxismax;
     private Float yaxismin;
 

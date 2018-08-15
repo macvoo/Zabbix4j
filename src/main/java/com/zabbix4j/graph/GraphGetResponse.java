@@ -25,26 +25,17 @@
 package com.zabbix4j.graph;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/31.
  */
+@Data
+@Accessors(chain = true)
 public class GraphGetResponse extends ZabbixApiResponse {
-
 
     private List<GraphObject> result;
 
-    public GraphGetResponse() {
-        super();
-    }
-
-    public List<GraphObject> getResult() {
-        return result;
-    }
-
-    public void setResult(List<GraphObject> result) {
-        this.result = result;
-    }
 }

@@ -21,7 +21,5 @@ public class TemplateScreenItemGetTest extends ZabbixApiTestBase {
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
-
-
     }
 }

@@ -18,18 +18,14 @@ public class HostPrototypeDeleteTest extends ZabbixApiTestBase {
     public void testDelete1() throws Exception {
 
         ZabbixApiTestDummyHostPrototype dummy = new ZabbixApiTestDummyHostPrototype(zabbixApi);
-        try {
-            Integer targetId = dummy.createHost();
+        String targetId = dummy.createHost();
 
-            HostPrototypeDeleteRequest request = new HostPrototypeDeleteRequest();
-            request.addHostId(targetId);
+        HostPrototypeDeleteRequest request = new HostPrototypeDeleteRequest();
+        request.addHostid(targetId);
 
-            HostPrototypeDeleteResponse response = zabbixApi.hostPrototype().delete(request);
-            assertNotNull(response);
+        HostPrototypeDeleteResponse response = zabbixApi.hostPrototype().delete(request);
+        assertNotNull(response);
 
-            logger.debug(getGson().toJson(response));
-        } finally {
-
-        }
+        logger.debug(getGson().toJson(response));
     }
 }

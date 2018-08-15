@@ -19,11 +19,11 @@ public class DRuleGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer targetId = createDummy();
+        String targetId = createDummy();
 
         DRuleGetRequest request = new DRuleGetRequest();
         DRuleGetRequest.Params params = request.getParams();
-        params.addDRuleId(targetId);
+        params.addDRuleid(targetId);
 
         DRuleGetResponse response = zabbixApi.discoveryRule().get(request);
         assertNotNull(response);
@@ -37,7 +37,7 @@ public class DRuleGetTest extends ZabbixApiTestBase {
         assertEquals("127.0.0.1", ruleObject.getIprange());
     }
 
-    private Integer createDummy() throws ZabbixApiException {
+    private String createDummy() throws ZabbixApiException {
 
         DRuleCreateRequest request = new DRuleCreateRequest();
         DRuleCreateRequest.Params params = request.getParams();
@@ -56,10 +56,10 @@ public class DRuleGetTest extends ZabbixApiTestBase {
         return response.getResult().getDruleids().get(0);
     }
 
-    private void deleteDummy(Integer id) throws ZabbixApiException {
+    private void deleteDummy(final String id) throws ZabbixApiException {
 
         DRuleDeleteRequest request = new DRuleDeleteRequest();
-        request.addDRuleId(id);
+        request.addDRuleid(id);
 
         DRuleDeleteResponse response = zabbixApi.discoveryRule().delete(request);
     }

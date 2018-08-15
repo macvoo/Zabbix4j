@@ -28,55 +28,32 @@ import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/27.
  */
+@Data
+@Accessors(chain = true)
 public class DRuleGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public DRuleGetRequest() {
         setMethod("drule.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> dhostids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> druleids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> dserviceids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
+        private List<String> dhostids;
+        private List<String> druleids;
+        private List<String> dserviceids;
         private String selectDChecks;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
         private String selectDHosts;
 
-        public Params() {
-        }
-
-        public void addDHostId(Integer id) {
+        public Params addDHostid(final String id) {
             dhostids = ZbxListUtils.add(dhostids, id);
         }
 

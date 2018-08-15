@@ -1,11 +1,8 @@
 package com.zabbix4j.application;
 
-import com.zabbix4j.ZabbixApiException;
-import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -27,10 +24,10 @@ public class ApplicationGetTest extends ApplicationTestBase {
         ids.add(createDummy("Application get delete"));
         ids.add(createDummy("Application get delete2"));
 
-        Integer hostId = 10084;
+        String hostId = "10084";
         ApplicationGetRequest request = new ApplicationGetRequest();
         ApplicationGetRequest.Params params = request.getParams();
-        params.addHostId(hostId);
+        params.addHostid(hostId);
 
         ApplicationGetResponse response = zabbixApi.application().get(request);
         assertNotNull(response);

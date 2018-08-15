@@ -25,101 +25,23 @@
 package com.zabbix4j.item;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/07.
  */
+@Data
+@Accessors(chain = true)
 public class ItemCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ItemCreateRequest() {
         setMethod("item.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends ItemObject {
-
-        public Params() {
-            super();
-        }
     }
-
-    /*
-    public class Params {
-        private String name;
-        private String key_;
-        private Integer hostid;
-        private Integer value_type;
-        private Integer interfaceid;
-        private List<Integer> applications;
-        private Integer delay;
-
-        public Params() {
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getKey_() {
-            return key_;
-        }
-
-        public void setKey_(String key_) {
-            this.key_ = key_;
-        }
-
-        public Integer getHostid() {
-            return hostid;
-        }
-
-        public void setHostid(Integer hostid) {
-            this.hostid = hostid;
-        }
-
-        public Integer getValue_type() {
-            return value_type;
-        }
-
-        public void setValue_type(Integer value_type) {
-            this.value_type = value_type;
-        }
-
-        public Integer getInterfaceid() {
-            return interfaceid;
-        }
-
-        public void setInterfaceid(Integer interfaceid) {
-            this.interfaceid = interfaceid;
-        }
-
-        public List<Integer> getApplications() {
-            return applications;
-        }
-
-        public void setApplications(List<Integer> applications) {
-            this.applications = applications;
-        }
-
-        public Integer getDelay() {
-            return delay;
-        }
-
-        public void setDelay(Integer delay) {
-            this.delay = delay;
-        }
-    }
-    */
 }

@@ -16,11 +16,11 @@ public class TriggerPrototypeGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet() throws Exception {
-        final Integer targetId = 13545;
+        final String targetId = "13545";
 
         TriggerPrototypeGetRequest request = new TriggerPrototypeGetRequest();
         TriggerPrototypeGetRequest.Params params = request.getParams();
-        params.addTriggerId(targetId);
+        params.addTriggerid(targetId);
         params.setSelectGroups(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());
@@ -31,7 +31,5 @@ public class TriggerPrototypeGetTest extends ZabbixApiTestBase {
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
-
-
     }
 }

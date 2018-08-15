@@ -176,11 +176,11 @@ public class JSONArray {
     public boolean getBoolean(int index) throws JSONException {
         Object object = this.get(index);
         if (object.equals(Boolean.FALSE)
-                || (object instanceof String && ((String) object)
+            || (object instanceof String && ((String) object)
                 .equalsIgnoreCase("false"))) {
             return false;
         } else if (object.equals(Boolean.TRUE)
-                || (object instanceof String && ((String) object)
+                   || (object instanceof String && ((String) object)
                 .equalsIgnoreCase("true"))) {
             return true;
         }
@@ -845,7 +845,7 @@ public class JSONArray {
 
             if (length == 1) {
                 JSONObject.writeValue(writer, this.myArrayList.get(0),
-                        indentFactor, indent);
+                                      indentFactor, indent);
             } else if (length != 0) {
                 final int newindent = indent + indentFactor;
 
@@ -858,7 +858,7 @@ public class JSONArray {
                     }
                     JSONObject.indent(writer, newindent);
                     JSONObject.writeValue(writer, this.myArrayList.get(i),
-                            indentFactor, newindent);
+                                          indentFactor, newindent);
                     commanate = true;
                 }
                 if (indentFactor > 0) {

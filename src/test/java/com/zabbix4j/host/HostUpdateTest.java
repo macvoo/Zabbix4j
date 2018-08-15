@@ -2,11 +2,12 @@ package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.usermacro.Macro;
+import java.util.ArrayList;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Suguru Yajima on 2014/05/01.
@@ -29,9 +30,9 @@ public class HostUpdateTest extends ZabbixApiTestBase {
             params.setHost("192.168.100.100");
             params.setName("test host update1");
 
-            params.setGroup(2);
+            params.addGroup(2);
 
-            params.setUnLinkTemplate(10093);
+            params.addTemplatesClear("10093");
 
             ArrayList<Integer> templates = new ArrayList<Integer>();
             templates.add(10093);
@@ -40,7 +41,7 @@ public class HostUpdateTest extends ZabbixApiTestBase {
             Macro macro = new Macro();
             macro.setMacro("{$MACRO2}");
             macro.setValue("VALUE2");
-            params.setMacro(macro);
+            params.addMacro(macro);
 
             HostUpdateResponse response = zabbixApi.host().update(request);
 

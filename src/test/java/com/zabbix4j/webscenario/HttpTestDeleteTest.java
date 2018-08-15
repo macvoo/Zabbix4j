@@ -18,15 +18,15 @@ public class HttpTestDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyWebScenario dummyWebScenario = new DummyWebScenario(zabbixApi);
-        Integer targetId = dummyWebScenario.create();
+        String targetId = dummyWebScenario.create();
 
         HttpTestDeleteRequest request = new HttpTestDeleteRequest();
-        request.addHttpTestId(targetId);
+        request.addHttpTestid(targetId);
 
         HttpTestDeleteResponse response = zabbixApi.webscenario().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getHttptestids().get(0);
+        String actualId = response.getResult().getHttptestids().get(0).toString();
         assertThat(actualId, Is.is(targetId));
     }
 }

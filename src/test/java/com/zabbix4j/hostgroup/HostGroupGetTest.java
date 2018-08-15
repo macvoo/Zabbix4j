@@ -21,7 +21,7 @@ public class HostGroupGetTest extends ZabbixApiTestBase {
         HostgroupGetRequest request = new HostgroupGetRequest();
         HostgroupGetRequest.Params params = request.getParams();
         params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
-        params.addHostId(10105);
+        params.addHostid("10105");
 
         HostgroupGetResponse response = zabbixApi.hostgroup().get(request);
         assertNotNull(response);

@@ -1,10 +1,8 @@
 package com.zabbix4j.screen;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.hamcrest.core.Is;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
@@ -22,7 +20,7 @@ public class ScreenUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyScreen dummyScreen = new DummyScreen(zabbixApi);
-        Integer targetId = dummyScreen.create();
+        String targetId = dummyScreen.create();
 
         try {
             ScreenUpdateRequest request = new ScreenUpdateRequest();
@@ -33,11 +31,10 @@ public class ScreenUpdateTest extends ZabbixApiTestBase {
             ScreenUpdateResponse response = zabbixApi.screen().update(request);
             assertNotNull(response);
 
-            Integer actualId = response.getResult().getScreenids().get(0);
+            String actualId = response.getResult().getScreenids().get(0);
             assertThat(actualId, is(targetId));
         } finally {
             dummyScreen.delete(targetId);
         }
-
     }
 }

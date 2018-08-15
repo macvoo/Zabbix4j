@@ -24,95 +24,24 @@
 
 package com.zabbix4j.graphitem;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/06/01.
  */
+@Data
+@Accessors(chain = true)
 public class GraphItemObject {
-
-    private Integer gitemid;
+    private String gitemid;
     private String color;
-    private Integer itemid;
+    private String itemid;
     private Integer calc_fnc = CALC_FUNC.AVALAGE_VALUE.value;
     private Integer drawtype = DRAW_STYLE.LINE.value;
-    private Integer graphid;
+    private String graphid;
     private Integer sortorder = 0;
     private Integer type;
     private Integer yaxisside = Y_AXIS_SIDE.LEFT_SIDE.value;
-
-    public GraphItemObject() {
-    }
-
-    public Integer getYaxisside() {
-        return yaxisside;
-    }
-
-    public void setYaxisside(Integer yaxisside) {
-        this.yaxisside = yaxisside;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getSortorder() {
-        return sortorder;
-    }
-
-    public void setSortorder(Integer sortorder) {
-        this.sortorder = sortorder;
-    }
-
-    public Integer getGraphid() {
-        return graphid;
-    }
-
-    public void setGraphid(Integer graphid) {
-        this.graphid = graphid;
-    }
-
-    public Integer getGitemid() {
-        return gitemid;
-    }
-
-    public void setGitemid(Integer gitemid) {
-        this.gitemid = gitemid;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public Integer getItemid() {
-        return itemid;
-    }
-
-    public void setItemid(Integer itemid) {
-        this.itemid = itemid;
-    }
-
-    public Integer getCalc_fnc() {
-        return calc_fnc;
-    }
-
-    public void setCalc_fnc(Integer calc_fnc) {
-        this.calc_fnc = calc_fnc;
-    }
-
-    public Integer getDrawtype() {
-        return drawtype;
-    }
-
-    public void setDrawtype(Integer drawtype) {
-        this.drawtype = drawtype;
-    }
 
     public static enum CALC_FUNC {
         MINIMUM_VALUE(0), AVALAGE_VALUE(1), MAXIMUM_VALUE(2), LAST_VALUE(3);

@@ -19,11 +19,11 @@ public class ScriptGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet() throws Exception {
 
-        final Integer targetId = 7;
+        final String targetId = "7";
 
         ScriptGetRequest request = new ScriptGetRequest();
         ScriptGetRequest.Params params = request.getParams();
-        params.addScriptId(targetId);
+        params.addScriptid(targetId);
         params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectGroups(ZabbixApiParamter.QUERY.extend.name());
 

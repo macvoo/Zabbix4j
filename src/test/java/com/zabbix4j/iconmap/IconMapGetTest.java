@@ -18,7 +18,7 @@ public class IconMapGetTest extends ZabbixApiTestBase {
     public void testGet1() throws Exception {
         IconMapGetRequest request = new IconMapGetRequest();
         IconMapGetRequest.Params params = request.getParams();
-        params.addIconMapId(1);
+        params.addIconMapid("1");
 
         params.setSelectMappings(ZabbixApiParamter.QUERY.extend.name());
 

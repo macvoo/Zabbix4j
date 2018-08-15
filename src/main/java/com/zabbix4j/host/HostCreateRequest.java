@@ -27,99 +27,55 @@ package com.zabbix4j.host;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.hostgroup.HostgroupObject;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
+import com.zabbix4j.template.TemplateObject;
 import com.zabbix4j.usermacro.Macro;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/30.
  */
+@Data
+@Accessors(chain = true)
 public class HostCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostCreateRequest() {
         setMethod("host.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends HostObject {
 
         private List<HostgroupObject> groups;
         private List<HostInterfaceObject> interfaces;
-        private List<Integer> templates;
+        private List<TemplateObject> templates;
         private List<Macro> macros;
+        private Integer inventory_mode;
+        private List<Object> inventory;
 
-        public Params() {
-        }
-
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             HostgroupObject obj = new HostgroupObject();
             obj.setGroupid(id);
             groups = ZbxListUtils.add(groups, obj);
+            return this;
         }
 
-        public void addHostInterfaceObject(HostInterfaceObject obj) {
-            interfaces = ZbxListUtils.add(interfaces, obj);
+        public Params addHostInterfaceObject(HostInterfaceObject id) {
+            interfaces = ZbxListUtils.add(interfaces, id);
+            return this;
         }
 
-        public void addTemplateId(Integer id) {
+        public Params addTemplate(final TemplateObject id) {
             templates = ZbxListUtils.add(templates, id);
         }
 
-        public void addMacro(Macro macro) {
-            macros = ZbxListUtils.add(macros, macro);
-        }
-
-        public List<HostInterfaceObject> getInterfaces() {
-            return interfaces;
-        }
-
-        public void setInterfaces(List<HostInterfaceObject> interfaces) {
-            this.interfaces = interfaces;
-        }
-
-        public List<Integer> getTemplates() {
-            return templates;
-        }
-
-        public void setTemplates(List<Integer> templates) {
-            this.templates = templates;
-        }
-
-        public List<Macro> getMacros() {
-            return macros;
-        }
-
-        public void setMacros(List<Macro> macros) {
-            this.macros = macros;
-        }
-
-        /**
-         * Gets groups.
-         *
-         * @return Value of groups.
-         */
-        public List<HostgroupObject> getGroups() {
-            return groups;
-        }
-
-        /**
-         * Sets new groups.
-         *
-         * @param groups New value of groups.
-         */
-        public void setGroups(List<HostgroupObject> groups) {
-            this.groups = groups;
+        public Params addMacro(Macro id) {
+            macros = ZbxListUtils.add(macros, id);
+            return this;
         }
     }
-
 }

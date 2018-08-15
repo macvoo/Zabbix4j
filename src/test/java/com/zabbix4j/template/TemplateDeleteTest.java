@@ -18,18 +18,17 @@ public class TemplateDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyTemplate dummyTemplate = new DummyTemplate(zabbixApi);
-        Integer targetId = dummyTemplate.create();
+        String targetId = dummyTemplate.create();
 
         TemplateDeleteRequest request = new TemplateDeleteRequest();
-        request.addTemplateId(targetId);
+        request.addTemplateid(targetId);
 
         TemplateDeleteResponse response = zabbixApi.template().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getTemplateids().get(0);
+        String actualId = response.getResult().getTemplateids().get(0);
         assertThat(actualId, Is.is(targetId));
-
     }
 }

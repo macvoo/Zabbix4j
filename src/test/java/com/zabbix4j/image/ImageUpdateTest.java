@@ -1,14 +1,11 @@
 package com.zabbix4j.image;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import junit.framework.TestCase;
-import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-
 
 /**
  * @author Suguru Yajima
@@ -23,7 +20,7 @@ public class ImageUpdateTest extends ZabbixApiTestBase {
 
         DummyImage dummyImage = new DummyImage(zabbixApi);
 
-        Integer targetId = dummyImage.create();
+        String targetId = dummyImage.create();
 
         ImageUpdateRequest request = new ImageUpdateRequest();
         ImageUpdateRequest.Params params = request.getParams();
@@ -42,7 +39,7 @@ public class ImageUpdateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getImageids().get(0);
+        String actualId = response.getResult().getImageids().get(0);
         assertThat(targetId, is(actualId));
     }
 }

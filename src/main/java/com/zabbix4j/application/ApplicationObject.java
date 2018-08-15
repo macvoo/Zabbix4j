@@ -24,47 +24,17 @@
 
 package com.zabbix4j.application;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/05/22.
  */
+@Data
+@Accessors(chain = true)
 public class ApplicationObject {
-    private Integer applicationid;
-    private Integer hostid;
+    private String applicationid;
+    private String hostid;
     private String name;
-    private Integer templateid;
-
-    public ApplicationObject() {
-    }
-
-    public Integer getApplicationid() {
-        return applicationid;
-    }
-
-    public void setApplicationid(Integer applicationid) {
-        this.applicationid = applicationid;
-    }
-
-    public Integer getHostid() {
-        return hostid;
-    }
-
-    public void setHostid(Integer hostid) {
-        this.hostid = hostid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getTemplateid() {
-        return templateid;
-    }
-
-    public void setTemplateid(Integer templateid) {
-        this.templateid = templateid;
-    }
+    private String templateid;
 }

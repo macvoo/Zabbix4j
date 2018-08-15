@@ -2,9 +2,8 @@ package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiParamter;
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.ArrayList;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

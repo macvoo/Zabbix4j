@@ -24,48 +24,17 @@
 
 package com.zabbix4j.discoveryrule;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/05/26.
  */
+@Data
+@Accessors(chain = true)
 public class DCheck {
-
     private Integer type;
     private String key_;
     private Integer ports;
     private Integer uniq;
-
-    public DCheck() {
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getKey_() {
-        return key_;
-    }
-
-    public void setKey_(String key_) {
-        this.key_ = key_;
-    }
-
-    public Integer getPorts() {
-        return ports;
-    }
-
-    public void setPorts(Integer ports) {
-        this.ports = ports;
-    }
-
-    public Integer getUniq() {
-        return uniq;
-    }
-
-    public void setUniq(Integer uniq) {
-        this.uniq = uniq;
-    }
 }

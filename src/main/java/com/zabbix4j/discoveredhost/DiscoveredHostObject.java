@@ -24,78 +24,20 @@
 
 package com.zabbix4j.discoveredhost;
 
-import java.util.Date;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/25.
  */
+@Data
+@Accessors(chain = true)
 public class DiscoveredHostObject {
-
-    private Integer dhostid;
-    private Integer druleid;
+    private String dhostid;
+    private String druleid;
     private Long lastdown;
     private Long lastup;
     private Integer status;
-
-    public DiscoveredHostObject() {
-    }
-
-    public Date getLastDownDate() {
-        if (lastdown != null && lastdown != 0) {
-            return new Date(lastdown);
-        }
-
-        return null;
-    }
-
-    public Integer getDhostid() {
-        return dhostid;
-    }
-
-    public void setDhostid(Integer dhostid) {
-        this.dhostid = dhostid;
-    }
-
-    public Integer getDruleid() {
-        return druleid;
-    }
-
-    public void setDruleid(Integer druleid) {
-        this.druleid = druleid;
-    }
-
-    public Long getLastdown() {
-        return lastdown;
-    }
-
-    public void setLastdown(Long lastdown) {
-        this.lastdown = lastdown;
-    }
-
-    public Long getLastup() {
-        return lastup;
-    }
-
-    public void setLastup(Long lastup) {
-        this.lastup = lastup;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Date getLastUpDate() {
-        if (lastup != null && lastup != 0) {
-            return new Date(lastup);
-        }
-
-        return null;
-
-    }
 
     public static enum STAUS {
 

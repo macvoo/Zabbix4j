@@ -26,16 +26,16 @@ public class TriggerCreateTest extends ZabbixApiTestBase {
         TriggerCreateResponse response = zabbixApi.trigger().create(request);
 
         assertNotNull(response);
-        Integer triggerId = response.getResult().getTriggerids().get(0);
+        String triggerId = response.getResult().getTriggerIds().get(0);
         assertNotNull(triggerId);
 
         deleteTestTrigger(triggerId);
     }
 
-    private void deleteTestTrigger(Integer triggerid) throws ZabbixApiException {
+    private void deleteTestTrigger(String triggerId) throws ZabbixApiException {
 
         TriggerDeleteRequest request = new TriggerDeleteRequest();
-        request.getParams().add(triggerid);
+        request.getParams().add(triggerId);
 
         TriggerDeleteResponse response = zabbixApi.trigger().delete(request);
     }

@@ -1,7 +1,6 @@
 package com.zabbix4j.templatescreen;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
 import java.util.List;
 

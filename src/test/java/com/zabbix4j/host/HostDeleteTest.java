@@ -2,13 +2,15 @@ package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
+import com.zabbix4j.template.TemplateObject;
 import com.zabbix4j.usermacro.Macro;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
@@ -25,7 +27,7 @@ public class HostDeleteTest extends ZabbixApiTestBase {
         int hostId = createDummyHost();
 
         HostDeleteRequest request = new HostDeleteRequest();
-        request.addHostId(hostId);
+        request.addHostid(hostId);
 
         HostDeleteResponse response = zabbixApi.host().delete(request);
 
@@ -34,13 +36,13 @@ public class HostDeleteTest extends ZabbixApiTestBase {
         assertEquals(hostId, deletedId);
     }
 
-    private int createDummyHost() throws Exception {
+    private String createDummyHost() throws Exception {
 
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();
 
-        List<Integer> templates = new ArrayList<Integer>();
-        templates.add(10093);
+        List<TemplateObject> templates = new ArrayList<TemplateObject>();
+        templates.add(new TemplateObject().setTemplateid("10093"));
         params.setTemplates(templates);
 
         params.addGroupId(12);

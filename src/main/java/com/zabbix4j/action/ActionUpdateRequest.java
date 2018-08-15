@@ -25,29 +25,31 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
+import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima on 2014/05/20.
  */
+@Data
+@Accessors(chain = true)
 public class ActionUpdateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ActionUpdateRequest() {
         setMethod("action.update");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends ActionObject {
-        public Params() {
-            super();
-        }
+        private String actionid;
+        private List<ActionFilterCondition> filter;
+        private List<ActionOperation> operations;
+
+        //todo add object
+        private List<Object> recovery_operations;
+        private List<Object> acknowledge_operations;
     }
 }

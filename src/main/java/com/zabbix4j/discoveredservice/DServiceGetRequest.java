@@ -28,8 +28,7 @@ import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
@@ -81,10 +80,7 @@ public class DServiceGetRequest extends ZabbixApiRequest {
         @Setter
         private String selectHosts;
 
-        public Params() {
-        }
-
-        public void addDServiceId(Integer id) {
+        public Params addDServiceid(final String id) {
             dserviceids = ZbxListUtils.add(dserviceids, id);
         }
 

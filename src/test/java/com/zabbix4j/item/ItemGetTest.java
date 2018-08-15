@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -23,7 +23,7 @@ public class ItemGetTest extends ZabbixApiTestBase {
 
         ItemGetRequest request = new ItemGetRequest();
         ItemGetRequest.Params params = request.getParams();
-        params.addItemId(itemId);
+        params.addItemid(itemId);
 
         ItemGetResponse response = zabbixApi.item().get(request);
 

@@ -19,18 +19,18 @@ public class TemplateScreenDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyTemplateScreen dummyTemplateScreen = new DummyTemplateScreen(zabbixApi);
-        Integer targetID = dummyTemplateScreen.create();
+        String targetId = dummyTemplateScreen.create();
 
         TemplateScreenDeleteRequest request = new TemplateScreenDeleteRequest();
-        request.addTemplateScreenId(targetID);
+        request.addTemplateScreenid(targetId);
 
         TemplateScreenDeleteResponse response = zabbixApi.templateScreen().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer actuald = response.getResult().getScreenids().get(0);
+        String actuald = response.getResult().getScreenids().get(0);
 
-        assertThat(actuald, Is.is(targetID));
+        assertThat(actuald, Is.is(targetId));
     }
 }

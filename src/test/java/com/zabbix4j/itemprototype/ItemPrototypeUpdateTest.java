@@ -20,21 +20,21 @@ public class ItemPrototypeUpdateTest extends ZabbixApiTestBase {
     public void testUpdate1() throws Exception {
 
         DummyItemPrototype dummyItemPrototype = new DummyItemPrototype(zabbixApi);
-        Integer targetId = dummyItemPrototype.createItemPrototype();
+        String targetId = dummyItemPrototype.createItemPrototype();
 
         try {
             ItemPrototypeUpdateRequest request = new ItemPrototypeUpdateRequest();
             ItemPrototypeUpdateRequest.Params params = request.getParams();
             params.setItemid(targetId);
             params.setName("item update");
-            params.setDelay(90);
+            params.setDelay("90s");
 
             ItemPrototypeUpdateResponse response = zabbixApi.itemPrototype().update(request);
             assertNotNull(response);
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getItemids().get(0);
+            String actualId = response.getResult().getItemids().get(0);
             assertThat(targetId, is(actualId));
         } finally {
             dummyItemPrototype.delete(targetId);

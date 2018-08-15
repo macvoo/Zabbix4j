@@ -9,9 +9,24 @@ import static org.junit.Assert.assertNotNull;
  * @author Suguru Yajima
  */
 public class IconMapCreateTest extends ZabbixApiTestBase {
+    private String createdid;
 
     public IconMapCreateTest() {
         super();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        IconMapDeleteRequest request = new IconMapDeleteRequest();
+        request.addIconMapid(createdid);
+
+        IconMapDeleteResponse response = zabbixApi.iconMap().delete(request);
+        assertNotNull(response);
+
+        logger.debug(getGson().toJson(response));
+
+        String actualId = response.getResult().getIconmapids().get(0);
+        assertThat(createdid, Is.is(actualId));
     }
 
     @Test
@@ -25,7 +40,7 @@ public class IconMapCreateTest extends ZabbixApiTestBase {
         IconMappingObject obj = new IconMappingObject();
         obj.setInventory_link(1);
         obj.setExpression("server");
-        obj.setIconid(3);
+        obj.setIconid("3");
 
         params.addMapping(obj);
 
@@ -34,7 +49,7 @@ public class IconMapCreateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer createdId = response.getResult().getIconmapids().get(0);
-        assertNotNull(createdId);
+        createdid = response.getResult().getIconmapids().get(0);
+        assertNotNull(createdid);
     }
 }

@@ -25,16 +25,20 @@
 package com.zabbix4j.item;
 
 import com.zabbix4j.ZabbixApiParamter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class ItemObject {
 
-    private Integer itemid;
-    private Integer delay = ZabbixApiParamter.ITEM_DELAY_DEFAULT;
-    private Integer hostid;
-    private Integer interfaceid;
+    private String itemid;
+    private String delay = ZabbixApiParamter.ITEM_DELAY_DEFAULT;
+    private String hostid;
+    private String interfaceid;
     private String key_;
     private String name;
     private Integer type;

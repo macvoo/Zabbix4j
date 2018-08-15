@@ -26,12 +26,15 @@ package com.zabbix4j.graph;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/29.
  */
+@Data
+@Accessors(chain = true)
 public class GraphCreateRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
@@ -39,32 +42,14 @@ public class GraphCreateRequest extends ZabbixApiRequest {
         setMethod("graph.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GraphObject {
         private List<GraphItem> gitems;
 
-        public Params() {
-            super();
-        }
-
-        public List<GraphItem> getGitems() {
-            return gitems;
-        }
-
-        public void setGitems(List<GraphItem> gitems) {
-            this.gitems = gitems;
-        }
-
-        public void addGraphItem(GraphItem id) {
+        public Params addGraphItem(GraphItem id) {
             gitems = ZbxListUtils.add(gitems, id);
-
+            return this;
         }
     }
 }

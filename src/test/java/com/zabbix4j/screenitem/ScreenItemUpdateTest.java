@@ -19,7 +19,7 @@ public class ScreenItemUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyScreenItem dummyScreenItem = new DummyScreenItem(zabbixApi);
-        Integer targetId = dummyScreenItem.create();
+        String targetId = dummyScreenItem.create();
 
         try {
             ScreenItemUpdateRequest request = new ScreenItemUpdateRequest();
@@ -32,11 +32,10 @@ public class ScreenItemUpdateTest extends ZabbixApiTestBase {
             ScreenItemUpdateResponse response = zabbixApi.screenItem().update(request);
             assertNotNull(response);
 
-            Integer actualId = response.getResult().getScreenitemids().get(0);
+            String actualId = response.getResult().getScreenitemids().get(0);
             assertThat(actualId, is(targetId));
         } finally {
             dummyScreenItem.delete(targetId);
         }
-
     }
 }

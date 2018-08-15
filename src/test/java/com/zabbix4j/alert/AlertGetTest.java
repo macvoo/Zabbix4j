@@ -19,7 +19,7 @@ public class AlertGetTest extends ZabbixApiTestBase {
 
         AlertGetRequest request = new AlertGetRequest();
         AlertGetRequest.Params params = request.getParams();
-        params.addHostId(10112);
+        params.addHostid("10112");
 
         AlertGetResponse response = zabbixApi.alert().get(request);
         assertNotNull(response);

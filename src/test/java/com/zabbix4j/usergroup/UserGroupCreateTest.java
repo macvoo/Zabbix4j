@@ -18,13 +18,13 @@ public class UserGroupCreateTest extends ZabbixApiTestBase {
         UserGroupCreateRequest request = new UserGroupCreateRequest();
         UserGroupCreateRequest.Params params = request.getParams();
         params.setName("usergroup create test");
-        params.addUserId(1);
+        params.addUserid("1");
 
         UserGroupCreateResponse response = zabbixApi.usergroup().create(request);
 
         assertNotNull(response);
 
-        Integer groupId = response.getResult().getUsrgrpids().get(0);
+        String groupId = response.getResult().getUsrgrpids().get(0);
         assertNotNull(groupId);
     }
 }

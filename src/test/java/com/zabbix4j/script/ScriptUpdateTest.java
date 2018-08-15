@@ -15,11 +15,10 @@ public class ScriptUpdateTest extends ZabbixApiTestBase {
         super();
     }
 
-
     @Test
     public void testUpdate() throws Exception {
         DummyScript dummyScript = new DummyScript(zabbixApi);
-        Integer targetId = dummyScript.create();
+        String targetId = dummyScript.create();
 
         try {
             ScriptUpdateRequest request = new ScriptUpdateRequest();
@@ -31,11 +30,10 @@ public class ScriptUpdateTest extends ZabbixApiTestBase {
             ScriptUpdateResponse response = zabbixApi.script().update(request);
             assertNotNull(response);
 
-            Integer actualId = response.getResult().getScriptids().get(0);
+            String actualId = response.getResult().getScriptids().get(0);
             assertThat(actualId, Is.is(targetId));
         } finally {
             dummyScript.delete(targetId);
         }
-
     }
 }

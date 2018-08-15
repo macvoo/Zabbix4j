@@ -33,6 +33,8 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/05/23.
  */
+@Data
+@Accessors(chain = true)
 public class ApplicationGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -62,108 +64,29 @@ public class ApplicationGetRequest extends ZabbixApiRequest {
         private String selectHosts;
         private String selectItems;
 
-        public Params() {
-            super();
-        }
-
-        public void addApplicationId(Integer id) {
+        public Params addApplicationid(final String id) {
             applicationids = ZbxListUtils.add(applicationids, id);
+            return this;
         }
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addItemId(Integer id) {
+        public Params addItemid(final String id) {
             itemids = ZbxListUtils.add(itemids, id);
+            return this;
         }
 
-        public void addTemplateId(Integer id) {
+        public Params addTemplateid(final String id) {
             templateids = ZbxListUtils.add(templateids, id);
-        }
-
-        public List<Integer> getApplicationids() {
-            return applicationids;
-        }
-
-        public void setApplicationids(List<Integer> applicationids) {
-            this.applicationids = applicationids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public Boolean getInherited() {
-            return inherited;
-        }
-
-        public void setInherited(Boolean inherited) {
-            this.inherited = inherited;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public Boolean getTemplated() {
-            return templated;
-        }
-
-        public void setTemplated(Boolean templated) {
-            this.templated = templated;
-        }
-
-        public List<Integer> getTemplateids() {
-            return templateids;
-        }
-
-        public void setTemplateids(List<Integer> templateids) {
-            this.templateids = templateids;
-        }
-
-        public Boolean getExpandData() {
-            return expandData;
-        }
-
-        public void setExpandData(Boolean expandData) {
-            this.expandData = expandData;
-        }
-
-        public String getSelectHosts() {
-            return selectHosts;
-        }
-
-        public void setSelectHosts(String selectHosts) {
-            this.selectHosts = selectHosts;
-        }
-
-        public String getSelectItems() {
-            return selectItems;
-        }
-
-        public void setSelectItems(String selectItems) {
-            this.selectItems = selectItems;
+            return this;
         }
     }
 }

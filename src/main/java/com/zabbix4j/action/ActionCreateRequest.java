@@ -26,22 +26,21 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 /**
  * Request paramter of action.create
  *
  * @author Suguru Yajima on 2014/05/19.
- * 
  */
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 public class ActionCreateRequest extends ZabbixApiRequest {
-
     private List<Params> params = new ArrayList<Params>();
 
     public ActionCreateRequest() {
@@ -50,6 +49,7 @@ public class ActionCreateRequest extends ZabbixApiRequest {
 
     public void add(Params param) {
         params = ZbxListUtils.add(params, param);
+        return this;
     }
 
     public Params createParam() {
@@ -60,42 +60,32 @@ public class ActionCreateRequest extends ZabbixApiRequest {
     }
 
     @Data
+    @Accessors(chain = true)
     public class Params extends ActionObject {
-    	private Filter filter = new Filter();
-    	
-    	public Filter createFilter(){
-    		return filter;
-    	}
-    	
-    	public class Filter{
-    		private int evaltype;
-    		private List<ActionCondition> conditions;
-    		
-    		public Filter(){
-    			super();
-    		}
-    		
-			public void setEvaltype(int evaltype) {
-				this.evaltype = evaltype;
-			}
-
-
-			public void addActionConditon(ActionCondition ac) {
-				conditions = ZbxListUtils.add(conditions, ac);
-	        }
-    		
-    		
-    	}
+        private Filter filter = new Filter();
         private List<ActionOperation> operations;
 
-        public Params() {
-            super();
+        public Filter createFilter() {
+            return filter;
         }
 
-        
+        public Params addActionOperation(ActionOperation id) {
+            operations = ZbxListUtils.add(operations, id);
+            return this;
+        }
 
-        public void addActionOperation(ActionOperation ao) {
-            operations = ZbxListUtils.add(operations, ao);
+        @Data
+        @Accessors(chain = true)
+        public class Filter {
+            private int evaltype;
+            private List<ActionFilterCondition> conditions;
+            private String eval_formula;
+            private String formula;
+
+            public Filter addActionConditon(ActionFilterCondition ac) {
+                conditions = ZbxListUtils.add(conditions, ac);
+                return this;
+            }
         }
     }
 }

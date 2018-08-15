@@ -1,6 +1,11 @@
 package com.zabbix4j.utils.json;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
 
 /**
  * A JSONTokener takes a source string and extracts characters and tokens from
@@ -11,7 +16,6 @@ import java.io.*;
  * @version 2014-05-03
  */
 public class JSONTokener {
-
     private long character;
     private boolean eof;
     private long index;
@@ -19,7 +23,6 @@ public class JSONTokener {
     private char previous;
     private Reader reader;
     private boolean usePrevious;
-
 
     /**
      * Construct a JSONTokener from a Reader.
@@ -38,7 +41,6 @@ public class JSONTokener {
         this.line = 1;
     }
 
-
     /**
      * Construct a JSONTokener from an InputStream.
      *
@@ -48,7 +50,6 @@ public class JSONTokener {
         this(new InputStreamReader(inputStream));
     }
 
-
     /**
      * Construct a JSONTokener from a string.
      *
@@ -57,23 +58,6 @@ public class JSONTokener {
     public JSONTokener(String s) {
         this(new StringReader(s));
     }
-
-
-    /**
-     * Back up one character. This provides a sort of lookahead capability,
-     * so that you can test for a digit or letter before attempting to parse
-     * the next number or identifier.
-     */
-    public void back() throws JSONException {
-        if (this.usePrevious || this.index <= 0) {
-            throw new JSONException("Stepping back two steps is not supported");
-        }
-        this.index -= 1;
-        this.character -= 1;
-        this.usePrevious = true;
-        this.eof = false;
-    }
-
 
     /**
      * Get the hex value of a character (base16).
@@ -95,10 +79,24 @@ public class JSONTokener {
         return -1;
     }
 
+    /**
+     * Back up one character. This provides a sort of lookahead capability,
+     * so that you can test for a digit or letter before attempting to parse
+     * the next number or identifier.
+     */
+    public void back() throws JSONException {
+        if (this.usePrevious || this.index <= 0) {
+            throw new JSONException("Stepping back two steps is not supported");
+        }
+        this.index -= 1;
+        this.character -= 1;
+        this.usePrevious = true;
+        this.eof = false;
+    }
+
     public boolean end() {
         return this.eof && !this.usePrevious;
     }
-
 
     /**
      * Determine if the source string still contains characters that next()
@@ -114,7 +112,6 @@ public class JSONTokener {
         this.back();
         return true;
     }
-
 
     /**
      * Get the next character in the source string.
@@ -152,7 +149,6 @@ public class JSONTokener {
         return this.previous;
     }
 
-
     /**
      * Consume the next character, and check that it matches a specified
      * character.
@@ -165,11 +161,10 @@ public class JSONTokener {
         char n = this.next();
         if (n != c) {
             throw this.syntaxError("Expected '" + c + "' and instead saw '" +
-                    n + "'");
+                                   n + "'");
         }
         return n;
     }
-
 
     /**
      * Get the next n characters.
@@ -177,7 +172,7 @@ public class JSONTokener {
      * @param n The number of characters to take.
      * @return A string of n characters.
      * @throws com.zabbix4j.utils.json.JSONException Substring bounds error if there are not
-     *                                                      n characters remaining in the source string.
+     *                                               n characters remaining in the source string.
      */
     public String next(int n) throws JSONException {
         if (n == 0) {
@@ -197,7 +192,6 @@ public class JSONTokener {
         return new String(chars);
     }
 
-
     /**
      * Get the next char in the string, skipping whitespace.
      *
@@ -212,7 +206,6 @@ public class JSONTokener {
             }
         }
     }
-
 
     /**
      * Return the characters up to the next close quote character.
@@ -276,7 +269,6 @@ public class JSONTokener {
         }
     }
 
-
     /**
      * Get the text up but not including the specified character or the
      * end of line, whichever comes first.
@@ -298,7 +290,6 @@ public class JSONTokener {
         }
     }
 
-
     /**
      * Get the text up but not including one of the specified delimiter
      * characters or the end of line, whichever comes first.
@@ -312,7 +303,7 @@ public class JSONTokener {
         for (; ; ) {
             c = this.next();
             if (delimiters.indexOf(c) >= 0 || c == 0 ||
-                    c == '\n' || c == '\r') {
+                c == '\n' || c == '\r') {
                 if (c != 0) {
                     this.back();
                 }
@@ -321,7 +312,6 @@ public class JSONTokener {
             sb.append(c);
         }
     }
-
 
     /**
      * Get the next value. The value can be a Boolean, Double, Integer,
@@ -369,7 +359,6 @@ public class JSONTokener {
         return JSONObject.stringToValue(string);
     }
 
-
     /**
      * Skip characters until the next character is the requested character.
      * If the requested character is not found, no characters are skipped.
@@ -402,7 +391,6 @@ public class JSONTokener {
         return c;
     }
 
-
     /**
      * Make a JSONException to signal a syntax error.
      *
@@ -413,7 +401,6 @@ public class JSONTokener {
         return new JSONException(message + this.toString());
     }
 
-
     /**
      * Make a printable string of this JSONTokener.
      *
@@ -421,6 +408,6 @@ public class JSONTokener {
      */
     public String toString() {
         return " at " + this.index + " [character " + this.character + " line " +
-                this.line + "]";
+               this.line + "]";
     }
 }

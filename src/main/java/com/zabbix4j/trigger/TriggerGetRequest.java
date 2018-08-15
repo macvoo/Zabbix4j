@@ -27,28 +27,24 @@ package com.zabbix4j.trigger;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/12.
  */
+@Data
+@Accessors(chain = true)
 public class TriggerGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public TriggerGetRequest() {
         setMethod("trigger.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
         private List<Integer> triggerids;
         private List<Integer> groupids;
@@ -70,7 +66,6 @@ public class TriggerGetRequest extends ZabbixApiRequest {
         private String selectDiscoveryRule;
         private String selectLastEvent;
         private String filter;
-        //private Integer limitSelects;
 
         public Params() {
             super();
@@ -100,180 +95,9 @@ public class TriggerGetRequest extends ZabbixApiRequest {
             applicationids = ZbxListUtils.add(applicationids, id);
         }
 
-        public void addFunction(String func) {
-            functions = ZbxListUtils.add(functions, func);
+        public Params addFunction(final String id) {
+            functions = ZbxListUtils.add(functions, id);
+            return this;
         }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getTemplateids() {
-            return templateids;
-        }
-
-        public void setTemplateids(List<Integer> templateids) {
-            this.templateids = templateids;
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public List<Integer> getApplicationids() {
-            return applicationids;
-        }
-
-        public void setApplicationids(List<Integer> applicationids) {
-            this.applicationids = applicationids;
-        }
-
-        public List<String> getFunctions() {
-            return functions;
-        }
-
-        public void setFunctions(List<String> functions) {
-            this.functions = functions;
-        }
-
-        public String getGroup() {
-            return group;
-        }
-
-        public void setGroup(String group) {
-            this.group = group;
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-            this.host = host;
-        }
-
-        public String getExpandData() {
-            return expandData;
-        }
-
-        public void setExpandData(String expandData) {
-            this.expandData = expandData;
-        }
-
-        public Boolean getExpandDescription() {
-            return expandDescription;
-        }
-
-        public void setExpandDescription(Boolean expandDescription) {
-            this.expandDescription = expandDescription;
-        }
-
-        public Boolean getExpandExpression() {
-            return expandExpression;
-        }
-
-        public void setExpandExpression(Boolean expandExpression) {
-            this.expandExpression = expandExpression;
-        }
-
-        public String getSelectGroups() {
-            return selectGroups;
-        }
-
-        public void setSelectGroups(String selectGroups) {
-            this.selectGroups = selectGroups;
-        }
-
-        public String getSelectItems() {
-            return selectItems;
-        }
-
-        public void setSelectItems(String selectItems) {
-            this.selectItems = selectItems;
-        }
-
-        public String getSelectHosts() {
-            return selectHosts;
-        }
-
-        public void setSelectHosts(String selectHosts) {
-            this.selectHosts = selectHosts;
-        }
-
-        public String getSelectFunctions() {
-            return selectFunctions;
-        }
-
-        public void setSelectFunctions(String selectFunctions) {
-            this.selectFunctions = selectFunctions;
-        }
-
-        public String getSelectDependencies() {
-            return selectDependencies;
-        }
-
-        public void setSelectDependencies(String selectDependencies) {
-            this.selectDependencies = selectDependencies;
-        }
-
-        public String getSelectDiscoveryRule() {
-            return selectDiscoveryRule;
-        }
-
-        public void setSelectDiscoveryRule(String selectDiscoveryRule) {
-            this.selectDiscoveryRule = selectDiscoveryRule;
-        }
-
-        public String getSelectLastEvent() {
-            return selectLastEvent;
-        }
-
-        public void setSelectLastEvent(String selectLastEvent) {
-            this.selectLastEvent = selectLastEvent;
-        }
-
-        public String getFilter() {
-            return filter;
-        }
-
-        public void setFilter(String filter) {
-            this.filter = filter;
-        }
-
-/*
-        public Integer getLimitSelects() {
-            return limitSelects;
-        }
-
-        public void setLimitSelects(Integer limitSelects) {
-            this.limitSelects = limitSelects;
-        }
-*/
     }
-
-
 }

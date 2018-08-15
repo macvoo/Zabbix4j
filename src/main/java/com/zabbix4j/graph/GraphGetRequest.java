@@ -33,29 +33,24 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/05/31.
  */
+@Data
+@Accessors(chain = true)
 public class GraphGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public GraphGetRequest() {
         setMethod("graph.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> graphids;
-        private List<Integer> groupids;
-        private List<Integer> templateids;
-        private List<Integer> hostids;
-        private List<Integer> itemids;
+        private List<String> graphids;
+        private List<String> groupids;
+        private List<String> templateids;
+        private List<String> hostids;
+        private List<String> itemids;
         private Boolean templated;
         private Boolean inherited;
         private Boolean expandName;
@@ -65,10 +60,6 @@ public class GraphGetRequest extends ZabbixApiRequest {
         private String selectItems;
         private String selectGraphItems;
         private String selectDiscoveryRule;
-
-        public Params() {
-            super();
-        }
 
         public void addGraphId(Integer id) {
             graphids = ZbxListUtils.add(graphids, id);

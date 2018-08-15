@@ -4,7 +4,8 @@ import com.zabbix4j.ZabbixApiTestBase;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Suguru Yajima
@@ -18,7 +19,7 @@ public class LLDRuleDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete1() throws Exception {
 
-        Integer targetId = new ZabbixApiTestDummyLLDRule(zabbixApi).createLLDRule();
+        String targetId = new ZabbixApiTestDummyLLDRule(zabbixApi).createLLDRule();
 
         LLDRuleDeleteRequest request = new LLDRuleDeleteRequest();
         request.addruleId(targetId);
@@ -28,7 +29,7 @@ public class LLDRuleDeleteTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getRuleids().get(0);
+        String actualId = response.getResult().getRuleids().get(0);
         assertThat(targetId, Is.is(actualId));
     }
 }

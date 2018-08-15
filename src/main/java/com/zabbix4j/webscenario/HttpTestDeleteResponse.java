@@ -1,12 +1,15 @@
 package com.zabbix4j.webscenario;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class HttpTestDeleteResponse extends ZabbixApiResponse {
     private Result result;
 
@@ -14,43 +17,9 @@ public class HttpTestDeleteResponse extends ZabbixApiResponse {
         super();
     }
 
-    /**
-     * Gets result.
-     *
-     * @return Value of result.
-     */
-    public Result getResult() {
-        return result;
-    }
-
-    /**
-     * Sets new result.
-     *
-     * @param result New value of result.
-     */
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-        private List<Integer> httptestids;
-
-        /**
-         * Gets httptestids.
-         *
-         * @return Value of httptestids.
-         */
-        public List<Integer> getHttptestids() {
-            return httptestids;
-        }
-
-        /**
-         * Sets new httptestids.
-         *
-         * @param httptestids New value of httptestids.
-         */
-        public void setHttptestids(List<Integer> httptestids) {
-            this.httptestids = httptestids;
-        }
+        private List<String> httptestids;
     }
 }

@@ -1,12 +1,15 @@
 package com.zabbix4j.templatescreen;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class TemplateScreenCreateResponse extends ZabbixApiResponse {
     private Result result;
 
@@ -14,43 +17,10 @@ public class TemplateScreenCreateResponse extends ZabbixApiResponse {
         super();
     }
 
-    /**
-     * Gets result.
-     *
-     * @return Value of result.
-     */
-    public Result getResult() {
-        return result;
-    }
-
-    /**
-     * Sets new result.
-     *
-     * @param result New value of result.
-     */
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
-        private List<Integer> screenids;
+        private List<String> screenids;
 
-        /**
-         * Gets screenids.
-         *
-         * @return Value of screenids.
-         */
-        public List<Integer> getScreenids() {
-            return screenids;
-        }
-
-        /**
-         * Sets new screenids.
-         *
-         * @param screenids New value of screenids.
-         */
-        public void setScreenids(List<Integer> screenids) {
-            this.screenids = screenids;
-        }
     }
 }

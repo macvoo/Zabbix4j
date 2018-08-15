@@ -11,10 +11,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by Suguru Yajima on 2014/05/07.
  */
 public class ItemCreateTest extends ZabbixApiTestBase {
-
-    public ItemCreateTest() {
-        super();
-    }
+    private String createdid;
 
     @Test
     public void testCreate1() throws Exception {
@@ -27,7 +24,7 @@ public class ItemCreateTest extends ZabbixApiTestBase {
         params.setKey_("agent.hostname");
         params.setValue_type(ZabbixApiParamter.ITEM_VALUE_TYPE.CHARACTOR.value);
         params.setType(0);
-        params.setInterfaceid(6);
+        params.setInterfaceid("6");
 
         ItemCreateResponse response = zabbixApi.item().create(request);
 

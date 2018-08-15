@@ -16,6 +16,5 @@ public class EventAcknowledgeTest extends ZabbixApiTestBase {
     @Test
     public void testAcknowleage() throws Exception {
 
-
     }
 }

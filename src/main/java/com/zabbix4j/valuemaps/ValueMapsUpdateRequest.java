@@ -25,28 +25,23 @@
 package com.zabbix4j.valuemaps;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsUpdateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ValueMapsUpdateRequest() {
         setMethod("valuemap.update");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends ValueMapsObject {
-        public Params() {
-        }
     }
 }

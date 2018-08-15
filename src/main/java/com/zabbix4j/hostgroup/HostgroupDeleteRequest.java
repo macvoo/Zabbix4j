@@ -25,25 +25,19 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/29.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupDeleteRequest extends ZabbixApiRequest {
-
     private ArrayList<Integer> params = new ArrayList<Integer>();
 
     public HostgroupDeleteRequest() {
         setMethod("hostgroup.delete");
-    }
-
-    public ArrayList<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(ArrayList<Integer> params) {
-        this.params = params;
     }
 }

@@ -4,21 +4,20 @@ import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.screenitem.ScreenItemObject;
-
 import java.util.Date;
 
 /**
  * @author Suguru Yajima
  */
 public class DummyTemplateScreen extends ZabbixApiTestDummyMethodBase {
-    private final Integer templateId = 10166;
-    private final Integer resourceId = 495;
+    private final String templateId = "10166";
+    private final String resourceId = "495";
 
     public DummyTemplateScreen(ZabbixApi zabbixApi) {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
         TemplateScreenCreateRequest request = new TemplateScreenCreateRequest();
         TemplateScreenCreateRequest.Params params = request.getParams();
         params.setName("test.templatescreen.create." + new Date().getTime());
@@ -37,14 +36,12 @@ public class DummyTemplateScreen extends ZabbixApiTestDummyMethodBase {
 
         TemplateScreenCreateResponse response = zabbixApi.templateScreen().create(request);
 
-        Integer actualId = response.getResult().getScreenids().get(0);
-
-        return actualId;
+        return response.getResult().getScreenids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
         TemplateScreenDeleteRequest request = new TemplateScreenDeleteRequest();
-        request.addTemplateScreenId(targetId);
+        request.addTemplateScreenid(targetId);
 
         TemplateScreenDeleteResponse response = zabbixApi.templateScreen().delete(request);
     }

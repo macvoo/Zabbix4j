@@ -26,18 +26,19 @@ package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Suguru Yajima on 2014/04/26.
  */
 public class HostgroupTest extends ZabbixApiTestBase {
-
     private HostgroupCreateResponse hostgroupCreateResponse;
 
     public HostgroupTest() {
@@ -55,7 +56,6 @@ public class HostgroupTest extends ZabbixApiTestBase {
 
             String groupName = response.getResult().get(0).getName();
             assertEquals("Templates", groupName);
-
         } catch (ZabbixApiException e) {
             fail();
         }
@@ -132,5 +132,4 @@ public class HostgroupTest extends ZabbixApiTestBase {
             fail(e.getMessage());
         }
     }
-
 }

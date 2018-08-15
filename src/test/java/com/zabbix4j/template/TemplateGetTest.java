@@ -18,12 +18,12 @@ public class TemplateGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet() throws Exception {
         DummyTemplate dummyTemplate = new DummyTemplate(zabbixApi);
-        Integer targetId = dummyTemplate.create();
+        String targetId = dummyTemplate.create();
 
         try {
             TemplateGetRequest request = new TemplateGetRequest();
             TemplateGetRequest.Params params = request.getParams();
-            params.addTemplateId(targetId);
+            params.addTemplateid(targetId);
 
             TemplateGetResponse response = zabbixApi.template().get(request);
             assertNotNull(response);

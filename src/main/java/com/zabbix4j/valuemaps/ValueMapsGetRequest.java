@@ -25,54 +25,33 @@
 package com.zabbix4j.valuemaps;
 
 import com.zabbix4j.GetRequestCommonParams;
-import com.zabbix4j.utils.ZbxListUtils;
 import com.zabbix4j.ZabbixApiRequest;
-
+import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
+
     public ValueMapsGetRequest() {
         setMethod("valuemap.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
-    
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
         private List<String> valuemapids;
         private String selectMappings;
-        
-        public void addValueMapId(String id) {
-        	valuemapids = ZbxListUtils.add(valuemapids, id);
+
+        public Params addValueMapid(final String id) {
+            valuemapids = ZbxListUtils.add(valuemapids, id);
+            return this;
         }
-
-        public List<String> getValuemapids() {
-            return valuemapids;
-        }
-
-        public void setValuemapids(List<String> valuemapids) {
-            this.valuemapids = valuemapids;
-        }
-
-		public String getSelectMappings() {
-			return selectMappings;
-		}
-
-		public void setSelectMappings(String selectMappings) {
-			this.selectMappings = selectMappings;
-		}
-
-       
     }
 }

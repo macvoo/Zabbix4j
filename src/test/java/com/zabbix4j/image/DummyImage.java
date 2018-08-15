@@ -3,15 +3,14 @@ package com.zabbix4j.image;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-import org.apache.commons.codec.binary.Base64;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  * @author Suguru Yajima
@@ -47,7 +46,7 @@ public class DummyImage extends ZabbixApiTestDummyMethodBase {
         return Base64.encodeBase64String(bImage);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
 
         String filepath = getClass().getClassLoader().getResource("cat.jpeg").getPath();
         DummyImage dummyImage = new DummyImage(zabbixApi);
@@ -61,15 +60,12 @@ public class DummyImage extends ZabbixApiTestDummyMethodBase {
 
         ImageCreateResponse response = zabbixApi.image().create(request);
 
-
-        Integer actualId = response.getResult().getImageids().get(0);
-
-        return actualId;
+        return response.getResult().getImageids().get(0);
     }
 
     public void delete(Integer id) throws ZabbixApiException {
         ImageDeleteRequest request = new ImageDeleteRequest();
-        request.addImageId(id);
+        request.addImageid(id);
 
         ImageDeleteResponse response = zabbixApi.image().delete(request);
     }

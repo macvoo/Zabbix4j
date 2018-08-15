@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class ItemPrototypeCreateRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -39,8 +41,11 @@ public class ItemPrototypeCreateRequest extends ZabbixApiRequest {
         private Integer ruleid;
         private List<Integer> applications;
 
-        public void addApplication(Integer id) {
+        private List<String> applications;
+
+        public Params addApplication(final String id) {
             applications = ZbxListUtils.add(applications, id);
+            return this;
         }
 
         /**

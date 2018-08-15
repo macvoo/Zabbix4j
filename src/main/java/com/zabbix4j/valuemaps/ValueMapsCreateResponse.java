@@ -25,38 +25,21 @@
 package com.zabbix4j.valuemaps;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by 0312birdzhang on 2016/02/19.
  */
+@Data
+@Accessors(chain = true)
 public class ValueMapsCreateResponse extends ZabbixApiResponse {
     private Result result = new Result();
 
-    public ValueMapsCreateResponse() {
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<Integer> valuemapids;
-
-        public Result() {
-        }
-
-        public List<Integer> getValuemapids() {
-            return valuemapids;
-        }
-
-        public void setValuemapids(List<Integer> valuemapids) {
-            this.valuemapids = valuemapids;
-        }
     }
 }

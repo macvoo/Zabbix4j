@@ -6,40 +6,25 @@ import com.zabbix4j.discoveryrule.DiscoveryRuleObject;
 import com.zabbix4j.graph.GraphObject;
 import com.zabbix4j.host.HostObject;
 import com.zabbix4j.trigger.TriggerObject;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class ItemPrototypeGetResponse extends ZabbixApiResponse {
-
     private List<Result> result;
 
     public ItemPrototypeGetResponse() {
         super();
     }
 
-    /**
-     * Gets result.
-     *
-     * @return Value of result.
-     */
-    public List<Result> getResult() {
-        return result;
-    }
-
-    /**
-     * Sets new result.
-     *
-     * @param result New value of result.
-     */
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends ItemPrototypeObject {
-
         private List<HostObject> hosts;
         private List<ApplicationObject> applications;
         private List<TriggerObject> triggers;
@@ -81,7 +66,6 @@ public class ItemPrototypeGetResponse extends ZabbixApiResponse {
         public void setGraphs(List<GraphObject> graphs) {
             this.graphs = graphs;
         }
-
 
         /**
          * Gets hosts.

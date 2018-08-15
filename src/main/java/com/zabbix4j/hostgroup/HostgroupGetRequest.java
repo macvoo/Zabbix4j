@@ -33,44 +33,59 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/04/27.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostgroupGetRequest() {
         setMethod("hostgroup.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> graphids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> maintenanceids;
-        private List<Integer> templateids;
-        private List<Integer> triggerids;
+        private List<String> graphids;
+
+        private List<String> groupids;
+
+        private List<String> hostids;
+
+        private List<String> maintenanceids;
+
+        private List<String> templateids;
+
+        private List<String> triggerIds;
+
         private Boolean monitored_hosts;
+
         private Boolean not_proxy_hosts;
+
         private Boolean real_hosts;
+
         private Boolean templated_hosts;
+
         private Boolean with_applications;
+
         private Boolean with_graphs;
+
         private Boolean with_hosts_and_templates;
+
         private Boolean with_httptests;
+
         private Boolean with_items;
+
         private Boolean with_monitored_httptests;
+
         private Boolean with_monitored_items;
+
         private Boolean with_monitored_triggers;
+
         private Boolean with_simple_graph_items;
+
         private Boolean with_triggers;
+
         private String selectDiscoveryRule;
         /**
          * Return the host group discovery object in the groupDiscovery property.
@@ -82,9 +97,13 @@ public class HostgroupGetRequest extends ZabbixApiRequest {
          * parent_group_prototypeid - (string) ID of the host group prototype from which the host group has been created;
          * ts_delete - (timestamp) time when a host group that is no longer discovered will be deleted.
          */
+
         private String selectGroupDiscovery;
+
         private String selectHosts;
+
         private String selectTemplates;
+
         private Filter filter;
 
         public void addGraphId(Integer id) {
@@ -313,7 +332,6 @@ public class HostgroupGetRequest extends ZabbixApiRequest {
 
         public Filter newFilter() {
             return new Filter();
-
         }
     }
 
@@ -331,8 +349,7 @@ public class HostgroupGetRequest extends ZabbixApiRequest {
 
         public void addName(String name) {
             this.name = ZbxListUtils.add(this.name, name);
-
+            return this;
         }
     }
-
 }

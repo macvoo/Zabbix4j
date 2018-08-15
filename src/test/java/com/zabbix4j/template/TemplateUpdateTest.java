@@ -18,7 +18,7 @@ public class TemplateUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyTemplate dummyTemplate = new DummyTemplate(zabbixApi);
-        Integer targetId = dummyTemplate.create();
+        String targetId = dummyTemplate.create();
 
         try {
             TemplateUpdateRequest request = new TemplateUpdateRequest();
@@ -31,7 +31,7 @@ public class TemplateUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getTemplateids().get(0);
+            String actualId = response.getResult().getTemplateids().get(0);
             assertThat(actualId, Is.is(targetId));
         } finally {
             dummyTemplate.delete(targetId);

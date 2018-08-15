@@ -25,28 +25,24 @@
 package com.zabbix4j.hostgroup;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/27.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupExistRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostgroupExistRequest() {
         setMethod("hostgroup.exists");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params {
 
         private ArrayList<Integer> groupid = new ArrayList<Integer>();
@@ -56,41 +52,5 @@ public class HostgroupExistRequest extends ZabbixApiRequest {
         private String node;
 
         private ArrayList<String> nodeids = new ArrayList<String>();
-
-        public Params() {
-        }
-
-        public ArrayList<String> getName() {
-            return name;
-        }
-
-        public void setName(ArrayList<String> name) {
-            this.name = name;
-        }
-
-        public String getNode() {
-            return node;
-        }
-
-        public void setNode(String node) {
-            this.node = node;
-        }
-
-        public ArrayList<String> getNodeids() {
-            return nodeids;
-        }
-
-        public void setNodeids(ArrayList<String> nodeids) {
-            this.nodeids = nodeids;
-        }
-
-        public ArrayList<Integer> getGroupid() {
-
-            return groupid;
-        }
-
-        public void setGroupid(ArrayList<Integer> groupid) {
-            this.groupid = groupid;
-        }
     }
 }

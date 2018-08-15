@@ -19,15 +19,15 @@ public class ScreenDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete() throws Exception {
         DummyScreen dummyScreen = new DummyScreen(zabbixApi);
-        Integer targetId = dummyScreen.create();
+        String targetId = dummyScreen.create();
 
         ScreenDeleteRequest request = new ScreenDeleteRequest();
-        request.addScreenId(targetId);
+        request.addScreenid(targetId);
 
         ScreenDeleteResponse response = zabbixApi.screen().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getScreenids().get(0);
+        String actualId = response.getResult().getScreenids().get(0);
         assertThat(actualId, is(targetId));
     }
 }

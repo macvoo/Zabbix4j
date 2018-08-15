@@ -19,16 +19,16 @@ public class IconMapDeleteTest extends ZabbixApiTestBase {
     public void testDelete1() throws Exception {
 
         ZabbixApiTestDummyIconMap dummy = new ZabbixApiTestDummyIconMap(zabbixApi);
-        Integer targetId = dummy.create();
+        String targetId = dummy.create();
         IconMapDeleteRequest request = new IconMapDeleteRequest();
-        request.addIconMapId(targetId);
+        request.addIconMapid(targetId);
 
         IconMapDeleteResponse response = zabbixApi.iconMap().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getIconmapids().get(0);
+        String actualId = response.getResult().getIconmapids().get(0);
         assertThat(targetId, Is.is(actualId));
     }
 }

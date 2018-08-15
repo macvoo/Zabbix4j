@@ -27,28 +27,24 @@ package com.zabbix4j.usergroup;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/15.
  */
+@Data
+@Accessors(chain = true)
 public class UserGroupGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public UserGroupGetRequest() {
         setMethod("usergroup.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
         private Integer status;
@@ -57,18 +53,12 @@ public class UserGroupGetRequest extends ZabbixApiRequest {
         private Integer with_gui_access;
         private String selectUsers;
 
-        public Params() {
-            super();
-        }
-
-        public void addUserId(Integer id) {
+        public Params addUserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
         }
 
         public void addUsrgrpId(Integer id) {
             usrgrpids = ZbxListUtils.add(usrgrpids, id);
         }
-
-
     }
 }

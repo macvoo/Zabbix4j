@@ -1,7 +1,6 @@
 package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiException;
-import com.zabbix4j.ZabbixApiTestBase;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -31,7 +30,7 @@ public class ApplicationDeleteTest extends ApplicationTestBase {
         assertEquals(expect, actual);
     }
 
-    private Integer createDummy() throws ZabbixApiException {
+    private String createDummy() throws ZabbixApiException {
         ApplicationCreateRequest request = new ApplicationCreateRequest();
         ApplicationCreateRequest.Params params = request.getParams();
         params.setName("Application before delete");

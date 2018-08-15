@@ -1,10 +1,15 @@
 package com.zabbix4j.hostprototype;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * The host prototype inventory object has the following properties.
  * <p/>
  * Created by Suguru Yajima on 2014/06/04.
  */
+@Data
+@Accessors(chain = true)
 public class HostPrototypeInventoryObject {
 
     /**

@@ -3,7 +3,6 @@ package com.zabbix4j.proxy;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -14,23 +13,21 @@ public class DummyProxy extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
-        final Integer hostId = 10147;
+    public String create() throws ZabbixApiException {
+        final String hostId = "10147";
 
         ProxyCreateRequest request = new ProxyCreateRequest();
         ProxyCreateRequest.Params params = request.getParams();
         params.setHost("test.proxy.create." + new Date().getTime());
         params.setStatus(ProxyObject.STATUS.ACTIVE_PROXY.value);
-        params.addHostId(hostId);
+        params.addHostid(hostId);
 
         ProxyCreateResponse response = zabbixApi.proxy().create(request);
 
-        Integer actualId = response.getResult().getProxyids().get(0);
-
-        return actualId;
+        return response.getResult().getProxyids().get(0);
     }
 
-    public Integer createWithoutHost() throws ZabbixApiException {
+    public String createWithoutHost() throws ZabbixApiException {
         final Integer hostId = 10147;
 
         ProxyCreateRequest request = new ProxyCreateRequest();
@@ -41,15 +38,13 @@ public class DummyProxy extends ZabbixApiTestDummyMethodBase {
 
         ProxyCreateResponse response = zabbixApi.proxy().create(request);
 
-        Integer actualId = response.getResult().getProxyids().get(0);
-
-        return actualId;
+        return response.getResult().getProxyids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         ProxyDeleteRequest request = new ProxyDeleteRequest();
-        request.addProxyId(targetId);
+        request.addProxyid(targetId);
 
         ProxyDeleteResponse response = zabbixApi.proxy().delete(request);
     }

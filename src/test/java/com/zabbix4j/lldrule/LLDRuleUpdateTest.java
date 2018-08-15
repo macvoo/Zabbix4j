@@ -11,8 +11,7 @@ import static org.junit.Assert.assertThat;
  * @author Suguru Yajima
  */
 public class LLDRuleUpdateTest extends ZabbixApiTestBase {
-
-    private Integer hostId;
+    private String hostid;
 
     public LLDRuleUpdateTest() {
         super();
@@ -20,7 +19,7 @@ public class LLDRuleUpdateTest extends ZabbixApiTestBase {
 
     @Test
     public void testUpdate1() throws Exception {
-        Integer targetId = null;
+        String targetId = null;
         try {
             targetId = new ZabbixApiTestDummyLLDRule(zabbixApi).createLLDRule();
 
@@ -36,7 +35,7 @@ public class LLDRuleUpdateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getItemids().get(0);
+            String actualId = response.getResult().getItemids().get(0);
             assertThat(targetId, Is.is(actualId));
         } finally {
             new ZabbixApiTestDummyLLDRule(zabbixApi).deleteLLDRule(targetId);

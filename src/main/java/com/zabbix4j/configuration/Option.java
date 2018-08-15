@@ -25,12 +25,15 @@
 package com.zabbix4j.configuration;
 
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/24.
  */
+@Data
+@Accessors(chain = true)
 public class Option {
 
     private List<Integer> groups;
@@ -44,83 +47,38 @@ public class Option {
     public Option() {
     }
 
-    public List<Integer> getHosts() {
-        return hosts;
-    }
-
-    public void setHosts(List<Integer> hosts) {
-        this.hosts = hosts;
-    }
-
-    public void addGroupId(Integer id) {
+    public Option addGroupid(final String id) {
         groups = ZbxListUtils.add(groups, id);
-
+        return this;
     }
 
-    public void addHostId(Integer id) {
+    public Option addHostid(final String id) {
         hosts = ZbxListUtils.add(hosts, id);
-
+        return this;
     }
 
-    public void addImaged(Integer id) {
+    public Option addImaged(final String id) {
         images = ZbxListUtils.add(images, id);
-
+        return this;
     }
 
-    public List<Integer> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Integer> groups) {
-        this.groups = groups;
-    }
-
-    public List<Integer> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Integer> images) {
-        this.images = images;
-    }
-
-    public List<Integer> getMaps() {
-        return maps;
-    }
-
-    public void setMaps(List<Integer> maps) {
-        this.maps = maps;
-    }
-
-    public List<Integer> getScreens() {
-        return screens;
-    }
-
-    public void setScreens(List<Integer> screens) {
-        this.screens = screens;
-    }
-
-    public List<Integer> getTemplates() {
-        return templates;
-    }
-
-    public void setTemplates(List<Integer> templates) {
-        this.templates = templates;
-    }
-
-    public void addMapId(Integer id) {
+    public Option addMapid(final String id) {
         maps = ZbxListUtils.add(maps, id);
-
+        return this;
     }
 
-    public void addScreenId(Integer id) {
+    public Option addScreenid(final String id) {
         screens = ZbxListUtils.add(screens, id);
-
+        return this;
     }
 
-    public void addTemplateId(Integer id) {
+    public Option addTemplateid(final String id) {
         templates = ZbxListUtils.add(templates, id);
-
+        return this;
     }
 
-
+    public Option addValueMapid(final String id) {
+        valueMaps = ZbxListUtils.add(valueMaps, id);
+        return this;
+    }
 }

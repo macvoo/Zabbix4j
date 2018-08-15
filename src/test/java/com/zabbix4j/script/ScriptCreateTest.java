@@ -1,9 +1,8 @@
 package com.zabbix4j.script;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.util.Date;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -29,7 +28,7 @@ public class ScriptCreateTest extends ZabbixApiTestBase {
         ScriptCreateResponse response = zabbixApi.script().create(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getScriptids().get(0);
+        String actualId = response.getResult().getScriptids().get(0);
         assertNotNull(actualId);
     }
 }

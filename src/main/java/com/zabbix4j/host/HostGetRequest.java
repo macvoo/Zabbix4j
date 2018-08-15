@@ -33,32 +33,37 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class HostGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostGetRequest() {
         setMethod("host.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> groupids;
-        private List<Integer> applicationids;
-        private List<Integer> dserviceids;
-        private List<Integer> graphids;
-        private List<Integer> hostids;
-        private List<Integer> httptestids;
-        private List<Integer> interfaceids;
-        private List<Integer> itemids;
-        private List<Integer> maintenanceids;
+
+        private List<String> groupids;
+
+        private List<String> applicationids;
+
+        private List<String> dserviceids;
+
+        private List<String> graphids;
+
+        private List<String> hostids;
+
+        private List<String> httptestids;
+
+        private List<String> interfaceids;
+
+        private List<String> itemids;
+
+        private List<String> maintenanceids;
+
         private boolean monitored_hosts;
         private boolean proxy_hosts;
         private List<Integer> proxyids;
@@ -328,5 +333,4 @@ public class HostGetRequest extends ZabbixApiRequest {
             graphids = ZbxListUtils.add(graphids, id);
         }
     }
-
 }

@@ -28,7 +28,6 @@ package com.zabbix4j.usermacro;
  * Created by Suguru Yajima on 2014/05/01.
  */
 public class Macro {
-
     private String macro;
     private String value;
 

@@ -18,22 +18,22 @@ public class DRuleDeleteTest extends ZabbixApiTestBase {
 
     @Test
     public void testDelete1() throws Exception {
-        Integer druleId = createDummy();
+        String druleId = createDummy();
 
         DRuleDeleteRequest request = new DRuleDeleteRequest();
-        request.addDRuleId(druleId);
+        request.addDRuleid(druleId);
 
         DRuleDeleteResponse response = zabbixApi.discoveryRule().delete(request);
         assertNotNull(response);
 
         logger.debug(getGson().toJson(response));
 
-        Integer acutalId = response.getResult().getDruleids().get(0);
+        String acutalId = response.getResult().getDruleids().get(0);
 
         assertEquals(druleId, acutalId);
     }
 
-    private Integer createDummy() throws ZabbixApiException {
+    private String createDummy() throws ZabbixApiException {
 
         DRuleCreateRequest request = new DRuleCreateRequest();
         DRuleCreateRequest.Params params = request.getParams();

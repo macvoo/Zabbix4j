@@ -27,11 +27,12 @@ package com.zabbix4j.action;
 /**
  * @author Suguru Yajima on 2014/05/19.
  */
+@Data
+@Accessors(chain = true)
 public class OperationMessage {
-
-    private Integer operationid;
+    private String operationid;
     private Integer default_msg;
-    private Integer mediatypeid;
+    private String mediatypeid;
     private String message;
     private String subject;
 

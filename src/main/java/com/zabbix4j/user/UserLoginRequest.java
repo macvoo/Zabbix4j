@@ -25,49 +25,25 @@
 package com.zabbix4j.user;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/04/26.
  */
+@Data
+@Accessors(chain = true)
 public class UserLoginRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public UserLoginRequest() {
         setMethod("user.login");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params {
-
         private String user;
         private String password;
-
-        public Params() {
-
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
-        }
     }
 }

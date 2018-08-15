@@ -10,8 +10,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by Suguru Yajima on 2014/06/05.
  */
 public class HostPrototypeCreateTest extends ZabbixApiTestBase {
-
-    private final int TEST_GROUP_ID = 20;
+    private final String TEST_GROUP_ID = "20";
 
     public HostPrototypeCreateTest() {
         super();
@@ -21,7 +20,7 @@ public class HostPrototypeCreateTest extends ZabbixApiTestBase {
     public void testCreate1() throws Exception {
 
         ZabbixApiTestDummyLLDRule dummyLLD = new ZabbixApiTestDummyLLDRule(zabbixApi);
-        Integer lldRuleID = dummyLLD.createLLDRule();
+        String lldRuleID = dummyLLD.createLLDRule();
         try {
             HostPrototypeCreateRequest request = new HostPrototypeCreateRequest();
             HostPrototypeCreateRequest.Params params = request.getParams();
@@ -41,7 +40,7 @@ public class HostPrototypeCreateTest extends ZabbixApiTestBase {
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getHostids().get(0);
+            String actualId = response.getResult().getHostids().get(0);
             assertNotNull(actualId);
         } finally {
 

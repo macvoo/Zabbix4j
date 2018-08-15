@@ -17,18 +17,46 @@ public class ActionDeleteTest extends ZabbixApiTestBase {
         super();
     }
 
+    @Before
+    public void createDummyGroup() throws ZabbixApiException {
+
+        UserGroupCreateRequest request = new UserGroupCreateRequest();
+        UserGroupCreateRequest.Params params = request.getParams();
+        params.setName("usergroup delete test");
+        params.addUserid("1");
+
+        UserGroupCreateResponse response = zabbixApi.usergroup().create(request);
+
+        groupid = response.getResult().getUsrgrpids().get(0);
+    }
+
+    @After
+    public void testDelete1() throws Exception {
+
+        UserGroupDeleteRequest request = new UserGroupDeleteRequest();
+        request.addParams(groupid);
+
+        UserGroupDeleteResponse response = zabbixApi.usergroup().delete(request);
+
+        assertNotNull(response);
+
+        String actualId = response.getResult().getUsrgrpids().get(0);
+
+        assertEquals(groupid, actualId);
+    }
+
     @Test
     public void testDelete() throws Exception {
         DummyAction dummyAction = new DummyAction(zabbixApi);
-        Integer expectedId = dummyAction.create("action create test1." + new Date().getTime());
+        String expectedId = dummyAction.create("action create test1." + new Date().getTime(), groupid);
 
         ActionDeleteRequest request = new ActionDeleteRequest();
-        request.addActionId(expectedId);
+        request.addActionid(expectedId);
 
         ActionDeleteResponse response = zabbixApi.action().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getActionids().get(0);
+        String actualId = response.getResult().getActionids().get(0);
         assertThat(actualId, Is.is(expectedId));
     }
 

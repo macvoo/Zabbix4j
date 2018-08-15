@@ -38,7 +38,6 @@ public class DiscoveredService extends ZabbixApiMethod {
         super(apiUrl, auth);
     }
 
-
     public DServiceGetResponse get(DServiceGetRequest request) throws ZabbixApiException {
         DServiceGetResponse response = null;
         request.setAuth(auth);
@@ -57,5 +56,4 @@ public class DiscoveredService extends ZabbixApiMethod {
 
         return response;
     }
-
 }

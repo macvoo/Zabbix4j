@@ -1,5 +1,8 @@
 package com.zabbix4j.lldrule;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * The low-level discovery rule object
  *
@@ -7,12 +10,13 @@ package com.zabbix4j.lldrule;
  * <p/>
  * Created by Suguru Yajima on 2014/06/05.
  */
+@Data
+@Accessors(chain = true)
 public class LLDRuleObject {
-
-    private Integer itemid;
-    private Integer delay;
-    private Integer hostid;
-    private Integer interfaceid;
+    private String itemid;
+    private String delay;
+    private String hostid;
+    private String interfaceid;
     private String key_;
     private String name;
     private Integer type;
@@ -42,7 +46,7 @@ public class LLDRuleObject {
     private String snmpv3_securityname;
     private Integer state;
     private Integer status;
-    private Integer templateid;
+    private String templateid;
     private String trapper_hosts;
     private String username;
 
@@ -645,7 +649,8 @@ public class LLDRuleObject {
     }
 
     public static enum LLD_RULE_TYPE {
-        ZABBIX_AGANT(0), SNMP_V1_AGENT(1), ZABBIX_TRAPPER(2), SIMPLE_CHECK(3), SNMP_V2_AGENT(4), ZABBIX_INTERNAL(5), SNMP_V3_AGENT(6), ZABBIX_AGENT_ACTIVE(7), EXTERNAL_CHECK(10), DATABASE_MONITOR(11), IPMI_AGENT(12),
+        ZABBIX_AGANT(0), SNMP_V1_AGENT(1), ZABBIX_TRAPPER(2), SIMPLE_CHECK(3), SNMP_V2_AGENT(4), ZABBIX_INTERNAL(5), SNMP_V3_AGENT(6), ZABBIX_AGENT_ACTIVE(
+                7), EXTERNAL_CHECK(10), DATABASE_MONITOR(11), IPMI_AGENT(12),
         SSH_AGENT(13), TELNET_AGENT(14), JMX_AGENT(16);
         public int value;
 

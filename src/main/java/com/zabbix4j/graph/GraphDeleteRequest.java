@@ -32,6 +32,8 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/05/31.
  */
+@Data
+@Accessors(chain = true)
 public class GraphDeleteRequest extends ZabbixApiRequest {
 
     private List<Integer> params = new ArrayList<Integer>();

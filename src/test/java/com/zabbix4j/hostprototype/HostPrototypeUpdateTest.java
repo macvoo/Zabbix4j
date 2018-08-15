@@ -11,7 +11,7 @@ import static org.junit.Assert.fail;
 /**
  * @author Suguru Yajima
  */
-public class HostPrototypeUpdateTest extends ZabbixApiTestBase{
+public class HostPrototypeUpdateTest extends ZabbixApiTestBase {
 
     public HostPrototypeUpdateTest() {
         super();
@@ -19,7 +19,7 @@ public class HostPrototypeUpdateTest extends ZabbixApiTestBase{
 
     @Test
     public void testTest1() throws Exception {
-        Integer targetId = null;
+        String targetId = null;
         ZabbixApiTestDummyHostPrototype dummy = new ZabbixApiTestDummyHostPrototype(zabbixApi);
 
         try {
@@ -42,7 +42,7 @@ public class HostPrototypeUpdateTest extends ZabbixApiTestBase{
 
             logger.debug(getGson().toJson(response));
 
-            Integer actualId = response.getResult().getHostids().get(0);
+            String actualId = response.getResult().getHostids().get(0);
             assertThat(targetId, Is.is(actualId));
         } catch (Exception e) {
             e.printStackTrace();

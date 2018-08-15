@@ -33,6 +33,8 @@ import java.util.List;
 /**
  * @author Suguru Yajima on 2014/05/20.
  */
+@Data
+@Accessors(chain = true)
 public class ActionGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -59,103 +61,44 @@ public class ActionGetRequest extends ZabbixApiRequest {
         private List<Integer> userids;
         private List<Integer> scriptids;
 
-        public Params() {
-        }
-
-        public void addActionId(Integer id) {
+        public Params addActionid(final String id) {
             actionids = ZbxListUtils.add(actionids, id);
+            return this;
         }
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addTriggerId(Integer id) {
-            triggerids = ZbxListUtils.add(triggerids, id);
+        public Params addTriggerid(final String id) {
+            triggerIds = ZbxListUtils.add(triggerIds, id);
+            return this;
         }
 
-        public void addmediaTypeId(Integer id) {
+        public Params addmediaTypeid(final String id) {
             mediatypeids = ZbxListUtils.add(mediatypeids, id);
+            return this;
         }
 
-        public void addUserGroupId(Integer id) {
+        public Params addUserGroupid(final String id) {
             usrgrpids = ZbxListUtils.add(usrgrpids, id);
+            return this;
         }
 
-        public void adduserId(Integer id) {
+        public Params adduserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
+            return this;
         }
 
-        public List<Integer> getActionids() {
-            return actionids;
-        }
-
-        public void setActionids(List<Integer> actionids) {
-            this.actionids = actionids;
-        }
-
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
-
-        public List<Integer> getMediatypeids() {
-            return mediatypeids;
-        }
-
-        public void setMediatypeids(List<Integer> mediatypeids) {
-            this.mediatypeids = mediatypeids;
-        }
-
-        public List<Integer> getUsrgrpids() {
-            return usrgrpids;
-        }
-
-        public void setUsrgrpids(List<Integer> usrgrpids) {
-            this.usrgrpids = usrgrpids;
-        }
-
-        public List<Integer> getUserids() {
-            return userids;
-        }
-
-        public void setUserids(List<Integer> userids) {
-            this.userids = userids;
-        }
-
-        public List<Integer> getScriptids() {
-            return scriptids;
-        }
-
-        public void setScriptids(List<Integer> scriptids) {
-            this.scriptids = scriptids;
-        }
-
-        public void addScriptId(Integer id) {
+        public Params addScriptid(final String id) {
             scriptids = ZbxListUtils.add(scriptids, id);
+            return this;
         }
     }
 }

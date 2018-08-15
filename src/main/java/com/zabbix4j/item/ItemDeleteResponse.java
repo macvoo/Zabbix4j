@@ -25,40 +25,23 @@
 package com.zabbix4j.item;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/09.
  */
+@Data
+@Accessors(chain = true)
 public class ItemDeleteResponse extends ZabbixApiResponse {
-
     private Result result;
 
     public ItemDeleteResponse() {
         super();
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
     public class Result {
-        private List<Integer> itemids;
-
-        public Result() {
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
+        private List<String> itemids;
     }
 }

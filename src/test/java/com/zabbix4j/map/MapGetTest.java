@@ -20,12 +20,12 @@ public class MapGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet() throws Exception {
         DummyMap dummyMap = new DummyMap(zabbixApi);
-        Integer targetId = dummyMap.create();
+        String targetId = dummyMap.create();
 
         try {
             MapGetRequest request = new MapGetRequest();
             MapGetRequest.Params params = request.getParams();
-            params.addSysMapId(targetId);
+            params.addSysMapid(targetId);
             params.setSelectIconMap(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectLinks(ZabbixApiParamter.QUERY.extend.name());
             params.setSelectSelements(ZabbixApiParamter.QUERY.extend.name());

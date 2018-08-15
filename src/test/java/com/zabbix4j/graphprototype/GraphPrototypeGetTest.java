@@ -5,10 +5,9 @@ import com.zabbix4j.ZabbixApiParamter;
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.graph.GraphItem;
 import com.zabbix4j.item.ItemObject;
+import java.util.List;
 import org.hamcrest.core.Is;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -29,7 +28,7 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
 
         GraphPrototypeGetRequest request = new GraphPrototypeGetRequest();
         GraphPrototypeGetRequest.Params params = request.getParams();
-        params.addGraphId(tagetId);
+        params.addGraphid(tagetId);
         params.setSelectItems(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectHosts(ZabbixApiParamter.QUERY.extend.name());
         params.setSelectGroups(ZabbixApiParamter.QUERY.extend.name());
@@ -53,19 +52,19 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
         assertNotNull(result.getHosts());
     }
 
-    private Integer createDummy() throws ZabbixApiException {
+    private String createDummy() throws ZabbixApiException {
 
         GraphPrototypeCreateRequest request = new GraphPrototypeCreateRequest();
         GraphPrototypeCreateRequest.Params params = request.getParams();
         params.setName("Graphprototype get test");
-        GraphItem gitem  = new GraphItem();
+        GraphItem gitem = new GraphItem();
         gitem.setColor("00AA00");
         gitem.setItemid(23730);
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);
 
-        GraphPrototypeCreateResponse response  =zabbixApi.graphPrototype().create(request);
+        GraphPrototypeCreateResponse response = zabbixApi.graphPrototype().create(request);
         assertNotNull(response);
 
         Integer id = response.getResult().getGraphids().get(0);
@@ -73,7 +72,7 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
         return id;
     }
 
-    private void deleteResult(Integer id) throws ZabbixApiException {
+    private void deleteResult(final String id) throws ZabbixApiException {
 
         GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
         request.addParam(id);

@@ -25,26 +25,20 @@
 package com.zabbix4j.trigger;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/12.
  */
+@Data
+@Accessors(chain = true)
 public class TriggerDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public TriggerDeleteRequest() {
         setMethod("trigger.delete");
-    }
-
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
     }
 }

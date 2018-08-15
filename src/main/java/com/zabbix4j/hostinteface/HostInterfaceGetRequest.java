@@ -31,60 +31,21 @@ import java.util.List;
 /**
  * Created by Suguru Yajima on 2014/05/08.
  */
+@Data
+@Accessors(chain = true)
 public class HostInterfaceGetRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public HostInterfaceGetRequest() {
         setMethod("hostinterface.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params {
-
-        private List<Integer> hostids;
-        private List<Integer> interfaceids;
-        private List<Integer> itemids;
-        private List<Integer> triggerids;
-
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        public List<Integer> getInterfaceids() {
-            return interfaceids;
-        }
-
-        public void setInterfaceids(List<Integer> interfaceids) {
-            this.interfaceids = interfaceids;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public List<Integer> getTriggerids() {
-            return triggerids;
-        }
-
-        public void setTriggerids(List<Integer> triggerids) {
-            this.triggerids = triggerids;
-        }
+        private List<String> hostids;
+        private List<String> interfaceids;
+        private List<String> itemids;
+        private List<String> triggerIds;
     }
-
 }

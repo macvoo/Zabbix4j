@@ -28,11 +28,11 @@ package com.zabbix4j;
  * Created by Suguru Yajima on 2014/04/25.
  */
 public class ZabbixApiException extends Exception {
-    public ZabbixApiException(String message){
+    public ZabbixApiException(String message) {
         super(message);
     }
 
-    public ZabbixApiException(Throwable t){
+    public ZabbixApiException(Throwable t) {
         super(t);
     }
 }

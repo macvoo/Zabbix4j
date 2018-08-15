@@ -25,32 +25,20 @@
 package com.zabbix4j.graphitem;
 
 import com.zabbix4j.ZabbixApiResponse;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/06/01.
  */
+@Data
+@Accessors(chain = true)
 public class GraphItemGetResponse extends ZabbixApiResponse {
-
     private List<Result> result;
 
-    public GraphItemGetResponse() {
-        super();
-    }
-
-    public List<Result> getResult() {
-        return result;
-    }
-
-    public void setResult(List<Result> result) {
-        this.result = result;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Result extends GraphItemObject {
-
-        public Result() {
-            super();
-        }
     }
 }

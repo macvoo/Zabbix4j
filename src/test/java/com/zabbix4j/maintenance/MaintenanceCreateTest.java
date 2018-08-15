@@ -1,10 +1,9 @@
 package com.zabbix4j.maintenance;
 
 import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -31,7 +30,7 @@ public class MaintenanceCreateTest extends ZabbixApiTestBase {
         params.setActive_since(since);
         Long till = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").parse("2030/01/01 00:00:00").getTime() / 1000;
         params.setActive_till(till);
-        params.addGroupId(23);
+        params.addGroupid("23");
         params.setDescription("test.maintenance.create");
 
         TimePeriodObject obj = new TimePeriodObject();
@@ -40,12 +39,12 @@ public class MaintenanceCreateTest extends ZabbixApiTestBase {
         obj.setDayofweek(64);
         obj.setStart_time(64800);
         obj.setPeriod(3600);
-        params.addTimeperiodId(obj);
+        params.addTimeperiodid(obj);
 
         MaintenanceCreateResponse response = zabbixApi.maintenance().create(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getMaintenanceids().get(0);
+        String actualId = response.getResult().getMaintenanceids().get(0);
         assertNotNull(actualId);
     }
 }

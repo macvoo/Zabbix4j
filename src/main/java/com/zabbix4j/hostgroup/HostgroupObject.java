@@ -1,11 +1,16 @@
 package com.zabbix4j.hostgroup;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/06/04.
  */
+@Data
+@Accessors(chain = true)
 public class HostgroupObject {
 
-    private Integer groupid;
+    private String groupid;
     private String name;
     private Integer flags;
     private Integer internal;

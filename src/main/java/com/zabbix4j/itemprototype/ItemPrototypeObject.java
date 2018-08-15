@@ -1,14 +1,19 @@
 package com.zabbix4j.itemprototype;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * @author Suguru Yajima
  */
+@Data
+@Accessors(chain = true)
 public class ItemPrototypeObject {
 
-    private Integer itemid;
-    private Integer delay;
-    private Integer hostid;
-    private Integer interfaceid;
+    private String itemid;
+    private String delay;
+    private String hostid;
+    private String interfaceid;
     private String key_;
     private String name;
     private Integer type;
@@ -38,12 +43,12 @@ public class ItemPrototypeObject {
     private Integer snmpv3_securitylevel;
     private String snmpv3_securityname;
     private Integer status;
-    private Integer templateid;
+    private String templateid;
     private String trapper_hosts;
     private Integer trends;
     private String units;
     private String username;
-    private Integer valuemapid;
+    private String valuemapid;
 
     /**
      * Gets snmpv3_authpassphrase.

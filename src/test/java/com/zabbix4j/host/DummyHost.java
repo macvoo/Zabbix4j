@@ -1,14 +1,14 @@
 package com.zabbix4j.host;
 
-import com.zabbix4j.ZabbixApiParamter;
-import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
+import com.zabbix4j.ZabbixApiParamter;
+import com.zabbix4j.ZabbixApiTestDummyMethodBase;
 import com.zabbix4j.hostinteface.HostInterfaceGetRequest;
 import com.zabbix4j.hostinteface.HostInterfaceGetResponse;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
+import com.zabbix4j.template.TemplateObject;
 import com.zabbix4j.usermacro.Macro;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +25,10 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();
 
-        List<Integer> templates = new ArrayList<Integer>();
-        templates.add(10093);
-        templates.add(10094);
-        templates.add(10095);
+        List<TemplateObject> templates = new ArrayList<TemplateObject>();
+        templates.add(new TemplateObject().setTemplateid("10093"));
+        templates.add(new TemplateObject().setTemplateid("10094"));
+        templates.add(new TemplateObject().setTemplateid("10095"));
         params.setTemplates(templates);
 
         params.addGroupId(12);
@@ -57,7 +57,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
     public void deleteHost(Integer id) throws ZabbixApiException {
 
         HostDeleteRequest request = new HostDeleteRequest();
-        request.addHostId(id);
+        request.addHostid(id);
 
         HostDeleteResponse response = zabbixApi.host().delete(request);
     }
@@ -75,7 +75,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         return response.getResult().get(0).getInterfaceid();
     }
 
-    public HostObject getHost () throws ZabbixApiException {
+    public HostObject getHost() throws ZabbixApiException {
 
         Integer targetHostId = 10108;
         HostGetRequest request = new HostGetRequest();
@@ -104,6 +104,4 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
 
         return response.getResult().get(0);
     }
-
-
 }

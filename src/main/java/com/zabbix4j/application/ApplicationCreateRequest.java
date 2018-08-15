@@ -25,30 +25,25 @@
 package com.zabbix4j.application;
 
 import com.zabbix4j.ZabbixApiRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/22.
  */
+@Data
+@Accessors(chain = true)
 public class ApplicationCreateRequest extends ZabbixApiRequest {
-
     private Params params = new Params();
 
     public ApplicationCreateRequest() {
         setMethod("application.create");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends ApplicationObject {
-
-        public Params() {
-            super();
-        }
+        private String name;
+        private String hostid;
     }
 }

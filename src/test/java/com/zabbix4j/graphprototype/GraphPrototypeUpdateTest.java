@@ -36,11 +36,11 @@ public class GraphPrototypeUpdateTest  extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getGraphids().get(0);
+        String actualId = response.getResult().getGraphids().get(0);
         assertThat(expectedId, is(expectedId));
     }
 
-    private Integer createDummy() throws ZabbixApiException {
+    private String createDummy() throws ZabbixApiException {
 
         GraphPrototypeCreateRequest request = new GraphPrototypeCreateRequest();
         GraphPrototypeCreateRequest.Params params = request.getParams();
@@ -60,7 +60,7 @@ public class GraphPrototypeUpdateTest  extends ZabbixApiTestBase {
         return id;
     }
 
-    private void deleteResult(Integer id) throws ZabbixApiException {
+    private void deleteResult(final String id) throws ZabbixApiException {
 
         GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
         request.addParam(id);

@@ -3,7 +3,6 @@ package com.zabbix4j.mediatype;
 import com.zabbix4j.ZabbixApi;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestDummyMethodBase;
-
 import java.util.Date;
 
 /**
@@ -15,7 +14,7 @@ public class DummyMediaType extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
+    public String create() throws ZabbixApiException {
 
         MediaTypeCreateRequest request = new MediaTypeCreateRequest();
 
@@ -29,15 +28,13 @@ public class DummyMediaType extends ZabbixApiTestDummyMethodBase {
 
         MediaTypeCreateResponse response = zabbixApi.mediaType().create(request);
 
-        Integer actualId = response.getResult().getMediatypeids().get(0);
-
-        return actualId;
+        return response.getResult().getMediatypeids().get(0);
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         MediaTypeDeleteRequest request = new MediaTypeDeleteRequest();
-        request.addMediaTypeId(targetId);
+        request.addMediaTypeid(targetId);
 
         MediaTypeDeleteResponse response = zabbixApi.mediaType().delete(request);
     }

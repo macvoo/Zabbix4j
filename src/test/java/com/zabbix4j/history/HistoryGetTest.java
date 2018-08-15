@@ -1,16 +1,15 @@
 package com.zabbix4j.history;
 
 import com.zabbix4j.ZabbixApiTestBase;
+import java.util.Date;
 import org.junit.Test;
 
-import java.util.Date;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by Suguru Yajima on 2014/06/04.
  */
-public class HistoryGetTest extends ZabbixApiTestBase{
+public class HistoryGetTest extends ZabbixApiTestBase {
 
     public HistoryGetTest() {
         super();

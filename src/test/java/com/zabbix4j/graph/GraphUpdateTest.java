@@ -19,7 +19,7 @@ public class GraphUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate1() throws Exception {
 
-        Integer targetId = createDummyGraph();
+        String targetId = createDummyGraph();
 
         GraphUpdateRequest request = new GraphUpdateRequest();
         GraphUpdateRequest.Params params = request.getParams();
@@ -31,12 +31,12 @@ public class GraphUpdateTest extends ZabbixApiTestBase {
 
         logger.debug(getGson().toJson(response));
 
-        Integer actualId = response.getResult().getGraphids().get(0);
+        String actualId = response.getResult().getGraphids().get(0);
 
         assertEquals(targetId, actualId);
     }
 
-    private Integer createDummyGraph() throws ZabbixApiException {
+    private String createDummyGraph() throws ZabbixApiException {
 
         GraphCreateRequest request = new GraphCreateRequest();
         GraphCreateRequest.Params params = request.getParams();
