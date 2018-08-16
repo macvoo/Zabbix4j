@@ -12,7 +12,7 @@ public class DummyAction extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create(final String name) throws ZabbixApiException {
+    public String create(final String name, final String groupId) throws ZabbixApiException {
         final String hostId = "10084";
 
         ActionCreateRequest request = new ActionCreateRequest();
@@ -40,7 +40,7 @@ public class DummyAction extends ZabbixApiTestDummyMethodBase {
         ao.setEvaltype(0);
 
         OperationMessageGroup omg = new OperationMessageGroup();
-        omg.setUsrgrpid(13);
+        omg.setUsrgrpid(groupId);
         ao.addOpmessageGrp(omg);
 
         OperationMessage om = new OperationMessage();

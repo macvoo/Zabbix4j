@@ -24,6 +24,9 @@
 
 package com.zabbix4j;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * Created by Suguru Yajima on 2014/04/26.
  */
@@ -32,12 +35,4 @@ package com.zabbix4j;
 public class ZabbixApiResponse {
     private int id;
     private String jsonrpc;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

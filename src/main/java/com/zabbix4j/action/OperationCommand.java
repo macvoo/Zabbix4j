@@ -34,7 +34,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class OperationCommand {
 
-    private Integer operationid;
+    private String operationid;
     private String command;
     private Integer type;
     private Integer authtype;

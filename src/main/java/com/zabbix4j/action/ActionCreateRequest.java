@@ -47,7 +47,7 @@ public class ActionCreateRequest extends ZabbixApiRequest {
         setMethod("action.create");
     }
 
-    public void add(Params param) {
+    public ActionCreateRequest add(Params param) {
         params = ZbxListUtils.add(params, param);
         return this;
     }

@@ -7,17 +7,16 @@ import static org.junit.Assert.assertNotNull;
 
 public class ApplicationTestBase extends ZabbixApiTestBase {
 
-    public Integer createDummy(final String name) throws ZabbixApiException {
+    public String createDummy(final String name) throws ZabbixApiException {
         ApplicationCreateRequest request = new ApplicationCreateRequest();
         ApplicationCreateRequest.Params params = request.getParams();
         params.setName(name);
-        params.setHostid(10084);
+        params.setHostid("10084");
 
         ApplicationCreateResponse response = zabbixApi.application().create(request);
         assertNotNull(response);
 
-        Integer id = response.getResult().getApplicationids().get(0);
-        return id;
+        return response.getResult().getApplicationids().get(0);
     }
 
     public void delete(final String id) throws ZabbixApiException {

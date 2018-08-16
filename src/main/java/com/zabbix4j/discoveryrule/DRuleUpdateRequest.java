@@ -51,7 +51,7 @@ public class DRuleUpdateRequest extends ZabbixApiRequest {
             this.dchecks = dchecks;
         }
 
-        public void addCheck(DCheck DCheck) {
+        public Params addCheck(DCheck DCheck) {
             dchecks = ZbxListUtils.add(dchecks, DCheck);
             return this;
         }

@@ -19,9 +19,9 @@ public class HostUpdateTest extends ZabbixApiTestBase {
     }
 
     @Test
-    public void testUpdate1() throws Exception {
+    public void testUpdate1() {
 
-        int targetHostId = 10108;
+        String targetHostId = "10108";
         try {
             HostUpdateRequest request = new HostUpdateRequest();
             HostUpdateRequest.Params params = request.getParams();
@@ -46,7 +46,7 @@ public class HostUpdateTest extends ZabbixApiTestBase {
             HostUpdateResponse response = zabbixApi.host().update(request);
 
             assertNotNull(response);
-            int actualId = response.getResult().getHostids().get(0);
+            String actualId = response.getResult().getHostids().get(0).toString();
             assertEquals(targetHostId, actualId);
         } catch (Exception e) {
             fail(e.getMessage());

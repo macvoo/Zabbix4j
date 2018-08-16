@@ -24,7 +24,7 @@ public class ItemPrototypeUpdateRequest extends ZabbixApiRequest {
 
         private List<Integer> applications;
 
-        public void addApplicationId(Integer id) {
+        public Params addApplicationid(final Integer id) {
             applications = ZbxListUtils.add(applications, id);
             return this;
         }

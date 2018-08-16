@@ -18,7 +18,7 @@ public class HttpTestUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate() throws Exception {
         DummyWebScenario dummyWebScenario = new DummyWebScenario(zabbixApi);
-        Integer targetId = dummyWebScenario.create();
+        String targetId = dummyWebScenario.create();
 
         try {
             HttpTestUpdateRequest request = new HttpTestUpdateRequest();
@@ -29,7 +29,7 @@ public class HttpTestUpdateTest extends ZabbixApiTestBase {
             HttpTestUpdateRespose respose = zabbixApi.webscenario().update(request);
             assertNotNull(respose);
 
-            Integer actualId = respose.getResult().getHttptestids().get(0);
+            String actualId = respose.getResult().getHttptestids().get(0).toString();
             assertThat(actualId, Is.is(targetId));
         } finally {
             dummyWebScenario.delete(targetId);

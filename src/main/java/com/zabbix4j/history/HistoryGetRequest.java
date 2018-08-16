@@ -23,13 +23,14 @@ public class HistoryGetRequest extends ZabbixApiRequest {
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
         private Integer history = HistoryObject.HISOTRY_OBJECT_TYPE.INTEGER.value;
-        private List<Integer> hostids;
-        private List<Integer> itemids;
+        private List<String> hostids;
+        private List<String> itemids;
         private Long time_from;
         private Long time_till;
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
         public Params addItemid(final String id) {

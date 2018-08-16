@@ -23,13 +23,13 @@ public class TriggerPrototypeGetRequest extends ZabbixApiRequest {
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
         private Boolean active;
-        private List<Integer> applicationids;
-        private List<Integer> discoveryids;
+        private List<String> applicationids;
+        private List<String> discoveryids;
         private List<String> functions;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> templateids;
-        private List<Integer> triggerids;
+        private List<String> groupids;
+        private List<String> hostids;
+        private List<String> templateids;
+        private List<String> triggerIds;
         private String group;
         private String host;
         private Boolean inherited;

@@ -22,7 +22,7 @@ public class LLDRuleDeleteTest extends ZabbixApiTestBase {
         String targetId = new ZabbixApiTestDummyLLDRule(zabbixApi).createLLDRule();
 
         LLDRuleDeleteRequest request = new LLDRuleDeleteRequest();
-        request.addruleId(targetId);
+        request.addRuleid(targetId);
 
         LLDRuleDeleteResponse response = zabbixApi.lldRule().delete(request);
         assertNotNull(response);

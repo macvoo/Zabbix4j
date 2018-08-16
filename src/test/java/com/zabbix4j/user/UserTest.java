@@ -18,7 +18,7 @@ public class UserTest {
     @Test
     public void testLogin1() {
 
-        User user = new User("http://x.x.x.x:80/api_jsonrpc.php");
+        User user = new User("http://10.16.34.52:80/api_jsonrpc.php");
         UserLoginRequest request = new UserLoginRequest();
         request.getParams().setUser("Admin");
         request.getParams().setPassword("zabbix");

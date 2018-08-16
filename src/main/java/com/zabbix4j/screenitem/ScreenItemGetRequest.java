@@ -25,12 +25,14 @@ public class ScreenItemGetRequest extends ZabbixApiRequest {
         private List<String> screenitemids;
         private List<String> screenids;
 
-        public void addScreenItemId(Integer id) {
+        public Params addScreenItemid(final String id) {
             screenitemids = ZbxListUtils.add(screenitemids, id);
+            return this;
         }
 
-        public void addScreenId(Integer id) {
+        public Params addScreenid(final String id) {
             screenids = ZbxListUtils.add(screenids, id);
+            return this;
         }
     }
 }

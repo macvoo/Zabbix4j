@@ -41,8 +41,9 @@ public class ProblemObject {
         return this;
     }
 
-    public void addSuppression_data(SuppressionData id) {
+    public ProblemObject addSuppression_data(SuppressionData id) {
         this.suppression_data = ZbxListUtils.add(this.suppression_data, id);
+        return this;
     }
 
     @Override

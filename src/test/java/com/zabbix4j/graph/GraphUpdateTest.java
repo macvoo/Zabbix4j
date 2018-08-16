@@ -43,7 +43,7 @@ public class GraphUpdateTest extends ZabbixApiTestBase {
         params.setName("Graph Update Test");
 
         GraphItem gitem = new GraphItem();
-        gitem.setItemid(23661);
+        gitem.setItemid("23661");
         gitem.setColor("00AA00");
         params.addGraphItem(gitem);
 

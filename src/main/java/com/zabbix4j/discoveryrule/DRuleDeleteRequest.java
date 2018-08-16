@@ -37,8 +37,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class DRuleDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public DRuleDeleteRequest() {
         setMethod("drule.delete");

@@ -34,7 +34,7 @@ public class DummyProxy extends ZabbixApiTestDummyMethodBase {
         ProxyCreateRequest.Params params = request.getParams();
         params.setHost("test.proxy.create." + new Date().getTime());
         params.setStatus(ProxyObject.STATUS.ACTIVE_PROXY.value);
-        //params.addHostId(hostId);
+        //params.addHostid(hostId);
 
         ProxyCreateResponse response = zabbixApi.proxy().create(request);
 

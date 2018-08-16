@@ -46,70 +46,25 @@ public class GraphItemGetRequest extends ZabbixApiRequest {
     @Data
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> gitemids;
-        private List<Integer> graphids;
-        private List<Integer> itemids;
+        private List<String> gitemids;
+        private List<String> graphids;
+        private List<String> itemids;
         private Integer type;
         private String selectGraphs;
 
-        public void addGItemId(Integer id) {
+        public Params addGItemid(final String id) {
             this.gitemids = ZbxListUtils.add(this.gitemids, id);
+            return this;
         }
 
-        public void addGraphId(Integer id) {
+        public Params addGraphid(final String id) {
             this.graphids = ZbxListUtils.add(this.graphids, id);
+            return this;
         }
 
-        public void addItemId(Integer id) {
+        public Params addItemid(final String id) {
             this.itemids = ZbxListUtils.add(this.itemids, id);
-        }
-
-        public List<Integer> getGitemids() {
-            return gitemids;
-        }
-
-        public void setGitemids(List<Integer> gitemids) {
-            this.gitemids = gitemids;
-        }
-
-        public List<Integer> getGraphids() {
-            return graphids;
-        }
-
-        public void setGraphids(List<Integer> graphids) {
-            this.graphids = graphids;
-        }
-
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
-
-        public Integer getType() {
-            return type;
-        }
-
-        public void setType(Integer type) {
-            this.type = type;
-        }
-
-        public String getExpandData() {
-            return expandData;
-        }
-
-        public void setExpandData(String expandData) {
-            this.expandData = expandData;
-        }
-
-        public String getSelectGraphs() {
-            return selectGraphs;
-        }
-
-        public void setSelectGraphs(String selectGraphs) {
-            this.selectGraphs = selectGraphs;
+            return this;
         }
     }
 }

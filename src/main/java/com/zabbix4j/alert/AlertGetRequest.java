@@ -47,14 +47,14 @@ public class AlertGetRequest extends ZabbixApiRequest {
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> alertids;
-        private List<Integer> actionids;
-        private List<Integer> eventids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> mediatypeids;
-        private List<Integer> triggerids;
-        private List<Integer> userids;
+        private List<String> alertids;
+        private List<String> actionids;
+        private List<String> eventids;
+        private List<String> groupids;
+        private List<String> hostids;
+        private List<String> mediatypeids;
+        private List<String> triggerIds;
+        private List<String> userids;
         private Long time_from;
         private Long time_till;
         private String selectHosts;

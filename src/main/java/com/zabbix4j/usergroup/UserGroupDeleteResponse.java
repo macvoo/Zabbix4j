@@ -41,6 +41,8 @@ public class UserGroupDeleteResponse extends ZabbixApiResponse {
         super();
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<String> usrgrpids;
     }

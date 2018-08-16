@@ -21,9 +21,9 @@ public class ItemDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete1() throws Exception {
 
-        Integer expectedItemid = createItem();
+        String expectedItemid = createItem();
         ItemDeleteRequest request = new ItemDeleteRequest();
-        ArrayList<Integer> itemids = new ArrayList<Integer>();
+        ArrayList<String> itemids = new ArrayList<String>();
         itemids.add(expectedItemid);
         request.setParams(itemids);
 
@@ -41,8 +41,10 @@ public class ItemDeleteTest extends ZabbixApiTestBase {
         ItemCreateRequest request = new ItemCreateRequest();
         ItemCreateRequest.Params params = request.getParams();
         params.setName("Test Item for Delete");
-        params.setDelay(60);
-        params.setHostid(10109);
+        params.setDelay("60");
+
+        //todo create host
+        params.setHostid("10109");
         params.setKey_("agent.ping");
         params.setValue_type(ZabbixApiParamter.ITEM_VALUE_TYPE.CHARACTOR.value);
         params.setType(0);
@@ -50,6 +52,6 @@ public class ItemDeleteTest extends ZabbixApiTestBase {
 
         ItemCreateResponse response = zabbixApi.item().create(request);
 
-        return response.getResult().getItemids().get(0);
+        return response.getResult().getItemids().get(0).toString();
     }
 }

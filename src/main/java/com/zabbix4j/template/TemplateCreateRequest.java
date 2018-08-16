@@ -30,21 +30,21 @@ public class TemplateCreateRequest extends ZabbixApiRequest {
         private List<Macro> macros;
         private List<HostObject> hosts;
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             HostgroupObject obj = new HostgroupObject();
             obj.setGroupid(id);
             groups = ZbxListUtils.add(groups, obj);
             return this;
         }
 
-        public void addTemplateId(Integer id) {
+        public Params addTemplateid(final String id) {
             TemplateObject obj = new TemplateObject();
             obj.setTemplateid(id);
             templates = ZbxListUtils.add(templates, obj);
             return this;
         }
 
-        public void addMacroId(String macro, String value) {
+        public Params addMacroid(String macro, String value) {
             Macro obj = new Macro();
             obj.setMacro(macro);
             obj.setValue(value);

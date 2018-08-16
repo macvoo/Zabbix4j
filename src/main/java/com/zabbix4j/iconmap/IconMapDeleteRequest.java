@@ -18,7 +18,8 @@ public class IconMapDeleteRequest extends ZabbixApiRequest {
         setMethod("iconmap.delete");
     }
 
-    public void addIconMapId(Integer id) {
+    public IconMapDeleteRequest addIconMapid(final String id) {
         params = ZbxListUtils.add(params, id);
+        return this;
     }
 }

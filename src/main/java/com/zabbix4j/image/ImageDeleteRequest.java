@@ -12,8 +12,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ImageDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params;
+    private List<String> params;
 
     public ImageDeleteRequest() {
         setMethod("image.delete");

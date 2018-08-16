@@ -27,6 +27,8 @@ package com.zabbix4j.usergroup;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/14.
@@ -40,15 +42,8 @@ public class UserGroupDeleteRequest extends ZabbixApiRequest {
         setMethod("usergroup.delete");
     }
 
-    public List<Integer> getParams() {
-        return params;
-    }
-
-    public void setParams(List<Integer> params) {
-        this.params = params;
-    }
-
-    public void addParams(Integer id) {
+    public UserGroupDeleteRequest addParams(final String id) {
         params = ZbxListUtils.add(params, id);
+        return this;
     }
 }

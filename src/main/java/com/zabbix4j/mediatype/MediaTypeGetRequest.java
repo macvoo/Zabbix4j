@@ -23,20 +23,22 @@ public class MediaTypeGetRequest extends ZabbixApiRequest {
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> mediatypeids;
-        private List<Integer> mediaids;
-        private List<Integer> userids;
+        private List<String> mediatypeids;
+        private List<String> mediaids;
+        private List<String> userids;
         private String selectUsers;
 
-        public void addMediaTypeId(Integer id) {
+        public Params addMediaTypeid(final String id) {
             mediatypeids = ZbxListUtils.add(mediatypeids, id);
+            return this;
         }
 
-        public void addMediaId(Integer id) {
+        public Params addMediaid(final String id) {
             mediaids = ZbxListUtils.add(mediaids, id);
+            return this;
         }
 
-        public void addUserId(Integer id) {
+        public Params addUserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
             return this;
         }

@@ -46,18 +46,18 @@ public class UserGroupCreateRequest extends ZabbixApiRequest {
     @Accessors(chain = true)
     public class Params extends UserGroupObject {
         private List<PermissionObject> rights;
-        private List<Integer> userids;
+        private List<String> userids;
 
         public Params() {
             super();
         }
 
-        public void addPermission(Integer hostgroupId, Integer permission) {
+        public Params addPermission(Integer hostgroupId, Integer permission) {
             rights = ZbxListUtils.add(rights, new PermissionObject(hostgroupId, permission));
             return this;
         }
 
-        public void addUserId(Integer id) {
+        public Params addUserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
             return this;
         }

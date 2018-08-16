@@ -24,7 +24,7 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer tagetId = createDummy();
+        String tagetId = createDummy();
 
         GraphPrototypeGetRequest request = new GraphPrototypeGetRequest();
         GraphPrototypeGetRequest.Params params = request.getParams();
@@ -59,7 +59,7 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
         params.setName("Graphprototype get test");
         GraphItem gitem = new GraphItem();
         gitem.setColor("00AA00");
-        gitem.setItemid(23730);
+        gitem.setItemid("23730");
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);
@@ -67,15 +67,13 @@ public class GraphPrototypeGetTest extends ZabbixApiTestBase {
         GraphPrototypeCreateResponse response = zabbixApi.graphPrototype().create(request);
         assertNotNull(response);
 
-        Integer id = response.getResult().getGraphids().get(0);
-
-        return id;
+        return response.getResult().getGraphids().get(0).toString();
     }
 
     private void deleteResult(final String id) throws ZabbixApiException {
 
         GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
-        request.addParam(id);
+        request.addGraphPrototypeid(id);
 
         GraphPrototypeDeleteResponse response = zabbixApi.graphPrototype().delete(request);
     }

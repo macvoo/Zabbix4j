@@ -38,6 +38,8 @@ import lombok.experimental.Accessors;
 public class HostCreateResponse extends ZabbixApiResponse {
     private Result result = new Result();
 
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<String> hostids = new ArrayList<String>();
     }

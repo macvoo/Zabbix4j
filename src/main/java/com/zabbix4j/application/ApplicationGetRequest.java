@@ -27,8 +27,9 @@ package com.zabbix4j.application;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/23.
@@ -43,25 +44,28 @@ public class ApplicationGetRequest extends ZabbixApiRequest {
         setMethod("application.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
 
-        private List<Integer> applicationids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
+        private List<String> applicationids;
+
+        private List<String> groupids;
+
+        private List<String> hostids;
+
         private Boolean inherited;
-        private List<Integer> itemids;
+
+        private List<String> itemids;
+
         private Boolean templated;
-        private List<Integer> templateids;
+
+        private List<String> templateids;
+
         private Boolean expandData;
+
         private String selectHosts;
+
         private String selectItems;
 
         public Params addApplicationid(final String id) {

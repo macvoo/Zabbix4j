@@ -27,13 +27,14 @@ package com.zabbix4j;
 import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
 import java.util.Map;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/02.
  */
+@Data
+@Accessors(chain = true)
 public class GetRequestCommonParams {
     private Integer limitSelects;
     private List<String> sortfield;
@@ -50,15 +51,14 @@ public class GetRequestCommonParams {
     private List<String> sortorder;
     private Boolean startSearch;
 
-    public GetRequestCommonParams() {
-    }
-
-    public void addSortField(String field) {
+    public GetRequestCommonParams addSortField(String field) {
         sortfield = ZbxListUtils.add(sortfield, field);
+        return this;
     }
 
-    public void addSortOrder(String order) {
+    public GetRequestCommonParams addSortOrder(String order) {
         sortorder = ZbxListUtils.add(sortorder, order);
+        return this;
     }
 }
 

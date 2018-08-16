@@ -8,20 +8,14 @@ import lombok.experimental.Accessors;
 /**
  * Created by Suguru Yajima on 2014/06/02.
  */
+@Data
+@Accessors(chain = true)
 public class GraphPrototypeDeleteResponse extends ZabbixApiResponse {
     private Result result;
 
     @Data
     @Accessors(chain = true)
     public class Result {
-        private List<Integer> graphids;
-
-        public List<Integer> getGraphids() {
-            return graphids;
-        }
-
-        public void setGraphids(List<Integer> graphids) {
-            this.graphids = graphids;
-        }
+        private List<String> graphids;
     }
 }

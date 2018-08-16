@@ -3,7 +3,12 @@ package com.zabbix4j.graphprototype;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.graph.GraphItem;
+import com.zabbix4j.host.DummyHost;
 import com.zabbix4j.itemprototype.ItemPrototypeCreateTest;
+import com.zabbix4j.lldrule.LLDRuleCreateRequest;
+import com.zabbix4j.lldrule.LLDRuleCreateResponse;
+import com.zabbix4j.lldrule.LLDRuleObject;
+import com.zabbix4j.lldrule.ZabbixApiTestDummyLLDRule;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +21,9 @@ import static org.junit.Assert.fail;
  */
 public class GraphPrototypeCreateTest extends ZabbixApiTestBase {
     private ItemPrototypeCreateTest itemPrototypeCreateTest;
-    private int itemPrototypeId;
+    private String itemPrototypeid;
+    private String targetHostid;
+    private String lldRuleid;
 
     public GraphPrototypeCreateTest() {
         super();
@@ -85,7 +92,7 @@ public class GraphPrototypeCreateTest extends ZabbixApiTestBase {
         itemPrototypeCreateTest = new ItemPrototypeCreateTest();
         try {
             itemPrototypeCreateTest.setUp();
-            itemPrototypeId = itemPrototypeCreateTest.testCreate1();
+            itemPrototypeid = itemPrototypeCreateTest.testCreate1(lldRuleid);
         } catch (Exception e) {
             fail();
         }
@@ -95,7 +102,7 @@ public class GraphPrototypeCreateTest extends ZabbixApiTestBase {
     private void deleteResult(final String id) throws ZabbixApiException {
 
         GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
-        request.addParam(id);
+        request.addGraphPrototypeid(id);
 
         GraphPrototypeDeleteResponse response = zabbixApi.graphPrototype().delete(request);
     }

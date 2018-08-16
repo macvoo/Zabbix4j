@@ -12,13 +12,13 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class HttpTestDeleteRequest extends ZabbixApiRequest {
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public HttpTestDeleteRequest() {
         setMethod("httptest.delete");
     }
 
-    public void addHttpTestId(Integer id) {
+    public HttpTestDeleteRequest addHttpTestid(final String id) {
         params.add(id);
         return this;
     }

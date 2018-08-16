@@ -47,7 +47,7 @@ public class ZabbixApiTestBase {
 
     private void login(String user, String password) {
         try {
-            zabbixApi = new ZabbixApi("http://x.x.x.x:80/api_jsonrpc.php");
+            zabbixApi = new ZabbixApi("http://10.16.34.52:80/api_jsonrpc.php");
             zabbixApi.login(user, password);
         } catch (ZabbixApiException e) {
             fail("First of all please add valid apiUrl for your zabbix integration test instance!" + e.getMessage());

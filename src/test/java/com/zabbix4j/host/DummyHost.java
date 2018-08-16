@@ -21,7 +21,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer createHost() throws ZabbixApiException {
+    public String createHost() throws ZabbixApiException {
         HostCreateRequest request = new HostCreateRequest();
         HostCreateRequest.Params params = request.getParams();
 
@@ -31,7 +31,7 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         templates.add(new TemplateObject().setTemplateid("10095"));
         params.setTemplates(templates);
 
-        params.addGroupId(12);
+        params.addGroupid("12");
 
         List<Macro> macros = new ArrayList<Macro>();
         Macro macro1 = new Macro();
@@ -51,10 +51,10 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
 
         HostCreateResponse response = zabbixApi.host().create(request);
 
-        return response.getResult().getHostids().get(0);
+        return response.getResult().getHostids().get(0).toString();
     }
 
-    public void deleteHost(Integer id) throws ZabbixApiException {
+    public void deleteHost(final String id) throws ZabbixApiException {
 
         HostDeleteRequest request = new HostDeleteRequest();
         request.addHostid(id);
@@ -62,11 +62,11 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
         HostDeleteResponse response = zabbixApi.host().delete(request);
     }
 
-    public Integer getHostInterface(Integer hostId) throws ZabbixApiException {
+    public String getHostInterface(String hostId) throws ZabbixApiException {
 
         HostInterfaceGetRequest request = new HostInterfaceGetRequest();
         HostInterfaceGetRequest.Params params = request.getParams();
-        ArrayList<Integer> hostids = new ArrayList<Integer>();
+        ArrayList<String> hostids = new ArrayList<String>();
         hostids.add(hostId);
         params.setHostids(hostids);
 
@@ -77,12 +77,11 @@ public class DummyHost extends ZabbixApiTestDummyMethodBase {
 
     public HostObject getHost() throws ZabbixApiException {
 
-        Integer targetHostId = 10108;
         HostGetRequest request = new HostGetRequest();
         HostGetRequest.Params params = request.getParams();
 
-        ArrayList<Integer> hostIds = new ArrayList<Integer>();
-        hostIds.add(targetHostId);
+        ArrayList<String> hostIds = new ArrayList<String>();
+        hostIds.add("10108");
         params.setHostids(hostIds);
 
         params.setSelectDiscoveryRule(ZabbixApiParamter.QUERY.extend.name());

@@ -18,7 +18,7 @@ public class ItemUpdateTest extends ZabbixApiTestBase {
     @Test
     public void testUpdate1() throws Exception {
 
-        Integer itemid = 23674;
+        String itemid = "23674";
         ItemUpdateRequest request = new ItemUpdateRequest();
         ItemUpdateRequest.Params params = request.getParams();
         params.setItemid(itemid);

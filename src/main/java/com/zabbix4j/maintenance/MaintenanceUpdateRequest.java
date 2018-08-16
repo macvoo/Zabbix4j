@@ -22,74 +22,23 @@ public class MaintenanceUpdateRequest extends ZabbixApiRequest {
     @Accessors(chain = true)
     public class Params extends MaintenanceObject {
 
-        private List<Integer> groupids;
-        private List<Integer> hostids;
+        private List<String> groupids;
+        private List<String> hostids;
         private List<TimePeriodObject> timeperiods;
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addTimePeriod(TimePeriodObject obj) {
-            timeperiods = ZbxListUtils.add(timeperiods, obj);
-        }
-
-        /**
-         * Gets groupids.
-         *
-         * @return Value of groupids.
-         */
-        public List<Integer> getGroupids() {
-            return groupids;
-        }
-
-        /**
-         * Sets new groupids.
-         *
-         * @param groupids New value of groupids.
-         */
-        public void setGroupids(List<Integer> groupids) {
-            this.groupids = groupids;
-        }
-
-        /**
-         * Gets hostids.
-         *
-         * @return Value of hostids.
-         */
-        public List<Integer> getHostids() {
-            return hostids;
-        }
-
-        /**
-         * Sets new hostids.
-         *
-         * @param hostids New value of hostids.
-         */
-        public void setHostids(List<Integer> hostids) {
-            this.hostids = hostids;
-        }
-
-        /**
-         * Gets timeperiods.
-         *
-         * @return Value of timeperiods.
-         */
-        public List<TimePeriodObject> getTimeperiods() {
-            return timeperiods;
-        }
-
-        /**
-         * Sets new timeperiods.
-         *
-         * @param timeperiods New value of timeperiods.
-         */
-        public void setTimeperiods(List<TimePeriodObject> timeperiods) {
-            this.timeperiods = timeperiods;
+        public Params addTimePeriod(TimePeriodObject id) {
+            timeperiods = ZbxListUtils.add(timeperiods, id);
+            return this;
         }
     }
 }

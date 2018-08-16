@@ -39,6 +39,8 @@ public class ItemUpdateResponse {
     public ItemUpdateResponse() {
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<String> itemids;
     }

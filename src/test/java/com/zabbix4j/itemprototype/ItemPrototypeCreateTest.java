@@ -10,7 +10,6 @@ import com.zabbix4j.host.DummyHost;
 import com.zabbix4j.lldrule.LLDRuleCreateRequest;
 import com.zabbix4j.lldrule.LLDRuleCreateResponse;
 import com.zabbix4j.lldrule.LLDRuleObject;
-import com.zabbix4j.lldrule.ZabbixApiTestDummyLLDRule;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

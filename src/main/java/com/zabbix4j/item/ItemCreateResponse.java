@@ -40,6 +40,8 @@ public class ItemCreateResponse extends ZabbixApiResponse {
     public ItemCreateResponse() {
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<String> itemids;
     }

@@ -27,12 +27,14 @@ public class ImageGetRequest extends ZabbixApiRequest {
         private List<String> sysmapids;
         private Boolean select_image;
 
-        public void addImageId(Integer id) {
+        public Params addImageid(final String id) {
             imageids = ZbxListUtils.add(imageids, id);
+            return this;
         }
 
-        public void addSystemId(Integer id) {
+        public Params addSystemid(final String id) {
             sysmapids = ZbxListUtils.add(sysmapids, id);
+            return this;
         }
     }
 }

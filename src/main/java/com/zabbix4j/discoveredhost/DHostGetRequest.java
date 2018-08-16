@@ -54,14 +54,17 @@ public class DHostGetRequest extends ZabbixApiRequest {
 
         public Params addDHostid(final String id) {
             dhostids = ZbxListUtils.add(dhostids, id);
+            return this;
         }
 
-        public void addDRuleId(final Integer id) {
+        public Params addDRuleid(final String id) {
             druleids = ZbxListUtils.add(druleids, id);
+            return this;
         }
 
-        public void addDServiceId(final Integer id) {
+        public Params addDServiceid(final String id) {
             dserviceids = ZbxListUtils.add(dserviceids, id);
+            return this;
         }
     }
 }

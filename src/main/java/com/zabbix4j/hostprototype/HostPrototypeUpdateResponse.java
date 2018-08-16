@@ -21,7 +21,7 @@ public class HostPrototypeUpdateResponse extends ZabbixApiResponse {
     @Accessors(chain = true)
     public class Result {
 
-        private List<Integer> hostids;
+        private List<String> hostids;
 
 
     }

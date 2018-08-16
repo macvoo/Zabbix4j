@@ -46,12 +46,12 @@ public class TriggerGetRequest extends ZabbixApiRequest {
     @Data
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> triggerids;
-        private List<Integer> groupids;
-        private List<Integer> templateids;
-        private List<Integer> hostids;
-        private List<Integer> itemids;
-        private List<Integer> applicationids;
+        private List<String> triggerIds;
+        private List<String> groupids;
+        private List<String> templateids;
+        private List<String> hostids;
+        private List<String> itemids;
+        private List<String> applicationids;
         private List<String> functions;
         private String group;
         private String host;
@@ -71,28 +71,34 @@ public class TriggerGetRequest extends ZabbixApiRequest {
             super();
         }
 
-        public void addTriggerid(Integer id) {
-            triggerids = ZbxListUtils.add(triggerids, id);
+        public Params addTriggerid(final String id) {
+            triggerIds = ZbxListUtils.add(triggerIds, id);
+            return this;
         }
 
-        public void addGroupid(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addTemplateid(Integer id) {
+        public Params addTemplateid(final String id) {
             templateids = ZbxListUtils.add(templateids, id);
+            return this;
         }
 
-        public void addHostid(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addItemid(Integer id) {
+        public Params addItemid(final String id) {
             itemids = ZbxListUtils.add(itemids, id);
+            return this;
         }
 
-        public void addApplicationid(Integer id) {
+        public Params addApplicationid(final String id) {
             applicationids = ZbxListUtils.add(applicationids, id);
+            return this;
         }
 
         public Params addFunction(final String id) {

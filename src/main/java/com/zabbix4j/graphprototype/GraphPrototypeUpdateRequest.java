@@ -24,7 +24,7 @@ public class GraphPrototypeUpdateRequest extends ZabbixApiRequest {
     public class Params extends GraphPrototypeObject {
         private List<GraphItem> gitems;
 
-        public void addGraphItem(GraphItem gitem) {
+        public Params addGraphItem(GraphItem gitem) {
             gitems = ZbxListUtils.add(gitems, gitem);
             return this;
         }

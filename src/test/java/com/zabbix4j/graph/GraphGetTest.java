@@ -19,7 +19,7 @@ public class GraphGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer targetId = createDummyGraph();
+        String targetId = createDummyGraph();
 
         GraphGetRequest request = new GraphGetRequest();
         GraphGetRequest.Params params = request.getParams();
@@ -45,7 +45,7 @@ public class GraphGetTest extends ZabbixApiTestBase {
         params.setName("Graph Delete Test");
 
         GraphItem gitem = new GraphItem();
-        gitem.setItemid(23661);
+        gitem.setItemid("23661");
         gitem.setColor("00AA00");
         params.addGraphItem(gitem);
 
@@ -54,7 +54,7 @@ public class GraphGetTest extends ZabbixApiTestBase {
 
         GraphCreateResponse response = zabbixApi.graph().create(request);
 
-        return response.getResult().getGraphids().get(0);
+        return response.getResult().getGraphids().get(0).toString();
     }
 
     private void deleteDummy(final String id) throws ZabbixApiException {

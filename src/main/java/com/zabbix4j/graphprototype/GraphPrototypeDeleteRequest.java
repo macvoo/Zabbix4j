@@ -12,8 +12,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class GraphPrototypeDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params;
+    private List<String> params;
 
     public GraphPrototypeDeleteRequest() {
         setMethod("graphprototype.delete");

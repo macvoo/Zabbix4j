@@ -95,25 +95,6 @@ public class Host extends ZabbixApiMethod {
         return response;
     }
 
-    public HostExistResponse exist(HostExistRequest request) throws ZabbixApiException {
-        HostExistResponse response = null;
-        request.setAuth(auth);
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        String requestJson = gson.toJson(request);
-
-        try {
-            String responseJson = sendRequest(requestJson);
-
-            response = gson.fromJson(responseJson, HostExistResponse.class);
-        } catch (ZabbixApiException e) {
-            throw new ZabbixApiException(e);
-        }
-
-        return response;
-    }
-
     public HostDeleteResponse delete(HostDeleteRequest request) throws ZabbixApiException {
         HostDeleteResponse response = null;
         request.setAuth(auth);

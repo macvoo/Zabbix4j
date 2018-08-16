@@ -24,7 +24,7 @@ public class HostDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete1() throws Exception {
 
-        int hostId = createDummyHost();
+        String hostId = createDummyHost();
 
         HostDeleteRequest request = new HostDeleteRequest();
         request.addHostid(hostId);
@@ -32,7 +32,7 @@ public class HostDeleteTest extends ZabbixApiTestBase {
         HostDeleteResponse response = zabbixApi.host().delete(request);
 
         assertNotNull(response);
-        int deletedId = response.getResult().getHostids().get(0);
+        String deletedId = response.getResult().getHostids().get(0).toString();
         assertEquals(hostId, deletedId);
     }
 
@@ -45,7 +45,7 @@ public class HostDeleteTest extends ZabbixApiTestBase {
         templates.add(new TemplateObject().setTemplateid("10093"));
         params.setTemplates(templates);
 
-        params.addGroupId(12);
+        params.addGroupid("12");
 
         List<Macro> macros = new ArrayList<Macro>();
         Macro macro1 = new Macro();
@@ -67,10 +67,9 @@ public class HostDeleteTest extends ZabbixApiTestBase {
 
         assertNotNull(response);
         assertNotNull(response.getResult().getHostids());
-        int hostId = response.getResult().getHostids().get(0);
-        assertTrue(0 < hostId);
+        String hostId = response.getResult().getHostids().get(0);
+        assertNotEquals("0", hostId);
 
-        return hostId;
-
+        return hostId.toString();
     }
 }

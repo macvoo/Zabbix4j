@@ -1,10 +1,18 @@
 package com.zabbix4j.action;
 
+import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
+import com.zabbix4j.usergroup.UserGroupCreateRequest;
+import com.zabbix4j.usergroup.UserGroupCreateResponse;
+import com.zabbix4j.usergroup.UserGroupDeleteRequest;
+import com.zabbix4j.usergroup.UserGroupDeleteResponse;
 import java.util.Date;
 import org.hamcrest.core.Is;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -12,6 +20,8 @@ import static org.junit.Assert.assertThat;
  * Created by Suguru Yajima on 2014/05/20.
  */
 public class ActionDeleteTest extends ZabbixApiTestBase {
+
+    private String groupid;
 
     public ActionDeleteTest() {
         super();
@@ -59,5 +69,4 @@ public class ActionDeleteTest extends ZabbixApiTestBase {
         String actualId = response.getResult().getActionids().get(0);
         assertThat(actualId, Is.is(expectedId));
     }
-
 }

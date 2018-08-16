@@ -15,38 +15,6 @@ public class HostgroupObject {
     private Integer flags;
     private Integer internal;
 
-    public Integer getInternal() {
-        return internal;
-    }
-
-    public void setInternal(Integer internal) {
-        this.internal = internal;
-    }
-
-    public Integer getFlags() {
-        return flags;
-    }
-
-    public void setFlags(Integer flags) {
-        this.flags = flags;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getGroupid() {
-        return groupid;
-    }
-
-    public void setGroupid(Integer groupid) {
-        this.groupid = groupid;
-    }
-
     public static enum ORIGN_HOST_GROUP {
         PLAIN(0), DISCOVERED(4);
         public int value;

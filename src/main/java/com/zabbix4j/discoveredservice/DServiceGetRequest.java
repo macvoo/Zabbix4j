@@ -34,6 +34,8 @@ import lombok.experimental.Accessors;
 /**
  * Created by Suguru Yajima on 2014/05/25.
  */
+@Data
+@Accessors(chain = true)
 public class DServiceGetRequest extends ZabbixApiRequest {
 
     private Params params = new Params();
@@ -42,58 +44,42 @@ public class DServiceGetRequest extends ZabbixApiRequest {
         setMethod("dservice.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
+    @Data
+    @Accessors(chain = true)
+    public static class Params extends GetRequestCommonParams {
 
-    public void setParams(Params params) {
-        this.params = params;
-    }
+        private List<String> dserviceids;
 
-    public class Params extends GetRequestCommonParams {
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> dserviceids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> dhostids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> dcheckids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
-        private List<Integer> druleids;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+        private List<String> dhostids;
+
+        private List<String> dcheckids;
+
+        private List<String> druleids;
+
         private String selectDRules;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String selectDHosts;
-        @Accessors(chain = true)
-        @Getter
-        @Setter
+
         private String selectHosts;
 
         public Params addDServiceid(final String id) {
             dserviceids = ZbxListUtils.add(dserviceids, id);
+            return this;
         }
 
-        public void addDHostId(Integer id) {
+        public Params addDHostid(final String id) {
             dhostids = ZbxListUtils.add(dhostids, id);
+            return this;
         }
 
-        public void addDCheckId(Integer id) {
+        public Params addDCheckid(final String id) {
             dcheckids = ZbxListUtils.add(dcheckids, id);
+            return this;
         }
 
-        public void addDRuleId(Integer id) {
+        public Params addDRuleid(final String id) {
             druleids = ZbxListUtils.add(druleids, id);
+            return this;
         }
     }
 }

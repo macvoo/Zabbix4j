@@ -17,15 +17,9 @@ public class GraphPrototypeUpdateResponse extends ZabbixApiResponse {
         super();
     }
 
+    @Data
+    @Accessors(chain = true)
     public class Result {
-        private List<Integer> graphids;
-
-        public List<Integer> getGraphids() {
-            return graphids;
-        }
-
-        public void setGraphids(List<Integer> graphids) {
-            this.graphids = graphids;
-        }
+        private List<String> graphids;
     }
 }

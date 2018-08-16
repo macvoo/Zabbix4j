@@ -37,16 +37,4 @@ import lombok.experimental.Accessors;
 public class ActionGetResponse extends ZabbixApiResponse {
 
     private List<ActionObject> result;
-
-    public ActionGetResponse() {
-        super();
-    }
-
-    public List<ActionObject> getResult() {
-        return result;
-    }
-
-    public void setResult(List<ActionObject> result) {
-        this.result = result;
-    }
 }

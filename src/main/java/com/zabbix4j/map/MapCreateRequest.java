@@ -49,12 +49,14 @@ public class MapCreateRequest extends ZabbixApiRequest {
         private List<MapElementObject> selements;
         private List<MapURLObject> urls;
 
-        public void addMapLink(MapLinkObject obj) {
-            links = ZbxListUtils.add(links, obj);
+        public Params addMapLink(MapLinkObject id) {
+            links = ZbxListUtils.add(links, id);
+            return this;
         }
 
-        public void addMapElement(MapElementObject obj) {
-            selements = ZbxListUtils.add(selements, obj);
+        public Params addMapElement(MapElementObject id) {
+            selements = ZbxListUtils.add(selements, id);
+            return this;
         }
 
         public Params addMapURL(MapURLObject id) {

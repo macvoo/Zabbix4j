@@ -63,7 +63,7 @@ public class DummyImage extends ZabbixApiTestDummyMethodBase {
         return response.getResult().getImageids().get(0);
     }
 
-    public void delete(Integer id) throws ZabbixApiException {
+    public void delete(final String id) throws ZabbixApiException {
         ImageDeleteRequest request = new ImageDeleteRequest();
         request.addImageid(id);
 

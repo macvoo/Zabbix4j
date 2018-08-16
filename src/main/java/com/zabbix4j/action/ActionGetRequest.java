@@ -27,8 +27,9 @@ package com.zabbix4j.action;
 import com.zabbix4j.GetRequestCommonParams;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima on 2014/05/20.
@@ -43,23 +44,25 @@ public class ActionGetRequest extends ZabbixApiRequest {
         setMethod("action.get");
     }
 
-    public Params getParams() {
-        return params;
-    }
-
-    public void setParams(Params params) {
-        this.params = params;
-    }
-
+    @Data
+    @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> actionids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> triggerids;
-        private List<Integer> mediatypeids;
-        private List<Integer> usrgrpids;
-        private List<Integer> userids;
-        private List<Integer> scriptids;
+
+        private List<String> actionids;
+
+        private List<String> groupids;
+
+        private List<String> hostids;
+
+        private List<String> triggerIds;
+
+        private List<String> mediatypeids;
+
+        private List<String> usrgrpids;
+
+        private List<String> userids;
+
+        private List<String> scriptids;
 
         public Params addActionid(final String id) {
             actionids = ZbxListUtils.add(actionids, id);

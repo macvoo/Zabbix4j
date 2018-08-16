@@ -30,21 +30,21 @@ public class TemplateUpdateRequest extends ZabbixApiRequest {
         private List<TemplateObject> templates;
         private List<TemplateObject> templates_clear;
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             HostgroupObject obj = new HostgroupObject();
             obj.setGroupid(id);
             groups = ZbxListUtils.add(groups, obj);
             return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             HostObject obj = new HostObject();
             obj.setHostid(id);
             hosts = ZbxListUtils.add(hosts, obj);
             return this;
         }
 
-        public void addMacro(String macro, String value) {
+        public Params addMacro(String macro, String value) {
             Macro obj = new Macro();
             obj.setMacro(macro);
             obj.setValue(value);
@@ -52,7 +52,7 @@ public class TemplateUpdateRequest extends ZabbixApiRequest {
             return this;
         }
 
-        public void addTemplateId(Integer id) {
+        public Params addTemplateid(final String id) {
             TemplateObject obj = new TemplateObject();
             obj.setTemplateid(id);
             templates = ZbxListUtils.add(templates, obj);

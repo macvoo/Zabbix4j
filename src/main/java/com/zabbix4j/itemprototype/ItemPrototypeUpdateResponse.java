@@ -20,24 +20,6 @@ public class ItemPrototypeUpdateResponse extends ZabbixApiResponse {
     @Data
     @Accessors(chain = true)
     public class Result {
-        private List<Integer> itemids;
-
-        /**
-         * Gets itemids.
-         *
-         * @return Value of itemids.
-         */
-        public List<Integer> getItemids() {
-            return itemids;
-        }
-
-        /**
-         * Sets new itemids.
-         *
-         * @param itemids New value of itemids.
-         */
-        public void setItemids(List<Integer> itemids) {
-            this.itemids = itemids;
-        }
+        private List<String> itemids;
     }
 }

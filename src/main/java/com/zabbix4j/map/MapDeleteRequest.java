@@ -36,14 +36,14 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class MapDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params;
+    private List<String> params;
 
     public MapDeleteRequest() {
         setMethod("map.delete");
     }
 
-    public void addMapId(Integer id) {
+    public MapDeleteRequest addMapid(final String id) {
         params = ZbxListUtils.add(params, id);
+        return this;
     }
 }

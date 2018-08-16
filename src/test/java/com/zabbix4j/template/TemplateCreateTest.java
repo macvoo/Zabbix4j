@@ -16,8 +16,8 @@ public class TemplateCreateTest extends ZabbixApiTestBase {
 
     @Test
     public void testCreate() throws Exception {
-        final Integer groupId = 25;
-        final Integer hostId = 10084;
+        final String groupId = "25";
+        final String hostId = "10084";
 
         TemplateCreateRequest request = new TemplateCreateRequest();
         TemplateCreateRequest.Params params = request.getParams();

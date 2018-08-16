@@ -3,7 +3,9 @@ package com.zabbix4j.graphprototype;
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.graph.GraphItem;
+import com.zabbix4j.itemprototype.DummyItemPrototype;
 import org.hamcrest.core.Is;
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -20,18 +22,24 @@ public class GraphPrototypeDeleteTest extends ZabbixApiTestBase {
         super();
     }
 
+    @After
+    public void tearDown() throws Exception {
+        dummyItemPrototype.delete(itemPrototype);
+    }
+
     @Test
     public void testDelete1() throws Exception {
-
-        Integer targetId = createDummy();
+        dummyItemPrototype = new DummyItemPrototype(zabbixApi);
+        itemPrototype = dummyItemPrototype.createItemPrototype();
+        String targetId = createDummy();
 
         GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
-        request.addParam(targetId);
+        request.addGraphPrototypeid(targetId);
 
         GraphPrototypeDeleteResponse response = zabbixApi.graphPrototype().delete(request);
         assertNotNull(response);
 
-        Integer actualId = response.getResult().getGraphids().get(0);
+        String actualId = response.getResult().getGraphids().get(0).toString();
         assertThat(targetId, Is.is(actualId));
     }
 
@@ -42,7 +50,7 @@ public class GraphPrototypeDeleteTest extends ZabbixApiTestBase {
         params.setName("Graphprototype delete test");
         GraphItem gitem = new GraphItem();
         gitem.setColor("C80000");
-        gitem.setItemid(26832);
+        gitem.setItemid("26832");
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);
@@ -50,8 +58,6 @@ public class GraphPrototypeDeleteTest extends ZabbixApiTestBase {
         GraphPrototypeCreateResponse response = zabbixApi.graphPrototype().create(request);
         assertNotNull(response);
 
-        Integer id = response.getResult().getGraphids().get(0);
-
-        return id;
+        return response.getResult().getGraphids().get(0).toString();
     }
 }

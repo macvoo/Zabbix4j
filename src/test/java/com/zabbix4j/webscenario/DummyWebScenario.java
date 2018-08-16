@@ -13,8 +13,8 @@ public class DummyWebScenario extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer create() throws ZabbixApiException {
-        final Integer hostId = 10084;
+    public String create() throws ZabbixApiException {
+        final String hostId = "10084";
 
         HttpTestCreateRequest request = new HttpTestCreateRequest();
         HttpTestCreateRequest.Params params = request.getParams();
@@ -31,12 +31,10 @@ public class DummyWebScenario extends ZabbixApiTestDummyMethodBase {
 
         HttpTestCreateResponse response = zabbixApi.webscenario().create(request);
 
-        Integer actualId = response.getResult().getHttptestids().get(0);
-
-        return actualId;
+        return response.getResult().getHttptestids().get(0).toString();
     }
 
-    public void delete(Integer targetId) throws ZabbixApiException {
+    public void delete(String targetId) throws ZabbixApiException {
 
         HttpTestDeleteRequest request = new HttpTestDeleteRequest();
         request.addHttpTestid(targetId);

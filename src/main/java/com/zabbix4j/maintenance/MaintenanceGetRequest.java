@@ -29,15 +29,17 @@ public class MaintenanceGetRequest extends ZabbixApiRequest {
         private String selectHosts;
         private String selectTimeperiods;
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addMaintenanceId(Integer id) {
+        public Params addMaintenanceid(final String id) {
             maintenanceids = ZbxListUtils.add(maintenanceids, id);
             return this;
         }

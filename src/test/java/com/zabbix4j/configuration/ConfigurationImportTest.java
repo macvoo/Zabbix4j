@@ -8,12 +8,11 @@ import com.zabbix4j.host.HostDeleteRequest;
 import com.zabbix4j.host.HostDeleteResponse;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.usermacro.Macro;
-import org.junit.After;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.junit.After;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -53,8 +52,6 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         assertNotNull(response);
 
         assertTrue(response.getResult());
-
-
     }
 
     private String export(final String id) throws ZabbixApiException {
@@ -78,7 +75,7 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
 
         List<Integer> templates = new ArrayList<Integer>();
         templates.add(10093);
-       // params.setTemplates(templates);
+        // params.setTemplates(templates);
 
         params.addGroupid(groupId);
 
@@ -95,18 +92,17 @@ public class ConfigurationImportTest extends ZabbixApiTestBase {
         interfaces.add(hostInterface);
         params.setInterfaces(interfaces);
 
-        params.setHost("127.0.0.12");
+        params.setHost("127.0.0.1");
         params.setName("test dummy host fort import " + new Date().getTime());
 
         HostCreateResponse response = zabbixApi.host().create(request);
 
         assertNotNull(response);
         assertNotNull(response.getResult().getHostids());
-        int hostId = response.getResult().getHostids().get(0);
-        assertTrue(0 < hostId);
+        String hostId = response.getResult().getHostids().get(0);
+        assertNotEquals("0", hostId);
 
-        return hostId;
-
+        return hostId.toString();
     }
 
     private void deleteDummy(final String id) throws ZabbixApiException {

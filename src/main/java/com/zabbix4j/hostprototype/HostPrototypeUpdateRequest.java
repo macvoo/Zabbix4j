@@ -27,15 +27,17 @@ public class HostPrototypeUpdateRequest extends ZabbixApiRequest {
         private HostPrototypeInventoryObject inventory;
         private List<Integer> templates;
 
-        public void addGroupLink(GroupLinkObject obj) {
-            groupLinks = ZbxListUtils.add(groupLinks, obj);
+        public Params addGroupLink(GroupLinkObject id) {
+            groupLinks = ZbxListUtils.add(groupLinks, id);
+            return this;
         }
 
-        public void addGroupPrototype(GroupPrototypeObject obj) {
-            groupPrototypes = ZbxListUtils.add(groupPrototypes, obj);
+        public Params addGroupPrototype(GroupPrototypeObject id) {
+            groupPrototypes = ZbxListUtils.add(groupPrototypes, id);
+            return this;
         }
 
-        public void addTemplate(Integer id) {
+        public Params addTemplate(final Integer id) {
             templates = ZbxListUtils.add(templates, id);
             return this;
         }

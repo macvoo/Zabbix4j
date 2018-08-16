@@ -12,13 +12,14 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ScreenItemDeleteRequest extends ZabbixApiRequest {
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public ScreenItemDeleteRequest() {
         setMethod("screenitem.delete");
     }
 
-    public void addScreenItemId(Integer id) {
+    public ScreenItemDeleteRequest addScreenItemid(final String id) {
         params.add(id);
+        return this;
     }
 }

@@ -16,7 +16,7 @@ public class TriggerPrototypeCreateResponse extends ZabbixApiResponse {
     @Data
     @Accessors(chain = true)
     public class Result {
-        private List<Integer> triggerids;
+        private List<String> triggerIds;
 
     }
 }

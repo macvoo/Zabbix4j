@@ -12,14 +12,14 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class MaintenanceDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params;
+    private List<String> params;
 
     public MaintenanceDeleteRequest() {
         setMethod("maintenance.delete");
     }
 
-    public void addMaintenaceId(Integer id) {
+    public MaintenanceDeleteRequest addMaintenaceid(final String id) {
         params = ZbxListUtils.add(params, id);
+        return this;
     }
 }

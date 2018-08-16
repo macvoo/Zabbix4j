@@ -40,33 +40,10 @@ public class ActionDeleteResponse extends ZabbixApiResponse {
 
     private Result result = new Result();
 
-    public Result getResult() {
-		return result;
-	}
-
-	public void setResult(Result result) {
-		this.result = result;
-	}
-
-	public ActionDeleteResponse() {
-        super();
-    }
-
     @Data
     @Accessors(chain = true)
     public class Result {
-        private List<Integer> actionids;
 
-        public Result() {
-            super();
-        }
-
-        public List<Integer> getActionids() {
-            return actionids;
-        }
-
-        public void setActionids(List<Integer> actionids) {
-            this.actionids = actionids;
-        }
+        private List<String> actionids;
     }
 }

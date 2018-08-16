@@ -12,13 +12,13 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class TriggerPrototypeDeleteRequest extends ZabbixApiRequest {
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public TriggerPrototypeDeleteRequest() {
         setMethod("triggerprototype.delete");
     }
 
-    public void addTirggerPrototypeId(Integer id) {
+    public TriggerPrototypeDeleteRequest addTirggerPrototypeid(final String id) {
         params.add(id);
         return this;
     }

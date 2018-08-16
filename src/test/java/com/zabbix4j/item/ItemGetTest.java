@@ -18,8 +18,8 @@ public class ItemGetTest extends ZabbixApiTestBase {
 
     @Test
     public void testGet1() throws Exception {
-
-        Integer itemId = 23667;
+//todo create item
+        String itemId = "23667";
 
         ItemGetRequest request = new ItemGetRequest();
         ItemGetRequest.Params params = request.getParams();

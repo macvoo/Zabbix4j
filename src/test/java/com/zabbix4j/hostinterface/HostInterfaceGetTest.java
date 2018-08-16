@@ -23,8 +23,8 @@ public class HostInterfaceGetTest extends ZabbixApiTestBase {
 
         HostInterfaceGetRequest request = new HostInterfaceGetRequest();
         HostInterfaceGetRequest.Params params = request.getParams();
-        ArrayList<Integer> hostids = new ArrayList<Integer>();
-        hostids.add(10084);
+        ArrayList<String> hostids = new ArrayList<String>();
+        hostids.add("10084");
         params.setHostids(hostids);
 
         HostInterfaceGetResponse response = zabbixApi.hostInterface().get(request);

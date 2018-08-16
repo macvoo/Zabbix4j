@@ -26,6 +26,8 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.utils.ZbxListUtils;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author Suguru Yajima on 2014/05/19.
@@ -35,7 +37,7 @@ import java.util.List;
 public class ActionOperation {
     private String operationid;
     private Integer operationtype;
-    private Integer actionid;
+    private String actionid;
     private Integer esc_period;
     private Integer esc_step_from;
     private Integer esc_step_to;
@@ -50,165 +52,43 @@ public class ActionOperation {
     private List<String> opmessage_usr;
     private List<String> optemplate;
 
-    public List<OperationMessageGroup> getOpmessage_grp() {
-        return opmessage_grp;
+    public ActionOperation addOpmessageGrp(OperationMessageGroup id) {
+        opmessage_grp = ZbxListUtils.add(opmessage_grp, id);
+        return this;
     }
 
-    public void setOpmessage_grp(List<OperationMessageGroup> opmessage_grp) {
-        this.opmessage_grp = opmessage_grp;
-    }
-
-    public void addOpmessageGrp(OperationMessageGroup omg) {
-        opmessage_grp = ZbxListUtils.add(opmessage_grp, omg);
-    }
-
-    public void addOpcommandGrp(Integer id) {
+    public ActionOperation addOpcommandGrp(final String id) {
         opcommand_grp = ZbxListUtils.add(opcommand_grp, id);
+        return this;
     }
 
-    public void addOpcomandHst(Integer id) {
+    public ActionOperation addOpcomandHst(final String id) {
         opcommand_hst = ZbxListUtils.add(opcommand_hst, id);
+        return this;
     }
 
-    public void addOpondition(OperationCondition oc) {
+    public ActionOperation addOpondition(OperationCondition oc) {
         opconditions = ZbxListUtils.add(opconditions, oc);
+        return this;
     }
 
-    public void addOpgroup(Integer id) {
+    public ActionOperation addOpgroup(final String id) {
         opgroup = ZbxListUtils.add(opgroup, id);
+        return this;
     }
 
-    public void addOpmessageUsr(Integer id) {
+    public ActionOperation addOpmessageUsr(final String id) {
         opmessage_usr = ZbxListUtils.add(opmessage_usr, id);
+        return this;
     }
 
-    public void addOptemplate(Integer id) {
+    public ActionOperation addOptemplate(final String id) {
         optemplate = ZbxListUtils.add(optemplate, id);
+        return this;
     }
 
-    public void addOpConditons(OperationCondition oc) {
+    public ActionOperation addOpConditons(OperationCondition oc) {
         this.opconditions = ZbxListUtils.add(opconditions, oc);
+        return this;
     }
-
-    public Integer getOperationid() {
-        return operationid;
-    }
-
-    public void setOperationid(Integer operationid) {
-        this.operationid = operationid;
-    }
-
-    public Integer getOperationtype() {
-        return operationtype;
-    }
-
-    public void setOperationtype(Integer operationtype) {
-        this.operationtype = operationtype;
-    }
-
-    public Integer getActionid() {
-        return actionid;
-    }
-
-    public void setActionid(Integer actionid) {
-        this.actionid = actionid;
-    }
-
-    public Integer getEsc_period() {
-        return esc_period;
-    }
-
-    public void setEsc_period(Integer esc_period) {
-        this.esc_period = esc_period;
-    }
-
-    public Integer getEsc_step_from() {
-        return esc_step_from;
-    }
-
-    public void setEsc_step_from(Integer esc_step_from) {
-        this.esc_step_from = esc_step_from;
-    }
-
-    public Integer getEsc_step_to() {
-        return esc_step_to;
-    }
-
-    public void setEsc_step_to(Integer esc_step_to) {
-        this.esc_step_to = esc_step_to;
-    }
-
-    public Integer getEvaltype() {
-        return evaltype;
-    }
-
-    public void setEvaltype(Integer evaltype) {
-        this.evaltype = evaltype;
-    }
-
-    public OperationCommand getOpcommand() {
-        return opcommand;
-    }
-
-    public void setOpcommand(OperationCommand opcommand) {
-        this.opcommand = opcommand;
-    }
-
-    public List<Integer> getOpcommand_grp() {
-        return opcommand_grp;
-    }
-
-    public void setOpcommand_grp(List<Integer> opcommand_grp) {
-        this.opcommand_grp = opcommand_grp;
-    }
-
-    public List<Integer> getOpcommand_hst() {
-        return opcommand_hst;
-    }
-
-    public void setOpcommand_hst(List<Integer> opcommand_hst) {
-        this.opcommand_hst = opcommand_hst;
-    }
-
-    public List<OperationCondition> getOpconditions() {
-        return opconditions;
-    }
-
-    public void setOpconditions(List<OperationCondition> opconditions) {
-        this.opconditions = opconditions;
-    }
-
-    public List<Integer> getOpgroup() {
-        return opgroup;
-    }
-
-    public void setOpgroup(List<Integer> opgroup) {
-        this.opgroup = opgroup;
-    }
-
-    public OperationMessage getOpmessage() {
-        return opmessage;
-    }
-
-    public void setOpmessage(OperationMessage opmessage) {
-        this.opmessage = opmessage;
-    }
-
-    public List<Integer> getOpmessage_usr() {
-        return opmessage_usr;
-    }
-
-    public void setOpmessage_usr(List<Integer> opmessage_usr) {
-        this.opmessage_usr = opmessage_usr;
-    }
-
-    public List<Integer> getOptemplate() {
-        return optemplate;
-    }
-
-    public void setOptemplate(List<Integer> optemplate) {
-        this.optemplate = optemplate;
-    }
-
-
 }

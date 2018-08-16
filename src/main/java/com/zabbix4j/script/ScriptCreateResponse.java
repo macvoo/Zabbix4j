@@ -20,7 +20,7 @@ public class ScriptCreateResponse extends ZabbixApiResponse {
     @Data
     @Accessors(chain = true)
     public class Result {
-        private List<Integer> scriptids;
+        private List<String> scriptids;
 
 
     }

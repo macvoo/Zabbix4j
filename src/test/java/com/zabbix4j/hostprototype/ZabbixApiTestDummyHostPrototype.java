@@ -37,7 +37,7 @@ public class ZabbixApiTestDummyHostPrototype extends ZabbixApiTestDummyMethodBas
         return response.getResult().getHostids().get(0);
     }
 
-    public void deleteHostPrototype(Integer id) throws ZabbixApiException {
+    public void deleteHostPrototype(final String id) throws ZabbixApiException {
         if (id == null) {
             return;
         }

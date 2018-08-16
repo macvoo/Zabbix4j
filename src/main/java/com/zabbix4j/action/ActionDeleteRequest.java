@@ -25,10 +25,10 @@
 package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiRequest;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Request parameter for action.delete
@@ -38,14 +38,13 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 public class ActionDeleteRequest extends ZabbixApiRequest {
-
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public ActionDeleteRequest() {
         setMethod("action.delete");
     }
 
-    public void addActionId(Integer id) {
+    public ActionDeleteRequest addActionid(final String id) {
         params.add(id);
         return this;
     }

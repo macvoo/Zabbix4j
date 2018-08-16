@@ -1,9 +1,12 @@
 package com.zabbix4j.iconmap;
 
 import com.zabbix4j.ZabbixApiTestBase;
+import org.hamcrest.core.Is;
+import org.junit.After;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Suguru Yajima

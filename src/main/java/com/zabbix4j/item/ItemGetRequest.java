@@ -68,38 +68,47 @@ public class ItemGetRequest extends ZabbixApiRequest {
 
         public Params addItemid(final String id) {
             itemids = ZbxListUtils.add(itemids, id);
+            return this;
         }
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addTemplateId(Integer id) {
+        public Params addTemplateid(final String id) {
             templateids = ZbxListUtils.add(templateids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addProxyId(Integer id) {
+        public Params addProxyid(final String id) {
             proxyids = ZbxListUtils.add(proxyids, id);
+            return this;
         }
 
-        public void addInterfaceId(Integer id) {
+        public Params addInterfaceid(final String id) {
             interfaceids = ZbxListUtils.add(interfaceids, id);
+            return this;
         }
 
-        public void addGraphId(Integer id) {
+        public Params addGraphid(final String id) {
             graphids = ZbxListUtils.add(graphids, id);
+            return this;
         }
 
-        public void addTriggerId(Integer id) {
-            triggerids = ZbxListUtils.add(triggerids, id);
+        public Params addTriggerid(final String id) {
+            triggerIds = ZbxListUtils.add(triggerIds, id);
+            return this;
         }
 
-        public void addApplicationId(Integer id) {
+        public Params addApplicationid(final String id) {
             applicationids = ZbxListUtils.add(applicationids, id);
+            return this;
         }
     }
 }

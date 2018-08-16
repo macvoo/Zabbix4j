@@ -2,6 +2,12 @@ package com.zabbix4j.action;
 
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
+import com.zabbix4j.usergroup.UserGroupCreateRequest;
+import com.zabbix4j.usergroup.UserGroupCreateResponse;
+import com.zabbix4j.usergroup.UserGroupDeleteRequest;
+import com.zabbix4j.usergroup.UserGroupDeleteResponse;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

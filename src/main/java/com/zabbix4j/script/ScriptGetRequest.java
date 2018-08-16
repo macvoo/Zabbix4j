@@ -22,10 +22,10 @@ public class ScriptGetRequest extends ZabbixApiRequest {
     @Data
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> scriptids;
-        private List<Integer> usrgrpids;
+        private List<String> groupids;
+        private List<String> hostids;
+        private List<String> scriptids;
+        private List<String> usrgrpids;
         private String selectGroups;
         private String selectHosts;
 

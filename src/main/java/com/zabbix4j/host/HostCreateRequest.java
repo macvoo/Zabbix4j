@@ -71,6 +71,7 @@ public class HostCreateRequest extends ZabbixApiRequest {
 
         public Params addTemplate(final TemplateObject id) {
             templates = ZbxListUtils.add(templates, id);
+            return this;
         }
 
         public Params addMacro(Macro id) {

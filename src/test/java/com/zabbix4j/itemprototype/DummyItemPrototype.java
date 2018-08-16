@@ -17,7 +17,7 @@ public class DummyItemPrototype extends ZabbixApiTestDummyMethodBase {
 
     public String createItemPrototype() throws ZabbixApiException {
 
-        Integer hostId = 10145;
+        String hostId = "10145";
 
         // lld id = 23797
         //applicationid = 564
@@ -26,9 +26,9 @@ public class DummyItemPrototype extends ZabbixApiTestDummyMethodBase {
         ItemPrototypeCreateRequest request = new ItemPrototypeCreateRequest();
         ItemPrototypeCreateRequest.Params params = request.getParams();
         params.setName("test.dummy.itemprototype." + new Date().getTime());
-        params.setRuleid(23797);
-        params.addApplication(564);
-        params.setDelay(60);
+        params.setRuleid("23797");
+        params.addApplication("564");
+        params.setDelay("60");
         params.setHostid(hostId);
 
         //params.setKey_("vfs.fs.size[{#FSNAME},free]");
@@ -43,7 +43,7 @@ public class DummyItemPrototype extends ZabbixApiTestDummyMethodBase {
         return response.getResult().getItemids().get(0);
     }
 
-    public void delete(Integer id) throws ZabbixApiException {
+    public void delete(final String id) throws ZabbixApiException {
 
         ItemPrototypeDeleteRequest request = new ItemPrototypeDeleteRequest();
         request.addItemPrototypeid(id);

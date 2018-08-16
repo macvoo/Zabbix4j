@@ -48,17 +48,19 @@ public class UserGroupGetRequest extends ZabbixApiRequest {
     public class Params extends GetRequestCommonParams {
 
         private Integer status;
-        private List<Integer> userids;
-        private List<Integer> usrgrpids;
+        private List<String> userids;
+        private List<String> usrgrpids;
         private Integer with_gui_access;
         private String selectUsers;
 
         public Params addUserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
+            return this;
         }
 
-        public void addUsrgrpId(Integer id) {
+        public Params addUsrgrpid(final String id) {
             usrgrpids = ZbxListUtils.add(usrgrpids, id);
+            return this;
         }
     }
 }

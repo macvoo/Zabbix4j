@@ -17,7 +17,7 @@ public class ApplicationUpdateTest extends ApplicationTestBase {
     @Test
     public void testUpdate() throws Exception {
 
-        Integer expected = createDummy("Application before update");
+        String expected = createDummy("Application before update");
 
         ApplicationUpdateRequest request = new ApplicationUpdateRequest();
         ApplicationUpdateRequest.Params params = request.getParams();
@@ -27,7 +27,7 @@ public class ApplicationUpdateTest extends ApplicationTestBase {
         ApplicationUpdateResponse response = zabbixApi.application().update(request);
         assertNotNull(response);
 
-        Integer actual = response.getResult().getApplicationids().get(0);
+        String actual = response.getResult().getApplicationids().get(0).toString();
 
         delete(actual);
 

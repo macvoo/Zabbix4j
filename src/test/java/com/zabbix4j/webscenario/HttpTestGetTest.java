@@ -18,7 +18,7 @@ public class HttpTestGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet() throws Exception {
         DummyWebScenario dummyWebScenario = new DummyWebScenario(zabbixApi);
-        Integer targetId = dummyWebScenario.create();
+        String targetId = dummyWebScenario.create();
 
         try {
             HttpTestGetRequest request = new HttpTestGetRequest();

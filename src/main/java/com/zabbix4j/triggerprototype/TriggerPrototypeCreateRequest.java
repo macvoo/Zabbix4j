@@ -18,7 +18,8 @@ public class TriggerPrototypeCreateRequest extends ZabbixApiRequest {
         setMethod("triggerprototype.create");
     }
 
-    public void addTriggerPrototypeObject(TriggerPrototypeObject obj) {
-        this.params.add(obj);
+    public TriggerPrototypeCreateRequest addTriggerPrototypeObject(TriggerPrototypeObject id) {
+        this.params.add(id);
+        return this;
     }
 }

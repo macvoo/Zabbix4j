@@ -42,7 +42,9 @@ public class ActionFilterCondition {
     private String conditionid;
     private Integer conditiontype;
     private String value;
-    private Integer actionid;
+    private String value2;
+    private String actionid;
+    private String formulaid;
     private Integer operator;
 
     public static enum CONDITION_TYPE_TRIGGER {
@@ -106,45 +108,4 @@ public class ActionFilterCondition {
             this.value = value;
         }
     }
-
-	public Integer getConditionid() {
-		return conditionid;
-	}
-
-	public void setConditionid(Integer conditionid) {
-		this.conditionid = conditionid;
-	}
-
-	public Integer getConditiontype() {
-		return conditiontype;
-	}
-
-	public void setConditiontype(Integer conditiontype) {
-		this.conditiontype = conditiontype;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public Integer getActionid() {
-		return actionid;
-	}
-
-	public void setActionid(Integer actionid) {
-		this.actionid = actionid;
-	}
-
-	public Integer getOperator() {
-		return operator;
-	}
-
-	public void setOperator(Integer operator) {
-		this.operator = operator;
-	}
-    
 }

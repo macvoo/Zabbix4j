@@ -35,14 +35,13 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class Option {
-
-    private List<Integer> groups;
-    private List<Integer> hosts;
-    private List<Integer> images;
-    private List<Integer> maps;
-    private List<Integer> screens;
-
-    private List<Integer> templates;
+    private List<String> groups;
+    private List<String> hosts;
+    private List<String> images;
+    private List<String> maps;
+    private List<String> screens;
+    private List<String> templates;
+    private List<String> valueMaps;
 
     public Option() {
     }

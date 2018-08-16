@@ -54,7 +54,7 @@ public class MapGetRequest extends ZabbixApiRequest {
         private String selectSelements;
         private String selectUrls;
 
-        public void addSysMapId(Integer id) {
+        public Params addSysMapid(final String id) {
             sysmapids = ZbxListUtils.add(sysmapids, id);
             return this;
         }

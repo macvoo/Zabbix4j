@@ -35,19 +35,22 @@ public class LLDRuleGetRequest extends ZabbixApiRequest {
         private String selectItems;
         private String selectTriggers;
 
-        public void addItemId(Integer id) {
+        public Params addItemid(final String id) {
             itemids = ZbxListUtils.add(itemids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addInterfaceId(Integer id) {
+        public Params addInterfaceid(final String id) {
             interfaceids = ZbxListUtils.add(interfaceids, id);
+            return this;
         }
 
-        public void addTemplateId(Integer id) {
+        public Params addTemplateid(final String id) {
             templateids = ZbxListUtils.add(templateids, id);
             return this;
         }

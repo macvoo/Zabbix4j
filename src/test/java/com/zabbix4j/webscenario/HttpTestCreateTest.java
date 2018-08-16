@@ -17,7 +17,7 @@ public class HttpTestCreateTest extends ZabbixApiTestBase {
 
     @Test
     public void testCreate() throws Exception {
-        final Integer hostId = 10084;
+        final String hostId = "10084";
 
         HttpTestCreateRequest request = new HttpTestCreateRequest();
         HttpTestCreateRequest.Params params = request.getParams();

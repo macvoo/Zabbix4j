@@ -12,13 +12,13 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class TemplateDeleteRequest extends ZabbixApiRequest {
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public TemplateDeleteRequest() {
         setMethod("template.delete");
     }
 
-    public void addTemplateId(Integer id) {
+    public TemplateDeleteRequest addTemplateid(final String id) {
         params.add(id);
         return this;
     }

@@ -37,6 +37,8 @@ import lombok.experimental.Accessors;
 public class TriggerCreateResponse extends ZabbixApiResponse {
     private Result result = new Result();
 
+    @Data
+    @Accessors(chain = true)
     public class Result {
         private List<String> triggerIds;
     }

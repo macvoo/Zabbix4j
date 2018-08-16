@@ -19,7 +19,7 @@ public class GraphDeleteTest extends ZabbixApiTestBase {
     @Test
     public void testDelete1() throws Exception {
 
-        Integer targetId = createDummyGraph();
+        String targetId = createDummyGraph();
 
         GraphDeleteRequest request = new GraphDeleteRequest();
         request.getParams().add(targetId);
@@ -27,7 +27,7 @@ public class GraphDeleteTest extends ZabbixApiTestBase {
         GraphDeleteResponse response = zabbixApi.graph().delete(request);
         assertNotNull(response);
 
-        assertEquals(targetId, response.getResult().getGraphids().get(0));
+        assertEquals(targetId, response.getResult().getGraphids().get(0).toString());
     }
 
     private String createDummyGraph() throws ZabbixApiException {
@@ -37,7 +37,7 @@ public class GraphDeleteTest extends ZabbixApiTestBase {
         params.setName("Graph Update Test");
 
         GraphItem gitem = new GraphItem();
-        gitem.setItemid(23661);
+        gitem.setItemid("23661");
         gitem.setColor("00AA00");
         params.addGraphItem(gitem);
 
@@ -46,6 +46,6 @@ public class GraphDeleteTest extends ZabbixApiTestBase {
 
         GraphCreateResponse response = zabbixApi.graph().create(request);
 
-        return response.getResult().getGraphids().get(0);
+        return response.getResult().getGraphids().get(0).toString();
     }
 }

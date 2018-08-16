@@ -16,24 +16,6 @@ public class TemplateCreateResponse extends ZabbixApiResponse {
     @Data
     @Accessors(chain = true)
     public class Result {
-        private List<Integer> templateids;
-
-        /**
-         * Gets templateids.
-         *
-         * @return Value of templateids.
-         */
-        public List<Integer> getTemplateids() {
-            return templateids;
-        }
-
-        /**
-         * Sets new templateids.
-         *
-         * @param templateids New value of templateids.
-         */
-        public void setTemplateids(List<Integer> templateids) {
-            this.templateids = templateids;
-        }
+        private List<String> templateids;
     }
 }

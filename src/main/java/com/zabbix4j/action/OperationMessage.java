@@ -24,6 +24,9 @@
 
 package com.zabbix4j.action;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 /**
  * @author Suguru Yajima on 2014/05/19.
  */
@@ -35,47 +38,4 @@ public class OperationMessage {
     private String mediatypeid;
     private String message;
     private String subject;
-
-    public OperationMessage() {
-    }
-
-    public Integer getOperationid() {
-        return operationid;
-    }
-
-    public void setOperationid(Integer operationid) {
-        this.operationid = operationid;
-    }
-
-    public Integer getDefault_msg() {
-        return default_msg;
-    }
-
-    public void setDefault_msg(Integer default_msg) {
-        this.default_msg = default_msg;
-    }
-
-    public Integer getMediatypeid() {
-        return mediatypeid;
-    }
-
-    public void setMediatypeid(Integer mediatypeid) {
-        this.mediatypeid = mediatypeid;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
 }

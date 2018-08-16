@@ -25,8 +25,9 @@
 package com.zabbix4j.hostinteface;
 
 import com.zabbix4j.ZabbixApiRequest;
-
 import java.util.List;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * Created by Suguru Yajima on 2014/05/08.

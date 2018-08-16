@@ -15,8 +15,8 @@ public class DummyTemplate extends ZabbixApiTestDummyMethodBase {
 
     public String create() throws ZabbixApiException {
 
-        final Integer groupId = 25;
-        final Integer hostId = 10084;
+        final String groupId = "25";
+        final String hostId = "10084";
 
         TemplateCreateRequest request = new TemplateCreateRequest();
         TemplateCreateRequest.Params params = request.getParams();

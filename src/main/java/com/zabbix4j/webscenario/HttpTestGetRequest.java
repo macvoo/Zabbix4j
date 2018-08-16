@@ -22,11 +22,11 @@ public class HttpTestGetRequest extends ZabbixApiRequest {
     @Data
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> applicationids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> httptestids;
-        private List<Integer> templateids;
+        private List<String> applicationids;
+        private List<String> groupids;
+        private List<String> hostids;
+        private List<String> httptestids;
+        private List<String> templateids;
         private Boolean inherited;
         private Boolean monitored;
         private Boolean templated;

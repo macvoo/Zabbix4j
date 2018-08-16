@@ -5,13 +5,14 @@ import com.zabbix4j.ZabbixApiTestBase;
 import com.zabbix4j.graph.GraphItem;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by Suguru Yajima on 2014/06/02.
  */
-public class GraphPrototypeUpdateTest  extends ZabbixApiTestBase {
+public class GraphPrototypeUpdateTest extends ZabbixApiTestBase {
 
     public GraphPrototypeUpdateTest() {
         super();
@@ -20,7 +21,7 @@ public class GraphPrototypeUpdateTest  extends ZabbixApiTestBase {
     @Test
     public void testUpdate1() throws Exception {
 
-        Integer expectedId = createDummy();
+        String expectedId = createDummy();
 
         GraphPrototypeUpdateRequest request = new GraphPrototypeUpdateRequest();
         GraphPrototypeUpdateRequest.Params params = request.getParams();
@@ -45,25 +46,23 @@ public class GraphPrototypeUpdateTest  extends ZabbixApiTestBase {
         GraphPrototypeCreateRequest request = new GraphPrototypeCreateRequest();
         GraphPrototypeCreateRequest.Params params = request.getParams();
         params.setName("Graphprototype update test");
-        GraphItem gitem  = new GraphItem();
+        GraphItem gitem = new GraphItem();
         gitem.setColor("00AA00");
-        gitem.setItemid(23730);
+        gitem.setItemid("23730");
         params.addGraphItem(gitem);
         params.setHeight(140);
         params.setWidth(800);
 
-        GraphPrototypeCreateResponse response  =zabbixApi.graphPrototype().create(request);
+        GraphPrototypeCreateResponse response = zabbixApi.graphPrototype().create(request);
         assertNotNull(response);
 
-        Integer id = response.getResult().getGraphids().get(0);
-
-        return id;
+        return response.getResult().getGraphids().get(0).toString();
     }
 
     private void deleteResult(final String id) throws ZabbixApiException {
 
         GraphPrototypeDeleteRequest request = new GraphPrototypeDeleteRequest();
-        request.addParam(id);
+        request.addGraphPrototypeid(id);
 
         GraphPrototypeDeleteResponse response = zabbixApi.graphPrototype().delete(request);
     }

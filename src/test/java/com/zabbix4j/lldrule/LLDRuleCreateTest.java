@@ -18,7 +18,7 @@ public class LLDRuleCreateTest extends ZabbixApiTestBase {
     @Test
     public void testCreate1() throws Exception {
 
-        Integer targetHostId = null;
+        String targetHostId = null;
         try {
             DummyHost dummyHost = new DummyHost(zabbixApi);
             targetHostId = dummyHost.createHost();

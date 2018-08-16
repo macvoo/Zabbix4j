@@ -2,7 +2,6 @@ package com.zabbix4j.host;
 
 import com.zabbix4j.ZabbixApiException;
 import com.zabbix4j.ZabbixApiTestBase;
-import com.zabbix4j.hostgroup.HostgroupTest;
 import com.zabbix4j.hostinteface.HostInterfaceObject;
 import com.zabbix4j.template.TemplateObject;
 import com.zabbix4j.usermacro.Macro;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotEquals;

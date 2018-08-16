@@ -19,12 +19,12 @@ public class ApplicationCreateTest extends ApplicationTestBase {
         ApplicationCreateRequest request = new ApplicationCreateRequest();
         ApplicationCreateRequest.Params params = request.getParams();
         params.setName("Application created");
-        params.setHostid(10084);
+        params.setHostid("10084");
 
         ApplicationCreateResponse response = zabbixApi.application().create(request);
         assertNotNull(response);
 
-        Integer id = response.getResult().getApplicationids().get(0);
+        String id = response.getResult().getApplicationids().get(0).toString();
         assertNotNull(id);
 
         delete(id);

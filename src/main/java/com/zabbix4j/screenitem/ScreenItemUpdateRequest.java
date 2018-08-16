@@ -18,7 +18,8 @@ public class ScreenItemUpdateRequest extends ZabbixApiRequest {
         setMethod("screenitem.update");
     }
 
-    public void addScreenItem(ScreenItemObject obj) {
-        params.add(obj);
+    public ScreenItemUpdateRequest addScreenItem(ScreenItemObject id) {
+        params.add(id);
+        return this;
     }
 }

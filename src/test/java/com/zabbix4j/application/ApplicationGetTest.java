@@ -20,7 +20,7 @@ public class ApplicationGetTest extends ApplicationTestBase {
     @Test
     public void testGet() throws Exception {
 
-        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ArrayList<String> ids = new ArrayList<String>();
         ids.add(createDummy("Application get delete"));
         ids.add(createDummy("Application get delete2"));
 

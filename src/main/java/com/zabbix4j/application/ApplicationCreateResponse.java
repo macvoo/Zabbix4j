@@ -41,18 +41,6 @@ public class ApplicationCreateResponse extends ZabbixApiResponse {
     @Data
     @Accessors(chain = true)
     public class Result {
-
-        private List<Integer> applicationids;
-
-        public Result() {
-        }
-
-        public List<Integer> getApplicationids() {
-            return applicationids;
-        }
-
-        public void setApplicationids(List<Integer> applicationids) {
-            this.applicationids = applicationids;
-        }
+        private List<String> applicationids;
     }
 }

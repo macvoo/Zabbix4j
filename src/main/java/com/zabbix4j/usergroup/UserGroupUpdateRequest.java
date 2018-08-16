@@ -48,12 +48,12 @@ public class UserGroupUpdateRequest extends ZabbixApiRequest {
         private List<PermissionObject> rights;
         private List<String> userids;
 
-        public void addPermission(Integer hostgroupId, Integer permission) {
+        public Params addPermission(Integer hostgroupId, Integer permission) {
             rights = ZbxListUtils.add(rights, new PermissionObject(hostgroupId, permission));
             return this;
         }
 
-        public void addUserId(Integer id) {
+        public Params addUserid(final String id) {
             userids = ZbxListUtils.add(userids, id);
             return this;
         }

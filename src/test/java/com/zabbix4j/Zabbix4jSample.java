@@ -10,8 +10,8 @@ import java.util.List;
 
 public class Zabbix4jSample {
 
-    public static final String ZBX_URL = "http://zabbix.dev.corp.flamingo-inc.com/api_jsonrpc.php";
-    public static final String USERNAME = "admin";
+    public static final String ZBX_URL = "http://10.16.34.52/api_jsonrpc.php";
+    public static final String USERNAME = "Admin";
     public static final String PASSWORD = "zabbix";
 
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class Zabbix4jSample {
             params.setTemplates(templates);
 
             // attached to group
-            params.addGroupId(12);
+            params.addGroupid("12");
 
             // set macro
             List<Macro> macros = new ArrayList<Macro>();

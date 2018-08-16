@@ -20,11 +20,11 @@ public class HostGetTest extends ZabbixApiTestBase {
     @Test
     public void testGet1() throws Exception {
 
-        Integer targetHostId = 10108;
+        String targetHostId = "10108";
         HostGetRequest request = new HostGetRequest();
         HostGetRequest.Params params = request.getParams();
 
-        ArrayList<Integer> hostIds = new ArrayList<Integer>();
+        ArrayList<String> hostIds = new ArrayList<String>();
         hostIds.add(targetHostId);
         params.setHostids(hostIds);
 

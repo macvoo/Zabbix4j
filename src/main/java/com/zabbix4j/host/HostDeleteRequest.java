@@ -27,8 +27,7 @@ package com.zabbix4j.host;
 import com.zabbix4j.ZabbixApiRequest;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
@@ -37,17 +36,14 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class HostDeleteRequest extends ZabbixApiRequest {
-
-
-    @Accessors(chain = true) @Getter @Setter
-    private List<Integer> hostIds = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public HostDeleteRequest() {
         setMethod("host.delete");
     }
 
-    public void addHostId(Integer hostId) {
-        this.hostIds.add(hostId);
+    public HostDeleteRequest addHostid(String hostId) {
+        this.params.add(hostId);
+        return this;
     }
-
 }

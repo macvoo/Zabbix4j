@@ -47,15 +47,7 @@ public class GraphUpdateRequest extends ZabbixApiRequest {
     public class Params extends GraphObject {
         private List<GraphItem> gitems;
 
-        public List<GraphItem> getGitems() {
-            return gitems;
-        }
-
-        public void setGitems(List<GraphItem> gitems) {
-            this.gitems = gitems;
-        }
-
-        public void addGraphItem(GraphItem gitem) {
+        public Params addGraphItem(GraphItem gitem) {
             gitems = ZbxListUtils.add(gitems, gitem);
             return this;
         }

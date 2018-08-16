@@ -46,10 +46,10 @@ public class EventGetRequest extends ZabbixApiRequest {
     @Data
     @Accessors(chain = true)
     public class Params extends GetRequestCommonParams {
-        private List<Integer> eventids;
-        private List<Integer> groupids;
-        private List<Integer> hostids;
-        private List<Integer> objectids;
+        private List<String> eventids;
+        private List<String> groupids;
+        private List<String> hostids;
+        private List<String> objectids;
         private Integer object = 0;
         private Boolean acknowledged;
         private Integer eventid_from;
@@ -67,20 +67,24 @@ public class EventGetRequest extends ZabbixApiRequest {
             super();
         }
 
-        public void addEventId(Integer id) {
+        public Params addEventid(final String id) {
             eventids = ZbxListUtils.add(eventids, id);
+            return this;
         }
 
-        public void addGroupId(Integer id) {
+        public Params addGroupid(final String id) {
             groupids = ZbxListUtils.add(groupids, id);
+            return this;
         }
 
-        public void addHostId(Integer id) {
+        public Params addHostid(final String id) {
             hostids = ZbxListUtils.add(hostids, id);
+            return this;
         }
 
-        public void addObjectId(Integer id) {
+        public Params addObjectid(final String id) {
             objectids = ZbxListUtils.add(objectids, id);
+            return this;
         }
     }
 }

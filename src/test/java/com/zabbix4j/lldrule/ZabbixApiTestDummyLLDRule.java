@@ -20,7 +20,7 @@ public class ZabbixApiTestDummyLLDRule extends ZabbixApiTestDummyMethodBase {
         super(zabbixApi);
     }
 
-    public Integer createLLDRule() throws ZabbixApiException {
+    public String createLLDRule() throws ZabbixApiException {
         Integer targetHostId = null;
 
         String interfaceId = getHostInterface(hostId);
@@ -37,16 +37,14 @@ public class ZabbixApiTestDummyLLDRule extends ZabbixApiTestDummyMethodBase {
         LLDRuleCreateResponse response = zabbixApi.lldRule().create(request);
         assertNotNull(response);
 
-
-        Integer lldRuleId = response.getResult().getItemids().get(0);
-        return lldRuleId;
+        return response.getResult().getItemids().get(0);
     }
 
-    public Integer getHostInterface(Integer id) throws ZabbixApiException {
+    public String getHostInterface(final String id) throws ZabbixApiException {
 
         HostInterfaceGetRequest request = new HostInterfaceGetRequest();
         HostInterfaceGetRequest.Params params = request.getParams();
-        ArrayList<Integer> hostids = new ArrayList<Integer>();
+        ArrayList<String> hostids = new ArrayList<String>();
         hostids.add(id);
         params.setHostids(hostids);
 
@@ -55,10 +53,10 @@ public class ZabbixApiTestDummyLLDRule extends ZabbixApiTestDummyMethodBase {
         return response.getResult().get(0).getInterfaceid();
     }
 
-    public void deleteLLDRule(Integer id) throws ZabbixApiException {
+    public void deleteLLDRule(final String id) throws ZabbixApiException {
 
         LLDRuleDeleteRequest request = new LLDRuleDeleteRequest();
-        request.addruleId(id);
+        request.addRuleid(id);
 
         LLDRuleDeleteResponse response = zabbixApi.lldRule().delete(request);
     }

@@ -12,13 +12,13 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class ScriptDeleteRequest extends ZabbixApiRequest {
-    private List<Integer> params = new ArrayList<Integer>();
+    private List<String> params = new ArrayList<String>();
 
     public ScriptDeleteRequest() {
         setMethod("script.delete");
     }
 
-    public void addScriptId(Integer id) {
+    public ScriptDeleteRequest addScriptid(final String id) {
         params.add(id);
         return this;
     }
