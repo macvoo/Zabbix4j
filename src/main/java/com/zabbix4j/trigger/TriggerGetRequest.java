@@ -65,7 +65,6 @@ public class TriggerGetRequest extends ZabbixApiRequest {
         private String selectDependencies;
         private String selectDiscoveryRule;
         private String selectLastEvent;
-        private String filter;
 
         public Params() {
             super();

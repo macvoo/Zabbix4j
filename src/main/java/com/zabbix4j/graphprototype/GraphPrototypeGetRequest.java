@@ -38,7 +38,6 @@ public class GraphPrototypeGetRequest extends ZabbixApiRequest {
         private String selectHosts;
         private String selectItems;
         private String selectTemplates;
-        private String filter;
 
         public Params addDiscoveryid(final String id) {
             discoveryids = ZbxListUtils.add(discoveryids, id);
